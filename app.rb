@@ -6,10 +6,10 @@ get '/' do
   ['☕', '🍺'].sample
 end
 
-get '/beverages' do
+get '/events' do
   json CalendarService.new.events
 end
 
-get '/beverages/future' do
+get '/events/future' do
   json CalendarService.new.future_events
 end
