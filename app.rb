@@ -6,7 +6,10 @@ get '/' do
   ['☕', '🍺'].sample
 end
 
-get '/beverages/:filter' do
-  filter = params['filter'].to_sym
+get '/beverages' do
+  json CalendarService.new.events
+end
+
+get '/beverages/future' do
   json CalendarService.new.future_events
 end
