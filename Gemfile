@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'chronic'
+gem 'activesupport'
+gem 'icalendar'
 gem 'sinatra'
 gem 'sinatra-contrib'
