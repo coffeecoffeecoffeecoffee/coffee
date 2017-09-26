@@ -5,7 +5,7 @@
 ☕
 ```
 
-`GET /events` - get 10 most recent events
+`GET /api/events` - get 10 most recent events
 ```json
 [
    {
@@ -15,7 +15,7 @@
    }
 ]
 ```
-`GET /events/future` - get future events
+`GET /api/events/future` - get future events
 ```json
 [
    {
