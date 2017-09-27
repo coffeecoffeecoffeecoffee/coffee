@@ -1,9 +1,6 @@
 # Beverage
 
-`GET /` - get a coffee or a beer
-```json
-☕
-```
+`GET /` - see location of next event
 
 `GET /api/events` - get 10 most recent events
 ```json

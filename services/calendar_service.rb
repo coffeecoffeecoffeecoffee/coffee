@@ -15,4 +15,8 @@ class CalendarService
   def future_events
     events.select { |e| e.datetime.future? }
   end
+
+  def next_event
+    future_events.last
+  end
 end
