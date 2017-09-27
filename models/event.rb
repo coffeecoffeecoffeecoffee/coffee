@@ -1,5 +1,4 @@
 require 'active_support'
-require 'pry'
 
 class Event
   attr_reader :datetime, :location
