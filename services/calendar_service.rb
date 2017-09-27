@@ -9,7 +9,7 @@ class CalendarService
     cal_uri = URI.parse(CALENDAR_URL)
     cal_file = Net::HTTP.get(cal_uri)
     cal = Icalendar::Calendar.parse(cal_file).first
-    cal.events.first(10).map { |e| Event.new(e) }
+    cal.events.sort_by(&:dtstart).reverse.first(10).map { |e| Event.new(e) }
   end
 
   def future_events
