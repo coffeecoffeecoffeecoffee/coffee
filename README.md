@@ -6,8 +6,7 @@
 ```json
 [
    {
-      "date":"September 27, 2017",
-      "time":"8:30AM",
+      "datetime":"2017-09-27T15:30:00+00:00",
       "location":"St. Clare Coffee, 654 Mission St, San Francisco, CA 94105"
    }
 ]
@@ -16,8 +15,7 @@
 ```json
 [
    {
-      "date":"September 27, 2017",
-      "time":"8:30AM",
+      "datetime":"2017-09-27T15:30:00+00:00",
       "location":"St. Clare Coffee, 654 Mission St, San Francisco, CA 94105"
    }
 ]
