@@ -13,7 +13,8 @@ class Event
   def to_json(_options)
     {
       datetime: @datetime,
-      location: @location
+      location: @location,
+      foursquare_url: @foursquare_url
     }.to_json
   end
 end
