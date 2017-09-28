@@ -1,1 +1,12 @@
-<p>The next iOS coffee will be at <%= @location %> at <%= @time %> on <%= @date %>.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Mobile Beverage</title>
+  </head>
+  <body>
+    <div>
+    </div>
+    <p>The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>.</p>
+  </body>
+</html>

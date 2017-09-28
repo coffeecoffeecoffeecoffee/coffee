@@ -8,6 +8,7 @@ get '/' do
   @date = datetime.to_date.to_formatted_s(:long)
   @time = datetime.strftime('%-I:%M%p')
   @location = event.location
+  @foursquare_url = event.foursquare_url
   erb :index
 end
 
