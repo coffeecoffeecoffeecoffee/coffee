@@ -6,7 +6,9 @@
     <title>Mobile Beverage</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
-  <body style="height: 100vh; display: flex; align-items: center; justify-content: center;">
-    <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>.</p>
+  <body style="height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center;">
+    <div style="margin: 2em;">
+      <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>.</p>
+    </div>
   </body>
 </html>
