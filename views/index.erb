@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mobile Beverage</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
   </head>
-  <body>
-    <div>
-    </div>
-    <p>The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>.</p>
+  <body style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+    <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>.</p>
   </body>
 </html>
