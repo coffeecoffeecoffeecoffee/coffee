@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mobile Beverage</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="coffee.js"></script>
   </head>
   <body style="height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center;">
     <div style="margin: 2em;">
       <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>. ☕</p>
+      <img id="image" src="coffee-bean.png" width="300" height="300" style="display:block;margin:auto" />
     </div>
   </body>
 </html>

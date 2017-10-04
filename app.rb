@@ -2,6 +2,8 @@ require 'sinatra'
 require 'sinatra/json'
 require './services/calendar_service.rb'
 
+set :public_folder, Proc.new { File.join(root, "static") }
+
 get '/' do
   event = CalendarService.new.next_event
   datetime = event.datetime.in_time_zone('US/Pacific')
