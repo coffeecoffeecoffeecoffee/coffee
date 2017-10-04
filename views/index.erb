@@ -10,7 +10,7 @@
   </head>
   <body style="height: 100vh; margin: 0; display: flex; align-items: center; justify-content: center;">
     <div style="margin: 2em;">
-      <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>. ☕</p>
+      <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">The next event will be at <a id="link" href=<%= @foursquare_url %>><%= @location %></a> at <%= @time %> on <%= @date %>. ☕</p>
       <img id="image" src="coffee-bean.png" width="300" height="300" style="display:block;margin:auto" />
     </div>
   </body>
