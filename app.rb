@@ -3,12 +3,7 @@ require 'sinatra/json'
 require './services/calendar_service.rb'
 
 get '/' do
-  event = CalendarService.new.next_event
-  datetime = event.datetime.in_time_zone('US/Pacific')
-  @date = datetime.to_date.to_formatted_s(:long)
-  @time = datetime.strftime('%-I:%M%p')
-  @location = event.location
-  @foursquare_url = event.foursquare_url
+  @event = CalendarService.new.next_event
   erb :index
 end
 
