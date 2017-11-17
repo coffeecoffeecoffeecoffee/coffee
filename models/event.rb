@@ -5,7 +5,7 @@ class Event
 
   def initialize(calendar_event)
     @datetime = calendar_event.dtstart.utc
-    @location = calendar_event.location.force_encoding('iso-8859-1').encode('utf-8')
+    @location = calendar_event.location.force_encoding('utf-8')
     query = { q: @location }.to_query
     @foursquare_url = "https://foursquare.com/explore?#{query}"
   end
