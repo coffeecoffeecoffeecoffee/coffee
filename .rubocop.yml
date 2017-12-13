@@ -1,0 +1,14 @@
+AllCops:
+  DisplayCopNames: true
+  Exclude:
+    - 'db/schema.rb'
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*_spec.rb'
+
+Metrics/LineLength:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false

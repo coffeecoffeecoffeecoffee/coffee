@@ -1,2 +1,3 @@
-require './app'
-run Sinatra::Application
+require_relative 'config/environment'
+
+run Rails.application
