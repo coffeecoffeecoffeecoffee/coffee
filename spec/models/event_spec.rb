@@ -25,6 +25,10 @@ RSpec.describe Event, type: :model do
       events = create_list(:future_event, 2) + [create(:past_event)]
       expect(Event.next).to eq(events.first)
     end
+
+    it 'returns nil if there is no future event' do
+      expect(Event.next).to be_nil
+    end
   end
 
   describe '#start_at_pacific' do
