@@ -11,6 +11,15 @@ describe 'Next Event' do
       expect(page).to have_text('The next event will be at The Mill at 8:30AM on December 13. ☕')
       expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
     end
+
+    it 'uses the group emoji' do
+      group = create(:group, emoji: '🍺')
+      event = create(:future_event, group: group)
+
+      visit "groups/#{event.group.id}/next_event"
+      expect(page).to have_text('🍺')
+      expect(page).to_not have_text('☕')
+    end
   end
 
   context 'when a future event for the specified group does not exist' do

@@ -5,6 +5,8 @@ class EventDecorator < ApplicationDecorator
     start_at_pacific.strftime('%B %e')
   end
 
+  delegate :emoji, to: :group
+
   def start_time
     start_at_pacific.strftime('%-I:%M%p')
   end

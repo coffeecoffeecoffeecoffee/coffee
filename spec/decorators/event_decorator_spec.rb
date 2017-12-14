@@ -9,6 +9,14 @@ describe EventDecorator do
     end
   end
 
+  describe '#emoji' do
+    it 'returns the group emoji' do
+      group = create(:group, emoji: '🍺')
+      event = build(:event, group: group).decorate
+      expect(event.emoji).to eq('🍺')
+    end
+  end
+
   describe '#start_time' do
     it 'returns a formatted time in US/Pacific' do
       start_at = Time.parse('2017-12-13T16:30:00Z').utc

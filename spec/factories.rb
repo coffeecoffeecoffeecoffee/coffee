@@ -17,5 +17,6 @@ FactoryBot.define do
 
   factory :group do
     name 'SF iOS Coffee'
+    emoji '☕'
   end
 end
