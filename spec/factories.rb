@@ -4,6 +4,7 @@ FactoryBot.define do
     end_at Time.current
     location 'The Mill'
     location_url 'http://www.themillsf.com'
+    group
 
     factory :future_event do
       start_at Time.current.tomorrow
@@ -12,5 +13,9 @@ FactoryBot.define do
     factory :past_event do
       start_at Time.current.yesterday
     end
+  end
+
+  factory :group do
+    name 'SF iOS Coffee'
   end
 end

@@ -8,11 +8,13 @@ class EventDashboard < Administrate::BaseDashboard
     location: Field::String,
     location_url: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime
+    updated_at: Field::DateTime,
+    group: Field::BelongsTo
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
     id
+    group
     start_at
     end_at
     location
@@ -21,6 +23,7 @@ class EventDashboard < Administrate::BaseDashboard
 
   SHOW_PAGE_ATTRIBUTES = %i[
     id
+    group
     start_at
     end_at
     location
@@ -30,6 +33,7 @@ class EventDashboard < Administrate::BaseDashboard
   ].freeze
 
   FORM_ATTRIBUTES = %i[
+    group
     start_at
     end_at
     location

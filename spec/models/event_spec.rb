@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
+  it { should belong_to(:group) }
+
   it { should validate_presence_of(:start_at) }
   it { should validate_presence_of(:end_at) }
   it { should validate_presence_of(:location) }
   it { should validate_presence_of(:location_url) }
   it { should allow_value('https://coffeecoffeecoffee.coffee').for(:location_url) }
   it { should_not allow_value('not a url').for(:location_url) }
+  it { should validate_presence_of(:group) }
 
   describe '.upcoming' do
     it 'returns all future events' do
