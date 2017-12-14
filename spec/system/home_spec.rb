@@ -8,7 +8,7 @@ describe 'Home' do
       create(:future_event, start_at: start_at)
 
       visit '/'
-      expect(page).to have_text('The next event will be at The Mill at 8:30AM on December 13, 2017. ☕')
+      expect(page).to have_text('The next event will be at The Mill at 8:30AM on December 13. ☕')
       expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
     end
   end

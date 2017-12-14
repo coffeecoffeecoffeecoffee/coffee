@@ -2,7 +2,7 @@ class EventDecorator < ApplicationDecorator
   delegate_all
 
   def date
-    start_at_pacific.to_date.to_formatted_s(:long)
+    start_at_pacific.strftime('%B %e')
   end
 
   def start_time

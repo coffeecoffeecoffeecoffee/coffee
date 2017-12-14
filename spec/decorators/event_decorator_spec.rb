@@ -5,7 +5,7 @@ describe EventDecorator do
     it 'returns a formatted date in US/Pacific' do
       start_at = Time.parse('2017-12-13T16:30:00Z').utc
       event = build(:event, start_at: start_at).decorate
-      expect(event.date).to eq('December 13, 2017')
+      expect(event.date).to eq('December 13')
     end
   end
 
