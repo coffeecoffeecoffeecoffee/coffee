@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'administrate'
+gem 'draper'
 gem 'pg'
 gem 'puma'
 gem 'rails'

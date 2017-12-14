@@ -9,8 +9,4 @@ class Event < ApplicationRecord
   def self.next
     upcoming.first
   end
-
-  def start_at_pacific
-    start_at.in_time_zone('US/Pacific')
-  end
 end

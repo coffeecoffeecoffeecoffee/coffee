@@ -3,12 +3,13 @@ require 'rails_helper'
 describe 'Home' do
   context 'when a future event exists' do
     it 'shows the next event' do
-      event = create(:future_event)
+      start_at = Time.parse('2017-12-13T16:30:00Z').utc
+      allow(Time).to receive(:now).and_return(start_at)
+      create(:future_event, start_at: start_at)
 
       visit '/'
-      start_at = event.start_at_pacific
-      expect(page).to have_text("The next event will be at #{event.location} at #{start_at.strftime('%-I:%M%p')} on #{start_at.to_date.to_formatted_s(:long)}. ☕")
-      expect(page).to have_link(event.location, href: event.location_url)
+      expect(page).to have_text('The next event will be at The Mill at 8:30AM on December 13, 2017. ☕')
+      expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
     end
   end
 

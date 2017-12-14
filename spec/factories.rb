@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :event do
     start_at Time.current
     end_at Time.current
-    location 'Blue Bottle'
-    location_url 'https://bluebottlecoffee.com'
+    location 'The Mill'
+    location_url 'http://www.themillsf.com'
 
     factory :future_event do
       start_at Time.current.tomorrow

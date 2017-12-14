@@ -2,12 +2,7 @@
   <div style="margin: 2em;">
     <p style="font-size: 2em; font-family: 'Lato', sans-serif; text-align: center;">
       <% if @event.present? %>
-        <% start_at = @event.start_at_pacific %>
-        <% date = start_at.to_date.to_formatted_s(:long) %>
-        <% time = start_at.strftime('%-I:%M%p') %>
-        <% location = @event.location %>
-        <% location_url = @event.location_url %>
-        The next event will be at <a href=<%= location_url %>><%= location %></a> at <%= time %> on <%= date %>. ☕
+        The next event will be at <a href=<%= @event.location_url %>><%= @event.location %></a> at <%= @event.start_time %> on <%= @event.date %>. ☕
       <% else %>
         The next event has not been scheduled. Check back later. ☕
       <% end %>

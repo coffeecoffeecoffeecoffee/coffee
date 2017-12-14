@@ -30,14 +30,4 @@ RSpec.describe Event, type: :model do
       expect(Event.next).to be_nil
     end
   end
-
-  describe '#start_at_pacific' do
-    it 'returns start_at in the US/Pacific time zone' do
-      event = build(:event)
-      time = event.start_at.to_s(:time)
-      time_pacific = event.start_at.in_time_zone('US/Pacific').to_s(:time)
-      expect(time).to_not eq(time_pacific)
-      expect(time_pacific).to eq(event.start_at_pacific.to_s(:time))
-    end
-  end
 end
