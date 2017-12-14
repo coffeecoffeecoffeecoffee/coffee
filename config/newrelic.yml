@@ -1,0 +1,5 @@
+common: &default_settings
+  license_key: <%= ENV.fetch('NEW_RELIC_LICENSE_KEY') %>
+
+production:
+  <<: *default_settings
