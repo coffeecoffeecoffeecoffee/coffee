@@ -1,4 +1,4 @@
-class EventsController < ApplicationController
+class GroupsController < ApplicationController
   before_action :set_group, only: :show
 
   def show
@@ -9,6 +9,6 @@ class EventsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:group_id])
+    @group = Group.find(params[:id])
   end
 end
