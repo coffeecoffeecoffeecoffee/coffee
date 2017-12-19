@@ -11,15 +11,20 @@ RSpec.describe Event, type: :model do
   it { should_not allow_value('not a url').for(:location_url) }
   it { should validate_presence_of(:group_id) }
 
-  describe '.upcoming' do
+  describe '.future_or_now' do
     it 'returns all future events' do
       events = create_list(:future_event, 3)
-      expect(Event.upcoming).to eq(events)
+      expect(Event.future_or_now).to eq(events)
+    end
+
+    it 'returns all events happening now' do
+      events = create_list(:now_event, 3)
+      expect(Event.future_or_now).to eq(events)
     end
 
     it 'does not return past events' do
       create_list(:past_event, 2)
-      expect(Event.upcoming).to eq([])
+      expect(Event.future_or_now).to eq([])
     end
   end
 

@@ -7,9 +7,9 @@ class Event < ApplicationRecord
   validates :location_url, presence: true, url: true
   validates :group_id, presence: true
 
-  scope :upcoming, -> { where('start_at >= ?', Time.current).order(:created_at) }
+  scope :future_or_now, -> { where('end_at >= ?', Time.current).order(:created_at) }
 
   def self.next
-    upcoming.first
+    future_or_now.first
   end
 end
