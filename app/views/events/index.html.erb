@@ -1,0 +1,9 @@
+<div class="events">
+  <% if @events.count > 0 %>
+    <% @events.each do |event| %>
+      <%= render 'partials/event', event: event %>
+    <% end %>
+  <% else %>
+    There are no events scheduled. Check back later.
+  <% end %>
+</div>

@@ -2,3 +2,44 @@
  *= require_tree .
  *= require_self
  */
+
+ a {
+   color: #00a2c7;
+   text-decoration: none;
+ }
+
+body {
+  background-color: #f6f7f8;
+  color: #2e3e48;
+  font-family: -apple-system, sans-serif;
+}
+
+.events {
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.event {
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.event-time {
+  color: #2e3e4899;
+}
+
+.event-group-name {
+  color: #2e3e4899;
+  font-size: 14px;
+}
+
+.event-location {
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.event-location > a {
+  color: #2e3e48;
+}

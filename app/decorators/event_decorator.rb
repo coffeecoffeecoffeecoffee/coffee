@@ -1,14 +1,12 @@
 class EventDecorator < ApplicationDecorator
   delegate_all
 
-  def date
-    start_at_pacific.strftime('%B %e')
-  end
+  decorates_association :group
 
-  delegate :emoji, to: :group
+  delegate :name, to: :group, prefix: true
 
-  def start_time
-    start_at_pacific.strftime('%-I:%M%p')
+  def time
+    start_at_pacific.strftime('%A, %B %e, %Y, %-I:%M %p')
   end
 
   private

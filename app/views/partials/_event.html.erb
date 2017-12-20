@@ -1,0 +1,9 @@
+<div class="event">
+  <div class="event-time"><%= event.time %></div>
+  <div class="event-location">
+    <%= link_to event.location, event.location_url %>
+  </div>
+  <div class="event-group-name">
+    From <%= link_to event.group_name, group_path(event.group) %>
+  </div>
+</div>
