@@ -8,10 +8,10 @@ describe 'Groups' do
       group = create(:group)
       create(:future_event, group: group, start_at: start_at)
       create(:future_event,
-              location: 'Blue Bottle Coffee',
-              location_url: 'https://bluebottlecoffee.com',
-              group: group,
-              start_at: start_at)
+             location: 'Blue Bottle Coffee',
+             location_url: 'https://bluebottlecoffee.com',
+             group: group,
+             start_at: start_at)
 
       visit group_path(group)
       expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
@@ -24,7 +24,7 @@ describe 'Groups' do
     it 'does not show upcoming events for other groups' do
       group = create(:group)
       other_group = create(:group)
-      event = create(:future_event, group: other_group)
+      create(:future_event, group: other_group)
 
       visit group_path(group)
       expect(page).to have_text('There are no events scheduled. Check back later.')
