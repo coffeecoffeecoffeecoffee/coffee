@@ -5,6 +5,10 @@ class EventDecorator < ApplicationDecorator
 
   delegate :name, to: :group, prefix: true
 
+  def color
+    "hsva(#{rand(0..360)}, 60%, 90%, 0.4)".paint.to_rgb
+  end
+
   def time
     start_at_pacific.strftime('%A, %B %e, %Y, %-I:%M %p')
   end

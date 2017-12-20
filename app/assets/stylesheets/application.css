@@ -9,7 +9,6 @@
  }
 
 body {
-  background-color: #f6f7f8;
   color: #2e3e48;
   font-family: -apple-system, sans-serif;
 }
@@ -20,7 +19,6 @@ body {
 }
 
 .event {
-  background-color: #ffffff;
   padding: 20px;
 }
 
