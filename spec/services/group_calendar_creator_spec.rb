@@ -21,6 +21,7 @@ describe GroupCalendarCreator do
       expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
       expect(calendar_event.dtend.to_s).to include('UTC')
       expect(calendar_event.location).to eq('Sightglass Coffee')
+      expect(calendar_event.x_apple_structured_location.first).to eq('Sightglass Coffee')
     end
   end
 end
