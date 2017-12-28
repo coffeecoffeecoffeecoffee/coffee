@@ -16,8 +16,10 @@ describe GroupCalendarCreator do
 
       calendar_event = calendar.events.last
       expect(calendar_event.summary).to eq('SF iOS Coffee at Sightglass Coffee')
-      expect(calendar_event.dtstart.to_time.to_i).to eq(last_event.start_at.to_i)
-      expect(calendar_event.dtend.to_time.to_i).to eq(last_event.end_at.to_i)
+      expect(calendar_event.dtstart).to eq(last_event.start_at.change(usec: 0))
+      expect(calendar_event.dtstart.to_s).to include('UTC')
+      expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
+      expect(calendar_event.dtend.to_s).to include('UTC')
       expect(calendar_event.location).to eq('Sightglass Coffee')
     end
   end
