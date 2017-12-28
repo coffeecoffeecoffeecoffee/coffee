@@ -4,17 +4,21 @@ describe GroupCalendarCreator do
   describe '#to_ical' do
     it 'creates an ical with all events' do
       group = create(:group)
-      events = create_list(:future_event, 3, group: group)
+      create_list(:future_event, 3, group: group)
+      last_event = create(:event, group: group, location: 'Sightglass Coffee')
 
       ical = GroupCalendarCreator.new(group).to_ical
-      calendar_events = Icalendar::Event.parse(ical)
+      calendar = Icalendar::Calendar.parse(ical).first
 
-      expect(calendar_events.count).to eq(3)
+      expect(calendar.events.count).to eq(4)
+      expect(calendar.prodid).to eq('-//Coffee/Coffee/EN')
+      expect(calendar.x_wr_calname.first).to eq(group.name)
 
-      event = events.first
-      calendar_event = calendar_events.first
-      expect(calendar_event.dtstart.to_time.to_i).to eq(event.start_at.to_i)
-      expect(calendar_event.dtend.to_time.to_i).to eq(event.end_at.to_i)
+      calendar_event = calendar.events.last
+      expect(calendar_event.summary).to eq('SF iOS Coffee at Sightglass Coffee')
+      expect(calendar_event.dtstart.to_time.to_i).to eq(last_event.start_at.to_i)
+      expect(calendar_event.dtend.to_time.to_i).to eq(last_event.end_at.to_i)
+      expect(calendar_event.location).to eq('Sightglass Coffee')
     end
   end
 end

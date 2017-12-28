@@ -3,11 +3,17 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
 
+Metrics/AbcSize:
+  Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - '**/*_spec.rb'
 
 Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
   Enabled: false
 
 Style/Documentation:

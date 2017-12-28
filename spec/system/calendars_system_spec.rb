@@ -9,8 +9,8 @@ describe 'Calendars' do
       visit group_ical_path(group)
 
       body = page.body
-      calendar_events = Icalendar::Event.parse(body)
-      expect(calendar_events.count).to eq(3)
+      calendar = Icalendar::Calendar.parse(body).first
+      expect(calendar.events.count).to eq(3)
     end
   end
 end
