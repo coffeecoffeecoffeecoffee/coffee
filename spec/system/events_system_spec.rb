@@ -28,4 +28,12 @@ describe 'Events' do
       expect(page).to have_text('There are no events scheduled. Check back later.')
     end
   end
+
+  it 'has Open Graph tags' do
+    visit '/'
+    expect(page).to have_css('meta[property="og:title"][content="Coffee"]', visible: false)
+    expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
+    expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
+    expect(page).to have_css('meta[property="og:url"][content="http://127.0.0.1/"]', visible: false)
+  end
 end

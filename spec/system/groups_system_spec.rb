@@ -21,6 +21,15 @@ describe 'Groups' do
       expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
     end
 
+    it 'has Open Graph tags' do
+      group = create(:group)
+      visit group_path(group)
+      expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee ☕"]', visible: false)
+      expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
+      expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
+      expect(page).to have_css("meta[property=\"og:url\"][content=\"#{url_for group}\"]", visible: false)
+    end
+
     it 'does not show upcoming events for other groups' do
       group = create(:group)
       other_group = create(:group)

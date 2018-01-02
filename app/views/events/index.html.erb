@@ -1,3 +1,11 @@
+<%
+  set_meta_tags og: {
+    title: @group.present? ? @group.name : 'Coffee',
+    type: 'website',
+    image: request.base_url + '/apple-touch-icon.png',
+    url: request.original_url
+  }
+%>
 <div class="events">
   <% if @events.count > 0 %>
     <% @events.each do |event| %>
