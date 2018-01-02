@@ -21,6 +21,13 @@ describe 'Groups' do
       expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
     end
 
+    it 'can find the group by a slug' do
+      create(:group, name: 'Sluggable Group')
+
+      visit 'groups/sluggable-group'
+      expect(page).to have_text('There are no events scheduled. Check back later.')
+    end
+
     it 'has Open Graph tags' do
       group = create(:group)
       visit group_path(group)
@@ -33,7 +40,7 @@ describe 'Groups' do
     it 'has a link to subscribe to the calendar' do
       group = create(:group)
       visit group_path(group)
-      expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/groups/#{group.id}/ical")
+      expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/groups/#{group.slug}/ical")
     end
 
     it 'does not show upcoming events for other groups' do
