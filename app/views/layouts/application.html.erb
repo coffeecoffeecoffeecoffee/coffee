@@ -3,6 +3,16 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if @event.present? %>
+      <% location = @event.location %>
+      <% location_url = @event.location_url %>
+      <% start_at = @event.start_at_pacific %>
+      <% date = start_at.to_date.to_formatted_s(:long) %>
+      <% time = start_at.strftime('%-I:%M%p') %>
+      <meta property="og:title" content="<%= location %>" />
+      <meta property="og:url" content="<%= location_url %>" />
+      <meta property="og:description" content="The next event will be at <%= time %> on <%= date %>. ☕" />
+    <% end %>
     <title>Coffee</title>
     <%= csrf_meta_tags %>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
