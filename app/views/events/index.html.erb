@@ -14,4 +14,6 @@
   <% else %>
     There are no events scheduled. Check back later.
   <% end %>
+  <br />
+  <%= link_to('Subscribe to Calendar', group_ical_url(@group, protocol: :webcal), target: '_blank') if @group.present? %>
 </div>
