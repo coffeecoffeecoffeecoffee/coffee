@@ -33,7 +33,7 @@ describe 'Groups' do
     it 'has a link to subscribe to the calendar' do
       group = create(:group)
       visit group_path(group)
-      expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/groups/#{group.id}/ical/")
+      expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/groups/#{group.id}/ical")
     end
 
     it 'does not show upcoming events for other groups' do
