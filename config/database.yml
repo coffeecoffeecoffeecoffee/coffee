@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: coffee_development
+  database: gather_development
 
 test:
   <<: *default
-  database: coffee_test
+  database: gather_test
 
 production:
   <<: *default
-  database: coffee_production
-  username: coffee
-  password: <%= ENV['COFFEE_DATABASE_PASSWORD'] %>
+  database: gather_production
+  username: gather
+  password: <%= ENV['GATHER_DATABASE_PASSWORD'] %>
