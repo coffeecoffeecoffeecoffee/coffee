@@ -48,6 +48,13 @@ describe 'Groups' do
     end
 
     describe 'SEO' do
+      it 'has the group name in the title' do
+        group = create(:group, name: 'Dogs are Awesome')
+
+        visit group_path(group)
+        expect(page).to have_selector('title', text: 'Dogs are Awesome ☕ | Gather', visible: false)
+      end
+
       it 'has Open Graph tags' do
         group = create(:group)
         visit group_path(group)

@@ -1,10 +1,12 @@
 <%
-  set_meta_tags og: {
-    title: @group.present? ? @group.name : 'Gather',
-    type: 'website',
-    image: request.base_url + '/apple-touch-icon.png',
-    url: request.original_url
-  }
+  set_meta_tags title: @group.present? ? @group.name : 'All Events',
+                reverse: true,
+                og: {
+                  title: @group.present? ? @group.name : 'Gather',
+                  type: 'website',
+                  image: request.base_url + '/apple-touch-icon.png',
+                  url: request.original_url
+                }
 %>
 <div class="events">
   <% if @events.count > 0 %>
