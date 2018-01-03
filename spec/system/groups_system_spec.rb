@@ -52,7 +52,7 @@ describe 'Groups' do
         group = create(:group, name: 'Dogs are Awesome')
 
         visit group_path(group)
-        expect(page).to have_selector('title', text: 'Dogs are Awesome ☕ | Gather', visible: false)
+        expect(page).to have_selector('title', text: 'Dogs are Awesome | Gather', visible: false)
       end
 
       it 'has Open Graph tags' do

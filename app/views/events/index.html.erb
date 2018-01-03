@@ -2,7 +2,7 @@
   set_meta_tags title: @group.present? ? @group.name : 'All Events',
                 reverse: true,
                 og: {
-                  title: @group.present? ? @group.name : 'Gather',
+                  title: @group.present? ? @group.name_with_emoji : 'Gather',
                   type: 'website',
                   image: request.base_url + '/apple-touch-icon.png',
                   url: request.original_url

@@ -3,7 +3,7 @@ class EventDecorator < ApplicationDecorator
 
   decorates_association :group
 
-  delegate :name, to: :group, prefix: true
+  delegate :name_with_emoji, to: :group, prefix: true
 
   def time
     start_at_pacific.strftime('%A, %B %e, %Y, %-I:%M %p')
