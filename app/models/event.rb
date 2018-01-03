@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   validates :end_at, presence: true
   validates :location, presence: true
   validates :location_url, presence: true, url: true
-  validates :group_id, presence: true
+  validates :group, presence: true
 
   scope :future_or_now, -> { where('end_at >= ?', Time.current).order(:created_at) }
 

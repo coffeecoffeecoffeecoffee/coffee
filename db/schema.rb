@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102231039) do
+ActiveRecord::Schema.define(version: 20180103034739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180102231039) do
     t.string "location_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.uuid "group_id"
+    t.uuid "group_id", null: false
     t.index ["group_id"], name: "index_events_on_group_id"
   end
 
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180102231039) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "emoji", default: "☕", null: false
+    t.string "emoji", null: false
     t.string "slug", null: false
     t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
