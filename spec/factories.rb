@@ -25,5 +25,6 @@ FactoryBot.define do
   factory :group do
     name 'SF iOS Coffee'
     emoji '☕'
+    time_zone 'America/Los_Angeles'
   end
 end
