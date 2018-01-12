@@ -13,12 +13,10 @@ class EventDashboard < Administrate::BaseDashboard
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
-    id
     group
     start_at
     end_at
     location
-    location_url
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
