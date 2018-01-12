@@ -4,6 +4,7 @@ gem 'administrate'
 gem 'chroma'
 gem 'draper'
 gem 'friendly_id'
+gem 'httparty'
 gem 'icalendar'
 gem 'meta-tags'
 gem 'pg'
@@ -32,4 +33,6 @@ end
 group :test do
   gem 'capybara'
   gem 'shoulda'
+  gem 'vcr'
+  gem 'webmock'
 end
