@@ -39,4 +39,12 @@ RSpec.describe Event, type: :model do
       expect(Event.next).to be_nil
     end
   end
+
+  describe '#venue' do
+    it 'returns the venue for the #venue_foursquare_id', vcr: { cassette_name: :foursquare_venue_details } do
+      event = build(:event)
+      expect(event.venue).to be_an_instance_of(Venue)
+      expect(event.venue.foursquare_id).to eq(event.venue_foursquare_id)
+    end
+  end
 end

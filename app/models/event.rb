@@ -13,4 +13,8 @@ class Event < ApplicationRecord
   def self.next
     future_or_now.first
   end
+
+  def venue
+    @venue ||= Venue.find(venue_foursquare_id)
+  end
 end

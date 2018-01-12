@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'administrate'
 gem 'chroma'
 gem 'draper'
+gem 'factory_bot_rails'
 gem 'friendly_id'
 gem 'httparty'
 gem 'icalendar'
@@ -22,7 +23,6 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'dotenv-rails'
-  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 

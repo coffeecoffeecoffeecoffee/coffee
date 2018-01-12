@@ -9,7 +9,8 @@ class EventDashboard < Administrate::BaseDashboard
     location_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    group: Field::BelongsTo
+    group: Field::BelongsTo,
+    venue_foursquare_id: Field::String
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
@@ -26,6 +27,7 @@ class EventDashboard < Administrate::BaseDashboard
     end_at
     location
     location_url
+    venue_foursquare_id
     created_at
     updated_at
   ].freeze
@@ -36,5 +38,6 @@ class EventDashboard < Administrate::BaseDashboard
     end_at
     location
     location_url
+    venue_foursquare_id
   ].freeze
 end
