@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get '/groups/:id', to: redirect('/%{id}') # rubocop:disable Style/FormatStringToken
+  get '/groups/:id/ical', to: redirect('/%{id}/ical') # rubocop:disable Style/FormatStringToken
 
   resources :groups, path: '', only: :show do
     get '/ical', to: 'calendars#show'
