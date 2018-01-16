@@ -8,11 +8,4 @@ describe Foursquare do
       expect(venue[:id]).to eq(id)
     end
   end
-
-  describe '#venues' do
-    it 'searches for venues with the specified params', vcr: { cassette_name: :foursquare_venue_search } do
-      venues = Foursquare.new.venues('The Mill', 'San Francisco')
-      expect(venues.count).to eq(30)
-    end
-  end
 end

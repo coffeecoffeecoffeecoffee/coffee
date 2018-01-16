@@ -9,13 +9,6 @@ class Foursquare
     body[:response][:venue]
   end
 
-  def venues(query, near)
-    options = { near: near, query: query }
-    response = self.class.get('/venues/search', query: options.merge(auth))
-    body = JSON.parse(response.body, symbolize_names: true)
-    body[:response][:venues]
-  end
-
   private
 
   def auth

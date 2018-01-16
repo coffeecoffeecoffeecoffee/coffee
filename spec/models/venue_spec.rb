@@ -7,10 +7,4 @@ RSpec.describe Venue, type: :model do
       expect(Venue.find(foursquare_id).foursquare_id).to eq(foursquare_id)
     end
   end
-
-  describe '.where' do
-    it 'finds all venues with the specified params', vcr: { cassette_name: :foursquare_venue_search } do
-      expect(Venue.where(name: 'The Mill').count).to eq(30)
-    end
-  end
 end
