@@ -1,9 +1,13 @@
-<div class="event" style="background-color:<%= random_color %>;">
-  <div class="event-time"><%= event.time %></div>
-  <div class="event-location">
-    <%= link_to event.location, event.location_url %>
-  </div>
-  <div class="event-group-name">
-    From <%= link_to event.group_name_with_emoji, group_path(event.group) %>
-  </div>
-</div>
+<div class="event-card">
+  <a href="<%= event.location_url %>" target="_blank">
+    <div class="event-card__body">
+        <time class="event-card__time"><%= event.time %></time>
+        <div class="event-card__venue"><%= event.location %></div>
+    </div>
+  </a>
+  <a href="<%= group_path(event.group) %>">
+    <div class="event-card__footer">
+      <div class="event-card__group"><%= event.group_name_with_emoji %></div>
+    </div>
+  </a>
+ </div>

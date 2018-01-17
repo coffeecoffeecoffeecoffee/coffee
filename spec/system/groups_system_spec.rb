@@ -17,7 +17,7 @@ describe 'Groups' do
         visit group_path(group)
         expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
         expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
-        expect(page).to have_link('SF iOS Coffee ☕', href: group_path(group))
+        expect(page).to have_link('☕ SF iOS Coffee', href: group_path(group))
 
         expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
       end
@@ -58,7 +58,7 @@ describe 'Groups' do
       it 'has Open Graph tags' do
         group = create(:group)
         visit group_path(group)
-        expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee ☕"]', visible: false)
+        expect(page).to have_css('meta[property="og:title"][content="☕ SF iOS Coffee"]', visible: false)
         expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
         expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
         expect(page).to have_css("meta[property=\"og:url\"][content=\"#{url_for group}\"]", visible: false)

@@ -1,21 +1,17 @@
-<%
-  set_meta_tags title: @group.present? ? @group.name : 'All Events',
-                reverse: true,
-                og: {
-                  title: @group.present? ? @group.name_with_emoji : 'Gather',
-                  type: 'website',
-                  image: request.base_url + '/apple-touch-icon.png',
-                  url: request.original_url
-                }
-%>
-<div class="events">
-  <% if @events.count > 0 %>
-    <% @events.each do |event| %>
-      <%= render 'partials/event', event: event %>
-    <% end %>
-  <% else %>
-    There are no events scheduled. Check back later.
+<% set_meta_tags title: @group.present? ? @group.name : 'All Events',
+                 reverse: true,
+                 og: {
+                   title: @group.present? ? @group.name_with_emoji : 'Gather',
+                   type: 'website',
+                   image: request.base_url + '/apple-touch-icon.png',
+                   url: request.original_url
+                 } %>
+
+<div class="event-cards">
+  <% @events.each do |event| %>
+    <%= render 'partials/event', event: event %>
   <% end %>
-  <br />
-  <%= link_to('Subscribe to Calendar', group_ical_url(@group, protocol: :webcal), target: '_blank') if @group.present? %>
+  <%= 'There are no events scheduled. Check back later.' unless @events.count > 0 %>
 </div>
+
+<%= link_to('Subscribe to Calendar', group_ical_url(@group, protocol: :webcal), target: '_blank', class: 'group__subscribe-ical' ) if @group.present? %>

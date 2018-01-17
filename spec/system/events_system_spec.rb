@@ -17,7 +17,7 @@ describe 'Events' do
         visit '/'
         expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
         expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
-        expect(page).to have_link('SF iOS Coffee ☕', href: group_path(group))
+        expect(page).to have_link('☕ SF iOS Coffee', href: group_path(group))
 
         expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
       end
