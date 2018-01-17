@@ -9,7 +9,9 @@ class Venue
   end
 
   def self.find(foursquare_id)
-    foursquare_venue = Foursquare.new.venue(foursquare_id)
-    Venue.new(foursquare_venue)
+    Rails.cache.fetch("venues/#{foursquare_id}", expires_in: 12.hours) do
+      foursquare_venue = Foursquare.new.venue(foursquare_id)
+      Venue.new(foursquare_venue)
+    end
   end
 end

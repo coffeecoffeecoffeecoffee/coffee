@@ -4,6 +4,7 @@ Rails.application.configure do
   config.action_dispatch.show_exceptions = false
   config.active_support.deprecation = :stderr
   config.cache_classes = true
+  config.cache_store = :null_store
   config.consider_all_requests_local = true
   config.eager_load = false
   config.public_file_server.enabled = true

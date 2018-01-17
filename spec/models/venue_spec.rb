@@ -6,5 +6,17 @@ RSpec.describe Venue, type: :model do
       foursquare_id = '4feddd79d86cd6f22dc171a9'
       expect(Venue.find(foursquare_id).foursquare_id).to eq(foursquare_id)
     end
+
+    it 'caches the result', vcr: { cassette_name: :foursquare_venue_details } do
+      foursquare_id = '4feddd79d86cd6f22dc171a9'
+      cache_key = "venues/#{foursquare_id}"
+
+      store = ActiveSupport::Cache.lookup_store(:memory_store)
+      allow(Rails).to receive(:cache).and_return(store)
+
+      expect(Rails.cache.exist?(cache_key)).to be_falsey
+      Venue.find(foursquare_id)
+      expect(Rails.cache.exist?(cache_key)).to be_truthy
+    end
   end
 end
