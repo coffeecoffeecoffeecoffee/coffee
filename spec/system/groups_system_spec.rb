@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Groups' do
   describe '/:group_id' do
     context 'when a future event for the specified group exists' do
-      it 'shows all upcoming events' do
+      it 'shows all upcoming events', vcr: { cassette_name: :foursquare_venue_details } do
         start_at = Time.parse('2017-12-13T16:30:00Z').utc
         allow(Time).to receive(:now).and_return(start_at)
         group = create(:group)

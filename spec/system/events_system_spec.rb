@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Events' do
   describe '/' do
     context 'when future events exist' do
-      it 'shows all upcoming events' do
+      it 'shows all upcoming events', vcr: { cassette_name: :foursquare_venue_details } do
         start_at = Time.parse('2017-12-13T16:30:00Z').utc
         allow(Time).to receive(:now).and_return(start_at)
         group = create(:group)
