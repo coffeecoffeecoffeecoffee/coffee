@@ -27,6 +27,7 @@ end
 
 group :production do
   gem 'newrelic_rpm'
+  gem 'sentry-raven'
 end
 
 group :test do
