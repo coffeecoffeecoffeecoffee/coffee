@@ -68,7 +68,6 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    chroma (0.2.0)
     concurrent-ruby (1.0.5)
     crack (0.4.3)
       safe_yaml (~> 1.0.0)
@@ -256,7 +255,6 @@ DEPENDENCIES
   administrate
   byebug
   capybara
-  chroma
   dotenv-rails
   draper
   factory_bot_rails

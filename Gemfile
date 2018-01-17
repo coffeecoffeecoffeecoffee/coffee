@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'administrate'
-gem 'chroma'
 gem 'draper'
 gem 'factory_bot_rails'
 gem 'friendly_id'
