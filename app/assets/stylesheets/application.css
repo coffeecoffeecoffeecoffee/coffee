@@ -25,16 +25,23 @@ body {
   width: 360px;
 }
 
+.event-card__header {
+  height: 165px;
+  overflow: hidden;
+}
+
+.event-card__header img {
+  transform: translateY(-25%);
+  width: 100%;
+}
+
 .event-card__body {
   padding: 15px;
 }
 
 .event-card__footer {
-  padding: 10px 15px;
-}
-
-.event-card__footer {
   border-top: 1px solid #EFF2F5;
+  padding: 10px 15px;
 }
 
 .event-card__time {

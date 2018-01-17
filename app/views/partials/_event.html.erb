@@ -1,5 +1,8 @@
 <div class="event-card">
   <a href="<%= event.location_url %>" target="_blank">
+    <div class="event-card__header">
+      <%= image_tag event.image_url %>
+    </div>
     <div class="event-card__body">
         <time class="event-card__time"><%= event.time %></time>
         <div class="event-card__venue"><%= event.location %></div>
