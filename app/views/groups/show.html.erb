@@ -1,10 +1,10 @@
 <% set_meta_tags title: @group.name, reverse: true %>
 <% set_meta_tags og: {
-  title: @group.name_with_emoji,
+  title: :full_title,
   type: 'website',
-  image: request.base_url + '/apple-touch-icon.png',
+  image: og_group_image_url,
   url: request.original_url
 } %>
 
 <%= render 'partials/event_cards', events: @events %>
-<%= link_to('Subscribe to Calendar', group_ical_url(@group, protocol: :webcal), target: '_blank', class: 'group__subscribe-ical' )%>
+<%= link_to('Subscribe to Calendar', group_ical_url(@group, protocol: :webcal), target: '_blank', class: 'group__subscribe-ical' ) %>

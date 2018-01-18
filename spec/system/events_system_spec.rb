@@ -31,12 +31,30 @@ describe 'Events' do
     end
 
     describe 'SEO' do
-      it 'has Open Graph tags' do
-        visit '/'
-        expect(page).to have_css('meta[property="og:title"][content="Gather"]', visible: false)
-        expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
-        expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
-        expect(page).to have_css('meta[property="og:url"][content="http://127.0.0.1/"]', visible: false)
+      describe 'Open Graph' do
+        it 'has valid Open Graph tags' do
+          visit '/'
+          expect(page).to have_css('meta[property="og:title"][content="Find an Event | Gather"]', visible: false)
+          expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
+          expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
+          expect(page).to have_css('meta[property="og:url"][content="http://127.0.0.1/"]', visible: false)
+        end
+
+        context 'when @events contains an event' do
+          it 'shows the first future event image', vcr: { cassette_name: :foursquare_venue_details } do
+            create(:future_event)
+            visit '/'
+            image_url = 'https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg'
+            expect(page).to have_css("meta[property='og:image'][content='#{image_url}']", visible: false)
+          end
+        end
+
+        context 'when @events is empty' do
+          it 'shows the default image' do
+            visit '/'
+            expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
+          end
+        end
       end
     end
   end
