@@ -5,7 +5,7 @@ describe GroupCalendarCreator do
     it 'creates an ical with all events' do
       group = create(:group)
       create_list(:future_event, 3, group: group)
-      last_event = create(:event, group: group, location: 'Sightglass Coffee')
+      last_event = create(:event, group: group, location: 'Sightglass Coffee', location_url: 'https://sightglasscoffee.com')
 
       ical = GroupCalendarCreator.new(group).to_ical
       calendar = Icalendar::Calendar.parse(ical).first
@@ -21,6 +21,7 @@ describe GroupCalendarCreator do
       expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
       expect(calendar_event.dtend.to_s).to include('UTC')
       expect(calendar_event.location).to eq('Sightglass Coffee')
+      expect(calendar_event.url.to_s).to eq('https://sightglasscoffee.com')
       expect(calendar_event.x_apple_structured_location.first).to eq('Sightglass Coffee')
     end
   end
