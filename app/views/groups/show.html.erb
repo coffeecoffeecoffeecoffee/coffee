@@ -1,9 +1,11 @@
 <% set_meta_tags title: @group.name, reverse: true %>
+<% set_meta_tags description: "#{@group.name} is hosting their events on Gather." %>
 <% set_meta_tags og: {
   title: :full_title,
   type: 'website',
   image: og_group_image_url,
-  url: request.original_url
+  url: request.original_url,
+  description: :description
 } %>
 
 <%= render 'partials/event_cards', events: @events %>

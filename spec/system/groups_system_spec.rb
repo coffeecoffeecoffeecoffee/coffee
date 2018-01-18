@@ -62,6 +62,7 @@ describe 'Groups' do
           expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Gather"]', visible: false)
           expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
           expect(page).to have_css("meta[property=\"og:url\"][content=\"#{url_for group}\"]", visible: false)
+          expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Gather."]', visible: false)
         end
 
         context 'when a group has a future event' do

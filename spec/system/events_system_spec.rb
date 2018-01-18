@@ -36,8 +36,8 @@ describe 'Events' do
           visit '/'
           expect(page).to have_css('meta[property="og:title"][content="Find an Event | Gather"]', visible: false)
           expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
-          expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
           expect(page).to have_css('meta[property="og:url"][content="http://127.0.0.1/"]', visible: false)
+          expect(page).to have_css('meta[property="og:description"][content="Find an event happening near you on Gather."]', visible: false)
         end
 
         context 'when @events contains an event' do
