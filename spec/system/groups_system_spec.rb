@@ -22,10 +22,10 @@ describe 'Groups' do
         expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
       end
 
-      it 'has a link to subscribe to the calendar' do
+      it 'has a link to subscribe to the calendar using the id (not slug)' do
         group = create(:group)
         visit group_path(group)
-        expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/#{group.slug}/ical")
+        expect(page).to have_link('Subscribe to Calendar', href: "webcal://127.0.0.1/#{group.id}/ical")
       end
 
       it 'does not show upcoming events for other groups' do
