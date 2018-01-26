@@ -67,5 +67,7 @@ body {
 
 .group__subscribe-ical {
   color: #666A73;
+  display: block;
   font-size: 12px;
+  text-align: center;
 }
