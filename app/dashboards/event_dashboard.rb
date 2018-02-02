@@ -3,8 +3,8 @@ require 'administrate/base_dashboard'
 class EventDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::String.with_options(searchable: false),
-    start_at: EventTimeField,
-    end_at: EventTimeField,
+    start_at: Field::DateTime,
+    end_at: Field::DateTime,
     location: Field::String,
     location_url: Field::String,
     created_at: Field::DateTime,
