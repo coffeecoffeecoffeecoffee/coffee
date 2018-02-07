@@ -10,7 +10,6 @@ gem 'meta-tags'
 gem 'pg'
 gem 'puma'
 gem 'rails'
-gem 'validate_url'
 
 group :development do
   gem 'listen'

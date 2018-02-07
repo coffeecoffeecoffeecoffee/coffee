@@ -10,16 +10,15 @@ describe 'Events' do
         create(:future_event, group: group, start_at: start_at)
         create(:future_event,
                location: 'Blue Bottle Coffee',
-               location_url: 'https://bluebottlecoffee.com',
                group: group,
                start_at: start_at)
 
         visit '/'
         expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
-        expect(page).to have_link('The Mill', href: 'http://www.themillsf.com')
+        expect(page).to have_link('The Mill', href: 'https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
         expect(page).to have_link('☕ SF iOS Coffee', href: group_path(group))
 
-        expect(page).to have_link('Blue Bottle Coffee', href: 'https://bluebottlecoffee.com')
+        expect(page).to have_text('Blue Bottle Coffee')
       end
     end
 

@@ -234,9 +234,6 @@ GEM
     tilt (2.0.8)
     tzinfo (1.2.4)
       thread_safe (~> 0.1)
-    validate_url (1.0.2)
-      activemodel (>= 3.0.0)
-      addressable
     vcr (4.0.0)
     web-console (3.5.1)
       actionview (>= 5.0)
@@ -277,10 +274,9 @@ DEPENDENCIES
   shoulda
   spring
   spring-watcher-listen
-  validate_url
   vcr
   web-console
   webmock
 
 BUNDLED WITH
-   1.16.0
+   1.16.1

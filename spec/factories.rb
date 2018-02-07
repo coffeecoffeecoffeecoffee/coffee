@@ -3,7 +3,6 @@ FactoryBot.define do
     start_at Time.current
     end_at Time.current
     location 'The Mill'
-    location_url 'http://www.themillsf.com'
     venue_foursquare_id '4feddd79d86cd6f22dc171a9'
     group
 

@@ -5,6 +5,7 @@ class EventDecorator < ApplicationDecorator
 
   delegate :name_with_emoji, to: :group, prefix: true
   delegate :image_url, to: :venue
+  delegate :foursquare_url, to: :venue
 
   def time
     start_at_local.strftime('%A, %B %e, %Y, %-I:%M %p')

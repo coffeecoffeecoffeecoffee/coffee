@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112005559) do
+ActiveRecord::Schema.define(version: 20180207190521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20180112005559) do
     t.datetime "start_at", null: false
     t.datetime "end_at", null: false
     t.string "location", null: false
-    t.string "location_url", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "group_id", null: false

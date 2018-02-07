@@ -1,9 +1,10 @@
 class Venue
-  attr_reader :foursquare_id, :name, :image_url
+  attr_reader :foursquare_id, :name, :foursquare_url, :image_url
 
   def initialize(params = {})
     @foursquare_id = params[:id]
     @name = params[:name]
+    @foursquare_url = params[:canonicalUrl]
     best_photo = params[:bestPhoto]
     @image_url = best_photo[:prefix] + best_photo[:width].to_s + 'x' + best_photo[:height].to_s + best_photo[:suffix]
   end

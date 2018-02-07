@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Calendars' do
   describe ':id/ical' do
-    it 'generates an ics file for the group' do
+    it 'generates an ics file for the group', vcr: { cassette_name: :foursquare_venue_details } do
       group = create(:group)
       create_list(:future_event, 3, group: group)
 

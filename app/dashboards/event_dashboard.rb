@@ -6,7 +6,6 @@ class EventDashboard < Administrate::BaseDashboard
     start_at: Field::DateTime,
     end_at: Field::DateTime,
     location: Field::String,
-    location_url: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     group: Field::BelongsTo,
@@ -26,7 +25,6 @@ class EventDashboard < Administrate::BaseDashboard
     start_at
     end_at
     location
-    location_url
     venue_foursquare_id
     created_at
     updated_at
@@ -37,7 +35,6 @@ class EventDashboard < Administrate::BaseDashboard
     start_at
     end_at
     location
-    location_url
     venue_foursquare_id
   ].freeze
 end
