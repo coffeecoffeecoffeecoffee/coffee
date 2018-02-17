@@ -1,6 +1,6 @@
 module ApplicationHelper
   def og_events_image_url
-    image_url_for_event(@events.first)
+    image_url_for_event(Event.next)
   end
 
   def og_group_image_url

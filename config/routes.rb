@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'events#index'
+  root to: 'groups#index'
 
   namespace :admin do
     root to: 'events#index'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get '/groups/:id', to: redirect('/%{id}') # rubocop:disable Style/FormatStringToken
   get '/groups/:id/ical', to: redirect('/%{id}/ical') # rubocop:disable Style/FormatStringToken
 
-  resources :groups, path: '', only: :show do
+  resources :groups, path: '', only: %i[index show] do
     get '/ical', to: 'calendars#show'
   end
 end

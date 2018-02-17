@@ -1,6 +1,17 @@
 require 'rails_helper'
 
 describe 'Groups' do
+  describe '/' do
+    it 'shows all groups', vcr: { cassette_name: :foursquare_venue_details } do
+      coffee_group = create(:group, name: 'Coffee')
+      beer_group = create(:group, name: 'Beer')
+
+      visit '/'
+      expect(page).to have_link('Coffee', href: group_path(coffee_group))
+      expect(page).to have_link('Beer', href: group_path(beer_group))
+    end
+  end
+
   describe '/:group_id' do
     context 'when a future event for the specified group exists' do
       it 'shows all upcoming events', vcr: { cassette_name: :foursquare_venue_details } do

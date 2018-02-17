@@ -12,15 +12,11 @@ body {
   margin: 0;
 }
 
-.events {
-  width: 100%;
-}
-
 .events h2 {
   text-align: center;
 }
 
-.event {
+.event, .group {
   background-size: cover !important;
   border-radius: 10px;
   height: 500px;
@@ -29,17 +25,17 @@ body {
   max-width: 500px;
 }
 
-.event, .event a {
+.event, .event a, .group, .group a {
   color: white;
 }
 
-.event h3 {
+.event h3, .group h3 {
   margin: 0;
   font-size: 3em;
   word-wrap: break-word;
 }
 
-.event__body {
+.event__body, .group__body {
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);

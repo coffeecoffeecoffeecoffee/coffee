@@ -8,10 +8,6 @@
   description: :description
 } %>
 
-<div class="events">
-  <%= render 'partials/events', events: @events %>
-  <% if @past_events.count > 0 %>
-    <h2>Past Events</h2>
-    <%= render 'partials/events', events: @past_events %>
-  <% end %>
+<div class="groups">
+  <%= render 'partials/groups', groups: @groups %>
 </div>
