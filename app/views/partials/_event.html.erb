@@ -1,0 +1,12 @@
+<div class="event" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<%= event.image_url %>')">
+  <div class="event__body">
+    <%= link_to event.foursquare_url, target: '_blank' do %>
+      <h2 class="event__venue"><%= event.location %></h2>
+    <% end %>
+    <time class="event__time"><%= event.time %></time>
+    –
+    <%= link_to event.group do %>
+      <span class="event__group"><%= event.group_name_with_emoji %></span>
+    <% end %>
+  </div>
+ </div>
