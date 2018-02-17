@@ -12,6 +12,10 @@ body {
   margin: 0;
 }
 
+.events, .groups {
+  padding: 20px;
+}
+
 .events h2 {
   text-align: center;
   margin: 40px;
@@ -22,6 +26,7 @@ body {
   border-radius: 10px;
   height: 500px;
   margin: 40px auto;
+  padding: 20px;
   text-align: center;
   max-width: 500px;
 }
