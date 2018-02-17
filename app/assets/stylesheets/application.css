@@ -21,7 +21,7 @@ body {
 }
 
 .event {
-  background-size: cover;
+  background-size: cover !important;
   border-radius: 10px;
   height: 500px;
   margin: 40px auto;
