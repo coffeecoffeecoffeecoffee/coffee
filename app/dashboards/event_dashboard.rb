@@ -3,11 +3,11 @@ require 'administrate/base_dashboard'
 class EventDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     id: Field::String.with_options(searchable: false),
-    start_at: Field::DateTime.with_options(timezone: 'America/Los_Angeles'),
-    end_at: Field::DateTime.with_options(timezone: 'America/Los_Angeles'),
+    start_at: Field::DateTime,
+    end_at: Field::DateTime,
     location: Field::String,
-    created_at: Field::DateTime.with_options(timezone: 'America/Los_Angeles'),
-    updated_at: Field::DateTime.with_options(timezone: 'America/Los_Angeles'),
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime,
     group: Field::BelongsTo,
     venue_foursquare_id: Field::String
   }.freeze
