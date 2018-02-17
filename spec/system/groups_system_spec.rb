@@ -30,19 +30,29 @@ describe 'Groups' do
       it 'does not show upcoming events for other groups' do
         group = create(:group)
         other_group = create(:group)
-        create(:future_event, group: other_group)
+        create(:future_event, group: other_group, location: 'Blue Bottle Coffee')
 
         visit group_path(group)
-        expect(page).to have_text('There are no events scheduled. Check back later.')
+        expect(page).to_not have_text('Blue Bottle Coffee')
       end
     end
 
     context 'when a future event for the specified group does not exist' do
-      it 'shows an unscheduled message' do
-        event = create(:past_event)
+      context 'when past events exist' do
+        it 'shows five past events', vcr: { cassette_name: :foursquare_venue_details } do
+          group = create(:group)
+          create_list(:past_event, 3, group: group)
+          visit group_path(group)
+          expect(page).to have_text('Past Events')
+        end
+      end
 
-        visit group_path(event.group)
-        expect(page).to have_text('There are no events scheduled. Check back later.')
+      context 'when no past events exist' do
+        it 'does not show any events' do
+          group = create(:group)
+          visit group_path(group)
+          expect(page).to_not have_text('Past Events')
+        end
       end
     end
 
@@ -83,11 +93,12 @@ describe 'Groups' do
         end
       end
 
-      it 'can find the group by a slug' do
-        create(:group, name: 'Sluggable Group')
+      it 'can find the group by a slug', vcr: { cassette_name: :foursquare_venue_details } do
+        group = create(:group, name: 'Sluggable Group')
+        create(:event, group: group, location: 'Blue Bottle Coffee')
 
         visit 'groups/sluggable-group'
-        expect(page).to have_text('There are no events scheduled. Check back later.')
+        expect(page).to have_text('Blue Bottle Coffee')
       end
 
       it 'redirects /groups/:id to /:id' do

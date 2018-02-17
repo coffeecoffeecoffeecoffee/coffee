@@ -1,6 +1,3 @@
-<div class="events">
-  <% events.each do |event| %>
-    <%= render 'partials/event', event: event %>
-  <% end %>
-  <%= 'There are no events scheduled. Check back later.' unless @events.count > 0 %>
-</div>
+<% events.each do |event| %>
+  <%= render 'partials/event', event: event %>
+<% end %>

@@ -8,6 +8,7 @@ class Event < ApplicationRecord
   validates :venue_foursquare_id, presence: true
 
   scope :future_or_now, -> { where('end_at >= ?', Time.current).order(:created_at) }
+  scope :past, -> { where('end_at < ?', Time.current).order(:created_at) }
 
   def self.next
     future_or_now.first

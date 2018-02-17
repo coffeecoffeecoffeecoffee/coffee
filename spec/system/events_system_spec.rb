@@ -22,10 +22,19 @@ describe 'Events' do
       end
     end
 
-    context 'when future events do not exist' do
-      it 'shows an unscheduled message' do
+    context 'when past events exist' do
+      it 'shows five past events', vcr: { cassette_name: :foursquare_venue_details } do
+        group = create(:group)
+        create_list(:past_event, 3, group: group)
         visit '/'
-        expect(page).to have_text('There are no events scheduled. Check back later.')
+        expect(page).to have_text('Past Events')
+      end
+    end
+
+    context 'when no past events exist' do
+      it 'does not show any events' do
+        visit '/'
+        expect(page).to_not have_text('Past Events')
       end
     end
 

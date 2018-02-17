@@ -16,6 +16,10 @@ body {
   width: 100%;
 }
 
+.events h2 {
+  text-align: center;
+}
+
 .event {
   background-size: cover;
   border-radius: 10px;
@@ -29,7 +33,7 @@ body {
   color: white;
 }
 
-.event h2 {
+.event h3 {
   margin: 0;
   font-size: 3em;
   word-wrap: break-word;

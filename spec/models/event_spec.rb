@@ -26,6 +26,18 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe '.past' do
+    it 'returns all past events' do
+      events = create_list(:past_event, 2)
+      expect(Event.past).to eq(events)
+    end
+
+    it 'does not return future or now events' do
+      create_list(:future_event, 2)
+      expect(Event.past).to eq([])
+    end
+  end
+
   describe '.next' do
     it 'returns first future event' do
       events = create_list(:future_event, 2) + [create(:past_event)]
