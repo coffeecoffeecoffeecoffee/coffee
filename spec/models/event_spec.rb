@@ -27,9 +27,9 @@ RSpec.describe Event, type: :model do
   end
 
   describe '.past' do
-    it 'returns all past events' do
+    it 'returns all past events with most recent first' do
       events = create_list(:past_event, 2)
-      expect(Event.past).to eq(events)
+      expect(Event.past).to eq(events.reverse)
     end
 
     it 'does not return future or now events' do

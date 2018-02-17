@@ -45,6 +45,14 @@ describe 'Groups' do
           visit group_path(group)
           expect(page).to have_text('Past Events')
         end
+
+        it 'orders past events with the most recent at the top', vcr: { cassette_name: :foursquare_venue_details } do
+          group = create(:group)
+          create(:past_event, group: group, location: 'Old Location')
+          create(:past_event, group: group, location: 'New Location')
+          visit group_path(group)
+          expect(page.body.index('New Location')).to be < page.body.index('Old Location')
+        end
       end
 
       context 'when no past events exist' do
