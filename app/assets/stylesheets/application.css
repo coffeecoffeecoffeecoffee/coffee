@@ -14,6 +14,7 @@ body {
 
 .events h2 {
   text-align: center;
+  margin: 40px;
 }
 
 .event, .group {
@@ -39,4 +40,9 @@ body {
   position: relative;
   top: 50%;
   transform: perspective(1px) translateY(-50%);
+}
+
+.group__subscribe-ical {
+  text-align: center;
+  margin: 40px auto;
 }

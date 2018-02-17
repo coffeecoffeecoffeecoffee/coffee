@@ -15,4 +15,6 @@
     <%= render 'partials/events', events: @past_events %>
   <% end %>
 </div>
-<%= link_to('Subscribe to Calendar', group_ical_url(@group.id, protocol: :webcal), target: '_blank', class: 'group__subscribe-ical' ) %>
+<div class="group__subscribe-ical">
+  <%= link_to('Subscribe to Calendar', group_ical_url(@group.id, protocol: :webcal), target: '_blank') %>
+</div>
