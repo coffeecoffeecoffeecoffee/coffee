@@ -28,7 +28,8 @@ body {
   margin: 40px auto;
   padding: 20px;
   text-align: center;
-  max-width: 500px;
+  box-sizing: border-box;
+  width: 500px;
 }
 
 .event, .event a, .group, .group a {
@@ -50,4 +51,20 @@ body {
 .group__subscribe-ical {
   text-align: center;
   margin: 40px auto;
+}
+
+@media only screen
+  and (max-width: 780px) {
+  .event, .group {
+    height: 80vh;
+    width: 80vh;
+    max-width: initial;
+}
+
+@media only screen
+  and (max-width: 540px) {
+  .event, .group {
+    height: 80vw;
+    width: 80vw;
+    max-width: initial;
 }
