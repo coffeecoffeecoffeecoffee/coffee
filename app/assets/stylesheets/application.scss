@@ -1,4 +1,7 @@
 @import 'normalize-rails';
 
-@import 'base/*';
+@import 'base/variables';
+@import 'base/fonts';
+@import 'base/typography';
+@import 'base/grid';
 @import 'components/*';
