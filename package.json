@@ -1,0 +1,8 @@
+{
+  "name": "gather",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "sass-lint": "^1.12.1"
+  }
+}

@@ -1,0 +1,7 @@
+files:
+  include: '**/*.scss'
+
+rules:
+  class-name-format:
+    - 1
+    - convention: 'strictbem'

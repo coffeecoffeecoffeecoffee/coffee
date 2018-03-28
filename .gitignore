@@ -6,3 +6,5 @@
 .byebug_history
 
 .env
+
+node_modules
