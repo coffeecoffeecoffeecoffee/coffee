@@ -1,0 +1,63 @@
+version: 2
+jobs:
+  build:
+    parallelism: 4
+    docker:
+      - image: circleci/ruby:latest-node
+        environment:
+          BUNDLE_JOBS: 4
+          BUNDLE_PATH: ~/.cache/bundler
+          BUNDLE_RETRY: 4
+          PGHOST: 127.0.0.1
+          PGUSER: circleci
+          RAILS_ENV: test
+      - image: circleci/postgres:latest
+        environment:
+          POSTGRES_DB: gather_test
+          POSTGRES_PASSWORD: ""
+          POSTGRES_USER: circleci
+    steps:
+      - checkout
+      # Bundler
+      - restore_cache:
+          keys:
+            - gather-bundler-{{ checksum "Gemfile.lock" }}
+            - gather-bundler-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      - save_cache:
+          key: gather-bundler-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/.cache/bundler
+      # Yarn
+      - restore_cache:
+          keys:
+            - gather-yarn-{{ checksum "yarn.lock" }}
+            - gather-yarn-
+      - run:
+          name: Yarn Install
+          command: yarn install --cache-folder ~/.cache/yarn
+      - save_cache:
+          key: gather-yarn-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      # DB
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      - run:
+          name: Database Setup
+          command: bin/rails db:schema:load --trace
+      # RSpec (Parallelized)
+      - run:
+          name: RSpec
+          command: bundle exec rspec $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split)
+      # RuboCop
+      - run:
+          name: RuboCop
+          command: bundle exec rubocop -R
+      # Sass Lint
+      - run:
+          name: Sass Lint
+          command: yarn run sass-lint -v -q --max-warnings 0
