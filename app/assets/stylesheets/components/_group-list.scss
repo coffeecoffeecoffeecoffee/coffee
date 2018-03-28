@@ -1,9 +1,9 @@
 .group {
   border-radius: 10px;
   color: $white;
-  height: 500px;
+  height: 350px;
   margin: 40px auto;
-  max-width: 500px;
+  max-width: 350px;
   padding: 20px;
   text-align: center;
 
@@ -15,6 +15,11 @@
     font-size: 3em;
     margin: 0;
     word-wrap: break-word;
+  }
+
+  @media (min-width: $sm) {
+    height: 500px;
+    max-width: 500px;
   }
 }
 
