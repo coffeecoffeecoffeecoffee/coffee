@@ -10,6 +10,7 @@ gem 'meta-tags'
 gem 'pg'
 gem 'puma'
 gem 'rails'
+gem 'sass-rails'
 
 group :development do
   gem 'listen'

@@ -270,6 +270,7 @@ DEPENDENCIES
   puma
   rails
   rspec-rails
+  sass-rails
   sentry-raven
   shoulda
   spring
