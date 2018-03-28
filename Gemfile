@@ -14,6 +14,7 @@ gem 'sass-rails'
 
 group :development do
   gem 'listen'
+  gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen'
   gem 'web-console'
