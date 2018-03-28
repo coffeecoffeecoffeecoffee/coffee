@@ -8,11 +8,11 @@
   description: :description
 } %>
 
-<div class="events">
-  <%= render 'partials/events', events: @events %>
+<div class="event-list">
+  <%= render 'partials/event-list', events: @events %>
   <% if @past_events.count > 0 %>
     <h2>Past Events</h2>
-    <%= render 'partials/events', events: @past_events %>
+    <%= render 'partials/event-list', events: @past_events %>
   <% end %>
 </div>
 <div class="group__subscribe-ical">

@@ -1,0 +1,34 @@
+.event-list {
+  padding: 20px;
+
+  h2 {
+    margin: 40px;
+    text-align: center;
+  }
+}
+
+.event {
+  border-radius: 10px;
+  color: $white;
+  height: 500px;
+  margin: 40px auto;
+  max-width: 500px;
+  padding: 20px;
+  text-align: center;
+
+  a {
+    color: inherit;
+  }
+
+  h3 {
+    font-size: 3em;
+    margin: 0;
+    word-wrap: break-word;
+  }
+}
+
+.event__body {
+  position: relative;
+  top: 50%;
+  transform: perspective(1px) translateY(-50%);
+}

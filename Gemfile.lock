@@ -145,6 +145,7 @@ GEM
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
+    normalize-rails (4.1.1)
     parallel (1.12.1)
     parser (2.5.0.5)
       ast (~> 2.4.0)
@@ -281,6 +282,7 @@ DEPENDENCIES
   listen
   meta-tags
   newrelic_rpm
+  normalize-rails
   pg
   puma
   rails
