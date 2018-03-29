@@ -20,8 +20,9 @@
 
   h3 {
     font-size: 2.5em;
-    margin: 0;
     word-wrap: break-word;
+    margin-bottom: 15px;
+    margin-top: 0;
 
     @media (min-width: $sm) {
       font-size: 3em;
