@@ -1,0 +1,12 @@
+.footer__body {
+  align-items: center;
+  border-top: 5px solid $black;
+  display: grid;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1000px;
+
+  .logo {
+    font-size: 38px;
+  }
+}
