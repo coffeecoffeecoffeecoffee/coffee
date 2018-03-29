@@ -3,7 +3,6 @@ class EventDecorator < ApplicationDecorator
 
   decorates_association :group
 
-  delegate :name_with_emoji, to: :group, prefix: true
   delegate :image_url, to: :venue
   delegate :foursquare_url, to: :venue
 

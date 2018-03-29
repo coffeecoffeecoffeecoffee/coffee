@@ -7,20 +7,17 @@ class GroupDashboard < Administrate::BaseDashboard
     name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    emoji: Field::String,
     time_zone: Field::String
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
     name
-    emoji
     time_zone
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     name
-    emoji
     time_zone
     created_at
     updated_at
@@ -28,7 +25,6 @@ class GroupDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = %i[
     name
-    emoji
     time_zone
   ].freeze
 

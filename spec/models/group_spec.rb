@@ -4,7 +4,6 @@ RSpec.describe Group, type: :model do
   it { should have_many(:events).dependent(:destroy) }
 
   it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:emoji) }
   it { should validate_presence_of(:slug) }
   it { should validate_presence_of(:time_zone) }
   it { should allow_value('America/New_York').for(:time_zone) }
