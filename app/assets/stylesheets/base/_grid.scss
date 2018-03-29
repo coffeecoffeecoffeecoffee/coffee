@@ -1,7 +1,7 @@
 body {
   display: grid;
   grid-template-areas: 'header'
-                       'main'
+                       'main' // sass-lint:disable-line indentation
                        'footer'; // sass-lint:disable-line indentation
   grid-template-rows: 80px 1fr 80px;
   padding: 0 20px;
