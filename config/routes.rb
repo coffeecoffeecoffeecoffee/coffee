@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :groups
   end
 
+  get '/auth/:provider/callback', to: 'sessions#create'
+  get '/auth/failure', to: redirect('/')
+  get '/auth/logout', to: 'sessions#destroy'
+
   get '/groups/:id', to: redirect('/%{id}')
   get '/groups/:id/ical', to: redirect('/%{id}/ical')
 

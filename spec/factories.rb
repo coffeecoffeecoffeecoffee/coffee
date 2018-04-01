@@ -26,4 +26,10 @@ FactoryBot.define do
     name 'SF iOS Coffee'
     time_zone 'America/Los_Angeles'
   end
+
+  factory :user do
+    name 'Some Human'
+    email 'example@example.com'
+    twitter 'twitter'
+  end
 end

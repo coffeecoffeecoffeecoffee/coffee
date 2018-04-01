@@ -1,8 +1,30 @@
 header {
   align-items: center;
   display: grid;
+  grid-template-columns: auto 1fr;
 
   .logo {
     font-size: 38px;
   }
+}
+
+.header__links {
+  text-align: right;
+
+  li {
+    display: inline;
+    margin-left: 10px;
+
+    a {
+      color: $black;
+      font-size: 14px;
+      font-weight: 600;
+    }
+  }
+}
+
+.header__avatar {
+  border-radius: 50%;
+  height: 40px;
+  vertical-align: middle;
 }

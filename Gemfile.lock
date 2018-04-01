@@ -101,6 +101,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashdiff (0.3.7)
+    hashie (3.5.7)
     httparty (0.16.1)
       multi_xml (>= 0.5.2)
     i18n (0.9.5)
@@ -146,6 +147,16 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     normalize-rails (4.1.1)
+    oauth (0.5.4)
+    omniauth (1.8.1)
+      hashie (>= 3.4.6, < 3.6.0)
+      rack (>= 1.6.2, < 3)
+    omniauth-oauth (1.1.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (1.4.0)
+      omniauth-oauth (~> 1.1)
+      rack
     parallel (1.12.1)
     parser (2.5.0.5)
       ast (~> 2.4.0)
@@ -283,6 +294,8 @@ DEPENDENCIES
   meta-tags
   newrelic_rpm
   normalize-rails
+  omniauth
+  omniauth-twitter
   pg
   puma
   rails
