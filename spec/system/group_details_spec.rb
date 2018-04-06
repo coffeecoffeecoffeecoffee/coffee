@@ -2,21 +2,32 @@ require 'rails_helper'
 
 describe 'Group details' do
   context 'when a future event for the specified group exists' do
-    it 'shows all upcoming events', vcr: { cassette_name: :foursquare_venue_details } do
+    it 'shows all upcoming events ordered by upcoming first', vcr: { cassette_name: :foursquare_venue_details } do
       start_at = Time.parse('2017-12-13T16:30:00Z').utc
       allow(Time).to receive(:now).and_return(start_at)
       group = create(:group)
-      create(:future_event, group: group, start_at: start_at)
       create(:future_event,
-             location: 'Blue Bottle Coffee',
+             location: 'Created First, Happens Second',
+             group: group,
+             start_at: start_at + 1.day)
+      create(:future_event,
+             location: 'Created Second, Happens First',
              group: group,
              start_at: start_at)
 
       visit group_path(group)
-      expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
-      expect(page).to have_link('The Mill', href: 'https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
 
-      expect(page).to have_text('Blue Bottle Coffee')
+      within '.event:nth-of-type(1)' do
+        expect(page).to have_text('Created Second, Happens First')
+        expect(page).to have_text('Wednesday, December 13, 2017, 8:30 AM')
+        expect(page).to have_link('Created Second, Happens First', href: 'https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
+      end
+
+      within '.event:nth-of-type(2)' do
+        expect(page).to have_text('Created First, Happens Second')
+        expect(page).to have_text('Thursday, December 14, 2017, 8:30 AM')
+        expect(page).to have_link('Created First, Happens Second', href: 'https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
+      end
     end
 
     it 'has a link to subscribe to the calendar using the id (not slug)' do
@@ -46,10 +57,10 @@ describe 'Group details' do
 
       it 'orders past events with the most recent at the top', vcr: { cassette_name: :foursquare_venue_details } do
         group = create(:group)
-        create(:past_event, group: group, location: 'Old Location')
-        create(:past_event, group: group, location: 'New Location')
+        create(:past_event, group: group, location: 'Old Location', start_at: group.created_at - 1.second)
+        create(:past_event, group: group, location: 'More Recent Location', start_at: group.created_at + 1.second)
         visit group_path(group)
-        expect(page.body.index('New Location')).to be < page.body.index('Old Location')
+        expect(page.body.index('More Recent Location')).to be < page.body.index('Old Location')
       end
     end
 

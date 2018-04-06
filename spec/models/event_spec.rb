@@ -20,6 +20,12 @@ RSpec.describe Event, type: :model do
       expect(Event.future_or_now).to eq(events)
     end
 
+    it 'orders events by closest upcoming event first' do
+      later_event = create(:future_event)
+      sooner_event = create(:future_event, start_at: later_event.start_at - 1.second)
+      expect(Event.future_or_now).to eq([sooner_event, later_event])
+    end
+
     it 'does not return past events' do
       create_list(:past_event, 2)
       expect(Event.future_or_now).to eq([])
@@ -28,8 +34,10 @@ RSpec.describe Event, type: :model do
 
   describe '.past' do
     it 'returns all past events with most recent first' do
-      events = create_list(:past_event, 2)
-      expect(Event.past).to eq(events.reverse)
+      past_event = create(:past_event)
+      earlier_event = create(:past_event, start_at: past_event.start_at - 1.second)
+      more_recent_event = create(:past_event, start_at: past_event.start_at + 1.second)
+      expect(Event.past).to eq([more_recent_event, past_event, earlier_event])
     end
 
     it 'does not return future or now events' do
