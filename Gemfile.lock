@@ -57,7 +57,7 @@ GEM
       selectize-rails (~> 0.6)
     arel (8.0.0)
     ast (2.4.0)
-    autoprefixer-rails (8.0.0)
+    autoprefixer-rails (8.2.0)
       execjs
     bindex (0.5.0)
     builder (3.2.3)
