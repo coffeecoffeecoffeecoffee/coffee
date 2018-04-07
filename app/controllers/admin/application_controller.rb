@@ -1,8 +1,11 @@
 module Admin
   class ApplicationController < Administrate::ApplicationController
-    http_basic_authenticate_with(
-      name: ENV.fetch('ADMIN_USERNAME'),
-      password: ENV.fetch('ADMIN_PASSWORD')
-    )
+    include Authenticable
+
+    before_action :authenticate_admin
+
+    def authenticate_admin
+      redirect_to :root unless current_user.try(:admin?)
+    end
   end
 end
