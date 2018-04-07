@@ -8,6 +8,14 @@ RSpec.describe User, type: :model do
   it { should validate_uniqueness_of(:email) }
   it { should validate_presence_of(:twitter) }
 
+  describe '#before_validation' do
+    it 'downcases email' do
+      user = build(:user, email: 'Email@Example.com')
+      user.validate
+      expect(user.email).to eq('email@example.com')
+    end
+  end
+
   describe '.find_or_create_with_omniauth' do
     context 'when the user with that email does not exist' do
       it 'creates and returns the user' do

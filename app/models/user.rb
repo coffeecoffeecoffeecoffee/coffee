@@ -3,6 +3,10 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :twitter, presence: true
 
+  before_validation do
+    self.email = email.try(:downcase)
+  end
+
   def self.find_or_create_with_omniauth(auth)
     email = auth[:info][:email]
     user = User.find_or_initialize_by(email: email)
