@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :twitter, presence: true
+  validates :admin, inclusion: { in: [true, false] }
 
   before_validation do
     self.email = email.try(:downcase)

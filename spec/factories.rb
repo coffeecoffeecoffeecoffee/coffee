@@ -31,5 +31,6 @@ FactoryBot.define do
     name 'Some Human'
     email 'example@example.com'
     twitter 'twitter'
+    admin false
   end
 end
