@@ -12,22 +12,28 @@ header {
   }
 }
 
-.header__links {
+.header__items {
   text-align: right;
 
-  li {
-    display: inline;
-    margin-left: 10px;
+  .header__avatar {
+    border-radius: 50%;
+    display: none;
+    height: 40px;
+    vertical-align: middle;
 
-    a {
-      font-size: 14px;
-      font-weight: 600;
+    @media (min-width: $sm) {
+      display: initial;
     }
   }
-}
 
-.header__avatar {
-  border-radius: 50%;
-  height: 40px;
-  vertical-align: middle;
+  a {
+    display: inline;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  a,
+  img {
+    margin-left: 10px;
+  }
 }
