@@ -1,5 +1,7 @@
 <header>
-  <span class="logo">Gather</span>
+  <%= link_to(root_path) do %>
+    <span class="logo">Gather</span>
+  <% end %>
   <ul class="header__links">
     <% if current_user %>
       <li><%= image_tag(current_user.avatar_url, class: 'header__avatar') %></li>

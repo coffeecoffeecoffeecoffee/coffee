@@ -3,6 +3,10 @@ header {
   display: grid;
   grid-template-columns: auto 1fr;
 
+  a {
+    color: $black;
+  }
+
   .logo {
     font-size: 38px;
   }
@@ -16,7 +20,6 @@ header {
     margin-left: 10px;
 
     a {
-      color: $black;
       font-size: 14px;
       font-weight: 600;
     }
