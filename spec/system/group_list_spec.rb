@@ -5,7 +5,11 @@ describe 'Group list' do
     coffee_group = create(:group, name: 'Coffee')
     beer_group = create(:group, name: 'Beer')
 
-    visit '/'
+    visit root_path
+
+    click_link 'Groups'
+
+    expect(current_path).to eq(groups_path)
     expect(page).to have_link('Coffee', href: group_path(coffee_group))
     expect(page).to have_link('Beer', href: group_path(beer_group))
   end

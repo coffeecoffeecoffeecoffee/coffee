@@ -3,6 +3,7 @@
     <span class="logo">Gather</span>
   <% end %>
   <ul class="header__links">
+    <li><%= link_to('Groups', groups_path) %></li>
     <% if current_user %>
       <li><%= image_tag(current_user.avatar_url, class: 'header__avatar') %></li>
       <li><%= link_to('Sign out', auth_logout_path)%></li>
