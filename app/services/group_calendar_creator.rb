@@ -7,7 +7,7 @@ class GroupCalendarCreator
     events = @group.events
 
     calendar = Icalendar::Calendar.new
-    calendar.prodid = '-//Gather/Gather/EN'
+    calendar.prodid = '-//Coffee/Coffee/EN'
     calendar.append_custom_property('X-WR-CALNAME', @group.name)
 
     events.each do |event|

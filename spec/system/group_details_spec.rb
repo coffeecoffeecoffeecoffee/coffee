@@ -78,17 +78,17 @@ describe 'Group details' do
       group = create(:group, name: 'Dogs are Awesome')
 
       visit group_path(group)
-      expect(page).to have_selector('title', text: 'Dogs are Awesome | Gather', visible: false)
+      expect(page).to have_selector('title', text: 'Dogs are Awesome | Coffee', visible: false)
     end
 
     describe 'Open Graph' do
       it 'has valid Open Graph tags' do
         group = create(:group)
         visit group_path(group)
-        expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Gather"]', visible: false)
+        expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Coffee"]', visible: false)
         expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
         expect(page).to have_css("meta[property=\"og:url\"][content=\"#{url_for group}\"]", visible: false)
-        expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Gather."]', visible: false)
+        expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Coffee."]', visible: false)
       end
 
       context 'when a group has a future event' do

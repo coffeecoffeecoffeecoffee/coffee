@@ -11,7 +11,7 @@ describe GroupCalendarCreator do
       calendar = Icalendar::Calendar.parse(ical).first
 
       expect(calendar.events.count).to eq(4)
-      expect(calendar.prodid).to eq('-//Gather/Gather/EN')
+      expect(calendar.prodid).to eq('-//Coffee/Coffee/EN')
       expect(calendar.x_wr_calname.first).to eq(group.name)
 
       calendar_event = calendar.events.last
