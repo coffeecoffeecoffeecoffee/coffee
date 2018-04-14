@@ -11,10 +11,12 @@ class Venue
   end
 
   def self.find(foursquare_id)
-    Rails.cache.fetch("venues/#{foursquare_id}", expires_in: 12.hours) do
+    cache_key = "venues/#{foursquare_id}"
+    venue = Rails.cache.fetch(cache_key, expires_in: 12.hours) do
       foursquare_venue = Foursquare.new.venue(foursquare_id)
-      return nil if foursquare_venue.nil?
-      Venue.new(foursquare_venue)
+      Venue.new(foursquare_venue) if foursquare_venue.present?
     end
+    Rails.cache.delete(cache_key) if venue.nil?
+    venue
   end
 end
