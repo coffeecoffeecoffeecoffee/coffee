@@ -12,6 +12,7 @@ describe Foursquare do
       WebMock.stub_request(:get, /.*/).to_return(status: 200)
       venue = Foursquare.new.venue(nil)
       expect(venue).to be_nil
+      WebMock.reset!
     end
   end
 end
