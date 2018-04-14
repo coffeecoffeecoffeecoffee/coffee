@@ -15,6 +15,10 @@ RSpec.describe Venue, type: :model do
       expect(Venue.find(foursquare_id).foursquare_id).to eq(foursquare_id)
     end
 
+    it 'returns nil if there is an error contacting foursquare' do
+      expect(Venue.find(nil)).to be_nil
+    end
+
     it 'caches the result', vcr: { cassette_name: :foursquare_venue_details } do
       foursquare_id = '4feddd79d86cd6f22dc171a9'
       cache_key = "venues/#{foursquare_id}"

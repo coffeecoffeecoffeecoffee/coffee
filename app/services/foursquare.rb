@@ -7,6 +7,8 @@ class Foursquare
     response = self.class.get("/venues/#{id}", query: auth)
     body = JSON.parse(response.body, symbolize_names: true)
     body[:response][:venue]
+  rescue StandardError
+    nil
   end
 
   private

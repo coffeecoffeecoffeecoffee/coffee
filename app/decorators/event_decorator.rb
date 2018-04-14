@@ -3,8 +3,8 @@ class EventDecorator < ApplicationDecorator
 
   decorates_association :group
 
-  delegate :image_url, to: :venue
-  delegate :foursquare_url, to: :venue
+  delegate :image_url, to: :venue, allow_nil: true
+  delegate :foursquare_url, to: :venue, allow_nil: true
 
   def time
     start_at_local.strftime('%A, %B %e, %Y, %-I:%M %p')

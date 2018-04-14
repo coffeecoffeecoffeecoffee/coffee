@@ -7,5 +7,11 @@ describe Foursquare do
       venue = Foursquare.new.venue(id)
       expect(venue[:id]).to eq(id)
     end
+
+    it 'returns nil if there is an error contacting Foursquare' do
+      WebMock.stub_request(:get, /.*/).to_return(status: 200)
+      venue = Foursquare.new.venue(nil)
+      expect(venue).to be_nil
+    end
   end
 end
