@@ -5,6 +5,6 @@ VCR.configure do |c|
   c.hook_into :webmock
   c.configure_rspec_metadata!
 
-  c.filter_sensitive_data('<FOURSQUARE_CLIENT_ID>') { ENV.fetch('FOURSQUARE_CLIENT_ID') }
-  c.filter_sensitive_data('<FOURSQUARE_CLIENT_SECRET>') { ENV.fetch('FOURSQUARE_CLIENT_SECRET') }
+  c.filter_sensitive_data('<FOURSQUARE_CLIENT_ID>') { Rails.application.credentials.foursquare[:client_id] }
+  c.filter_sensitive_data('<FOURSQUARE_CLIENT_SECRET>') { Rails.application.credentials.foursquare[:client_secret] }
 end

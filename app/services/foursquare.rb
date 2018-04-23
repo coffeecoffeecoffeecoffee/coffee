@@ -15,8 +15,8 @@ class Foursquare
 
   def auth
     {
-      client_id: ENV.fetch('FOURSQUARE_CLIENT_ID'),
-      client_secret: ENV.fetch('FOURSQUARE_CLIENT_SECRET'),
+      client_id: Rails.application.credentials.foursquare[:client_id],
+      client_secret: Rails.application.credentials.foursquare[:client_secret],
       v: '20180101'
     }
   end
