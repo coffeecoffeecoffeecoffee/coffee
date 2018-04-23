@@ -1,12 +1,16 @@
 source 'https://rubygems.org'
 
+ruby '2.5.1'
+
 gem 'administrate'
+gem 'bootsnap', require: false
 gem 'draper'
 gem 'factory_bot_rails'
 gem 'friendly_id'
 gem 'httparty'
 gem 'icalendar'
 gem 'meta-tags'
+gem 'mini_racer', platforms: :ruby
 gem 'normalize-rails'
 gem 'omniauth'
 gem 'omniauth-twitter'
@@ -14,6 +18,8 @@ gem 'pg'
 gem 'puma'
 gem 'rails'
 gem 'sass-rails'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development do
   gem 'listen'
@@ -24,7 +30,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'byebug'
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'rspec-rails'
 end

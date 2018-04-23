@@ -8,7 +8,7 @@ describe EventDecorator do
     end
 
     it 'returns nil when venue is nil' do
-      event = build(:event).decorate
+      event = build(:event, venue_foursquare_id: '').decorate
       expect(event.image_url).to be_nil
     end
   end
@@ -20,7 +20,7 @@ describe EventDecorator do
     end
 
     it 'returns nil when venue is nil' do
-      event = build(:event).decorate
+      event = build(:event, venue_foursquare_id: '').decorate
       expect(event.foursquare_url).to be_nil
     end
   end
