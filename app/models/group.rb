@@ -3,6 +3,8 @@ class Group < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :events, dependent: :destroy
+  has_many :memberships, dependent: :destroy
+  has_many :users, through: :memberships
 
   validates :name, presence: true
   validates :slug, presence: true

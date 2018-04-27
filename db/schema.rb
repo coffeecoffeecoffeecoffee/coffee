@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180407170730) do
+ActiveRecord::Schema.define(version: 2018_04_27_165429) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
   enable_extension "pgcrypto"
+  enable_extension "plpgsql"
 
   create_table "events", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "start_at", null: false
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20180407170730) do
     t.index ["slug"], name: "index_groups_on_slug", unique: true
   end
 
+  create_table "memberships", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "group_id", null: false
+    t.uuid "user_id", null: false
+    t.index ["group_id"], name: "index_memberships_on_group_id"
+    t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
@@ -47,4 +56,6 @@ ActiveRecord::Schema.define(version: 20180407170730) do
   end
 
   add_foreign_key "events", "groups"
+  add_foreign_key "memberships", "groups"
+  add_foreign_key "memberships", "users"
 end

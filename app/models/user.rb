@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :memberships, dependent: :destroy
+  has_many :groups, through: :memberships
+
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :twitter, presence: true

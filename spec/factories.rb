@@ -27,6 +27,11 @@ FactoryBot.define do
     time_zone 'America/Los_Angeles'
   end
 
+  factory :membership do
+    user
+    group
+  end
+
   factory :user do
     name 'Some Human'
     email 'example@example.com'
