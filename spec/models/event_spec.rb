@@ -57,6 +57,13 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe '#after_create' do
+    it 'schedules a reminder for 24 hours before the event' do
+      expect(EventReminderJob).to receive(:schedule_24_hours_before_event)
+      create(:event)
+    end
+  end
+
   describe '#venue' do
     it 'returns the venue for the #venue_foursquare_id', vcr: { cassette_name: :foursquare_venue_details } do
       event = build(:event)

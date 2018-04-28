@@ -10,6 +10,10 @@ class Event < ApplicationRecord
   scope :future_or_now, -> { where('end_at >= ?', Time.current).order(:start_at) }
   scope :past, -> { where('end_at < ?', Time.current).order(start_at: :desc) }
 
+  after_create do
+    EventReminderJob.schedule_24_hours_before_event(self)
+  end
+
   def self.next
     future_or_now.first
   end

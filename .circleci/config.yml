@@ -16,6 +16,7 @@ jobs:
           POSTGRES_DB: coffee_test
           POSTGRES_PASSWORD: ""
           POSTGRES_USER: circleci
+      - image: redis
     steps:
       - checkout
       # Bundler
@@ -49,6 +50,10 @@ jobs:
       - run:
           name: Database Setup
           command: bin/rails db:schema:load --trace
+      # Redis
+      - run:
+          name: Wait for Redis
+          command: dockerize -wait tcp://localhost:6379 -timeout 1m
       # RSpec (Parallelized)
       - run:
           name: RSpec

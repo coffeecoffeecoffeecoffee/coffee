@@ -34,7 +34,7 @@ FactoryBot.define do
 
   factory :user do
     name 'Some Human'
-    email 'example@example.com'
+    sequence(:email) { |n| "email#{n}@example.com" }
     twitter 'twitter'
     admin false
   end
