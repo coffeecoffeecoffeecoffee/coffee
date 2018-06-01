@@ -30,8 +30,8 @@ RSpec.describe Venue, type: :model do
     end
 
     context 'when unsuccessful' do
-      it 'returns nil' do
-        expect(Venue.find(nil)).to be_nil
+      it 'returns a NullVenue' do
+        expect(Venue.find(nil)).to be_a(NullVenue)
       end
 
       it 'does not cache the nil result', vcr: { cassette_name: :foursquare_venue_details } do

@@ -16,7 +16,11 @@ class Venue
       foursquare_venue = Foursquare.new.venue(foursquare_id)
       Venue.new(foursquare_venue) if foursquare_venue.present?
     end
-    Rails.cache.delete(cache_key) if venue.nil?
-    venue
+    if venue.nil?
+      Rails.cache.delete(cache_key)
+      NullVenue.new
+    else
+      venue
+    end
   end
 end
