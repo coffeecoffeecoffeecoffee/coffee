@@ -24,5 +24,14 @@ describe GroupCalendarCreator do
       expect(calendar_event.url.to_s).to eq('https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
       expect(calendar_event.x_apple_structured_location.first).to eq(calendar_event.location)
     end
+
+    it 'creates an ical with all events even when venue is a NullVenue' do
+      group = create(:group)
+      create_list(:future_event, 3, group: group, venue_foursquare_id: 'invalid')
+
+      ical = GroupCalendarCreator.new(group).to_ical
+
+      expect(ical).to_not be_nil
+    end
   end
 end
