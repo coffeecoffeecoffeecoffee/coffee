@@ -5,9 +5,10 @@ class Venue
     @foursquare_id = params[:id]
     @name = params[:name]
     @foursquare_url = params[:canonicalUrl]
-    best_photo = params[:bestPhoto]
-    @image_url = best_photo[:prefix] + best_photo[:width].to_s + 'x' + best_photo[:height].to_s + best_photo[:suffix]
     @address = ([@name] + params[:location][:formattedAddress]).join("\, ").remove(" (#{params[:location][:crossStreet]})")
+    best_photo = params[:bestPhoto]
+    return unless best_photo
+    @image_url = best_photo[:prefix] + best_photo[:width].to_s + 'x' + best_photo[:height].to_s + best_photo[:suffix]
   end
 
   def self.find(foursquare_id)

@@ -7,6 +7,15 @@ RSpec.describe Venue, type: :model do
       address = "The Mill\, 736 Divisadero St\, San Francisco, CA 94117\, United States"
       expect(Venue.find(foursquare_id).address).to eq(address)
     end
+
+    it 'sets a nil @image_url when Foursquare does not provide one', vcr: { cassette_name: :foursquare_venue_details } do
+      params = Foursquare.new.venue('4feddd79d86cd6f22dc171a9')
+      params.delete(:bestPhoto)
+
+      venue = Venue.new(params)
+
+      expect(venue.image_url).to be_nil
+    end
   end
 
   describe '.find' do
