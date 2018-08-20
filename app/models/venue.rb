@@ -13,7 +13,7 @@ class Venue
 
   def self.find(foursquare_id)
     cache_key = "venues/#{foursquare_id}"
-    venue = Rails.cache.fetch(cache_key, expires_in: 24.hours) do
+    venue = Rails.cache.fetch(cache_key, expires_in: 1.week) do
       foursquare_venue = Foursquare.new.venue(foursquare_id)
       Venue.new(foursquare_venue) if foursquare_venue.present?
     end
