@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.5.1'
+ruby '2.5.3'
 
 gem 'administrate'
 gem 'bootsnap', require: false
