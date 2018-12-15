@@ -1,4 +1,3 @@
-# rubocop:disable Rails/BulkChangeTable
 class CreateVenues < ActiveRecord::Migration[5.2]
   def change
     create_table :venues, id: :uuid do |t|
@@ -17,4 +16,3 @@ class CreateVenues < ActiveRecord::Migration[5.2]
     change_column_null :events, :venue_id, false, venue.id
   end
 end
-# rubocop:enable Rails/BulkChangeTable

@@ -19,6 +19,9 @@ Metrics/LineLength:
 Metrics/MethodLength:
   Enabled: false
 
+Rails/BulkChangeTable:
+  Enabled: false
+
 RSpec/DescribeClass:
   Exclude:
     - "spec/system/*"
