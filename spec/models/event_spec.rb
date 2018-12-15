@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  it { should belong_to(:group) }
+  it { is_expected.to belong_to(:group) }
 
-  it { should validate_presence_of(:start_at) }
-  it { should validate_presence_of(:end_at) }
-  it { should validate_presence_of(:location) }
-  it { should validate_presence_of(:group) }
-  it { should validate_presence_of(:venue_foursquare_id) }
+  it { is_expected.to validate_presence_of(:start_at) }
+  it { is_expected.to validate_presence_of(:end_at) }
+  it { is_expected.to validate_presence_of(:location) }
+  it { is_expected.to validate_presence_of(:group) }
+  it { is_expected.to validate_presence_of(:venue_foursquare_id) }
 
   describe '.future_or_now' do
     it 'returns all future events' do

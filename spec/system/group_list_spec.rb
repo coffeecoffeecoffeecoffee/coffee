@@ -9,7 +9,7 @@ describe 'Group list' do
 
     click_link 'Groups'
 
-    expect(current_path).to eq(groups_path)
+    expect(page).to have_current_path(groups_path)
     expect(page).to have_link('Coffee', href: group_path(coffee_group))
     expect(page).to have_link('Beer', href: group_path(beer_group))
   end

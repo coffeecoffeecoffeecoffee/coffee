@@ -7,7 +7,7 @@ describe 'Admin' do
       sign_in_as(user)
 
       visit admin_root_path
-      expect(current_path).to eq(admin_root_path)
+      expect(page).to have_current_path(admin_root_path)
       expect(page).to have_text('New event')
     end
 
@@ -16,7 +16,7 @@ describe 'Admin' do
       sign_in_as(user)
 
       visit admin_root_path
-      expect(current_path).to eq(root_path)
+      expect(page).to have_current_path(root_path)
     end
   end
 end

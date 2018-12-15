@@ -8,6 +8,7 @@ class Venue
     @address = ([@name] + params[:location][:formattedAddress]).join("\, ").remove(" (#{params[:location][:crossStreet]})")
     best_photo = params[:bestPhoto]
     return unless best_photo
+
     @image_url = best_photo[:prefix] + best_photo[:width].to_s + 'x' + best_photo[:height].to_s + best_photo[:suffix]
   end
 

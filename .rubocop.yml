@@ -1,20 +1,35 @@
+require: rubocop-rspec
+
 AllCops:
   DisplayCopNames: true
   Exclude:
-    - 'db/schema.rb'
+    - "db/schema.rb"
 
 Metrics/AbcSize:
   Enabled: false
 
 Metrics/BlockLength:
   Exclude:
-    - '**/*_spec.rb'
-    - 'spec/factories.rb'
+    - "**/*_spec.rb"
+    - "spec/factories.rb"
 
 Metrics/LineLength:
   Enabled: false
 
 Metrics/MethodLength:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/system/*"
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/NestedGroups:
   Enabled: false
 
 Style/Documentation:

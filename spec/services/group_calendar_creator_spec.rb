@@ -7,7 +7,7 @@ describe GroupCalendarCreator do
       create_list(:future_event, 3, group: group)
       last_event = create(:event, group: group, location: 'Sightglass Coffee')
 
-      ical = GroupCalendarCreator.new(group).to_ical
+      ical = described_class.new(group).to_ical
       calendar = Icalendar::Calendar.parse(ical).first
 
       expect(calendar.events.count).to eq(4)
@@ -29,9 +29,9 @@ describe GroupCalendarCreator do
       group = create(:group)
       create_list(:future_event, 3, group: group, venue_foursquare_id: 'invalid')
 
-      ical = GroupCalendarCreator.new(group).to_ical
+      ical = described_class.new(group).to_ical
 
-      expect(ical).to_not be_nil
+      expect(ical).not_to be_nil
     end
   end
 end

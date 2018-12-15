@@ -42,7 +42,7 @@ describe 'Group details' do
       create(:future_event, group: other_group, location: 'Blue Bottle Coffee')
 
       visit group_path(group)
-      expect(page).to_not have_text('Blue Bottle Coffee')
+      expect(page).not_to have_text('Blue Bottle Coffee')
     end
   end
 
@@ -68,7 +68,7 @@ describe 'Group details' do
       it 'does not show any events' do
         group = create(:group)
         visit group_path(group)
-        expect(page).to_not have_text('Past Events')
+        expect(page).not_to have_text('Past Events')
       end
     end
   end
@@ -122,7 +122,7 @@ describe 'Group details' do
       create(:group, slug: 'slug')
 
       visit '/groups/slug'
-      expect(current_path).to eq('/slug')
+      expect(page).to have_current_path('/slug')
     end
   end
 end

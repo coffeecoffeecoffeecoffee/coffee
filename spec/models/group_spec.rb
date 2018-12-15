@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Group, type: :model do
-  it { should have_many(:events).dependent(:destroy) }
-  it { should have_many(:memberships).dependent(:destroy) }
-  it { should have_many(:users).through(:memberships) }
+  it { is_expected.to have_many(:events).dependent(:destroy) }
+  it { is_expected.to have_many(:memberships).dependent(:destroy) }
+  it { is_expected.to have_many(:users).through(:memberships) }
 
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:slug) }
-  it { should validate_presence_of(:time_zone) }
-  it { should allow_value('America/New_York').for(:time_zone) }
-  it { should_not allow_value('America/New_Yorker').for(:time_zone) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:slug) }
+  it { is_expected.to validate_presence_of(:time_zone) }
+  it { is_expected.to allow_value('America/New_York').for(:time_zone) }
+  it { is_expected.not_to allow_value('America/New_Yorker').for(:time_zone) }
 
   it 'generate a new slug when created' do
     group = build(:group, name: 'Slug Group')

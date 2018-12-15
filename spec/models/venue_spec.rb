@@ -32,9 +32,9 @@ RSpec.describe Venue, type: :model do
         store = ActiveSupport::Cache.lookup_store(:memory_store)
         allow(Rails).to receive(:cache).and_return(store)
 
-        expect(Rails.cache.exist?(cache_key)).to be_falsey
+        expect(Rails.cache).not_to be_exist(cache_key)
         Venue.find(foursquare_id)
-        expect(Rails.cache.exist?(cache_key)).to be_truthy
+        expect(Rails.cache).to be_exist(cache_key)
       end
     end
 
@@ -53,15 +53,15 @@ RSpec.describe Venue, type: :model do
         # Disable outgoing conn, should fail and not cache nil
         WebMock.stub_request(:get, /.*/)
 
-        expect(Rails.cache.exist?(cache_key)).to be_falsey
+        expect(Rails.cache).not_to be_exist(cache_key)
         Venue.find(foursquare_id)
-        expect(Rails.cache.exist?(cache_key)).to be_falsey
+        expect(Rails.cache).not_to be_exist(cache_key)
 
         WebMock.reset!
 
         # Outgoing conn enabled via VCR, should get response and cache
         Venue.find(foursquare_id)
-        expect(Rails.cache.exist?(cache_key)).to be_truthy
+        expect(Rails.cache).to be_exist(cache_key)
       end
     end
   end

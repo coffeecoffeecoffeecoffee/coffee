@@ -6,7 +6,7 @@ describe 'Authentication' do
       context 'when the user does not exist' do
         it 'creates and logs in the user' do
           expect(User.count).to eq(0)
-          expect(page).to_not have_css('.header__avatar')
+          expect(page).not_to have_css('.header__avatar')
 
           sign_in_as(build(:user))
           expect(User.count).to eq(1)
@@ -27,7 +27,7 @@ describe 'Authentication' do
     context 'when unsuccessful' do
       it 'redirects to root' do
         visit '/auth/failure'
-        expect(current_path).to eq(root_path)
+        expect(page).to have_current_path(root_path)
       end
     end
   end

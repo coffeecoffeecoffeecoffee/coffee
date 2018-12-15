@@ -18,7 +18,7 @@ describe 'Group calendar' do
         group = create(:group)
 
         visit "/groups/#{group.id}/ical"
-        expect(current_path).to eq("/#{group.id}/ical")
+        expect(page).to have_current_path("/#{group.id}/ical")
       end
     end
   end

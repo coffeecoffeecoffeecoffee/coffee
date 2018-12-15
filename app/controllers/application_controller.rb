@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   def current_user_decorated
     return nil unless current_user
+
     current_user.decorate
   end
   helper_method :current_user_decorated

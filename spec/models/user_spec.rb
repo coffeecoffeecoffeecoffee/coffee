@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   subject { build(:user) }
 
-  it { should have_many(:memberships).dependent(:destroy) }
-  it { should have_many(:groups).through(:memberships) }
+  it { is_expected.to have_many(:memberships).dependent(:destroy) }
+  it { is_expected.to have_many(:groups).through(:memberships) }
 
-  it { should validate_presence_of(:name) }
-  it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email).case_insensitive }
-  it { should validate_presence_of(:twitter) }
-  it { should allow_value([true, false]).for(:admin) }
-  it { should_not allow_value(nil).for(:admin) }
+  it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:email) }
+  it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+  it { is_expected.to validate_presence_of(:twitter) }
+  it { is_expected.to allow_value([true, false]).for(:admin) }
+  it { is_expected.not_to allow_value(nil).for(:admin) }
 
   describe '#before_validation' do
     it 'downcases email' do
