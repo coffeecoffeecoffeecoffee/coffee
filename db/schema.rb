@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_04_27_165429) do
+ActiveRecord::Schema.define(version: 2018_12_15_215423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2018_04_27_165429) do
     t.datetime "updated_at", null: false
     t.uuid "group_id", null: false
     t.string "venue_foursquare_id", null: false
+    t.uuid "venue_id", null: false
     t.index ["group_id"], name: "index_events_on_group_id"
   end
 
@@ -53,6 +54,15 @@ ActiveRecord::Schema.define(version: 2018_04_27_165429) do
     t.datetime "updated_at", null: false
     t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+  end
+
+  create_table "venues", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "foursquare_id", null: false
+    t.string "name", null: false
+    t.string "foursquare_url", null: false
+    t.string "image_url", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "events", "groups"

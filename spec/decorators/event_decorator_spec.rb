@@ -6,22 +6,12 @@ describe EventDecorator do
       event = build(:event).decorate
       expect(event.image_url).to eq('https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg')
     end
-
-    it 'returns nil when venue is nil' do
-      event = build(:event, venue_foursquare_id: '').decorate
-      expect(event.image_url).to be_nil
-    end
   end
 
   describe '#foursquare_url' do
     it 'delegates to venue', vcr: { cassette_name: :foursquare_venue_details } do
       event = build(:event).decorate
       expect(event.foursquare_url).to eq('https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9')
-    end
-
-    it 'returns nil when venue is nil' do
-      event = build(:event, venue_foursquare_id: '').decorate
-      expect(event.foursquare_url).to be_nil
     end
   end
 
