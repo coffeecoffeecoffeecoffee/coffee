@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
 
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:email) }
-  it { should validate_uniqueness_of(:email) }
+  it { should validate_uniqueness_of(:email).case_insensitive }
   it { should validate_presence_of(:twitter) }
   it { should allow_value([true, false]).for(:admin) }
   it { should_not allow_value(nil).for(:admin) }

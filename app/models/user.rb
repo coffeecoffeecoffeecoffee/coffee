@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :groups, through: :memberships
 
   validates :name, presence: true
-  validates :email, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, case_sensitive: false
   validates :twitter, presence: true
   validates :admin, inclusion: { in: [true, false] }
 
