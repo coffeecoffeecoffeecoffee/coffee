@@ -27,9 +27,10 @@ describe GroupCalendarCreator do
       expect(calendar_event.x_apple_structured_location.first).to eq(calendar_event.location)
     end
 
-    it 'creates an ical with all events even when venue is a NullVenue' do
+    it 'creates an ical with all events even when venue is not hydrated' do
       group = create(:group)
-      create_list(:future_event, 3, group: group, venue_foursquare_id: 'invalid')
+      venue = create(:unhydrated_venue)
+      create_list(:future_event, 3, group: group, venue: venue)
 
       ical = described_class.new(group).to_ical
 
