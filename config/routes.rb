@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     resources :events
     resources :groups
+    resources :venues
   end
 
   get '/auth/:provider/callback', to: 'sessions#create'

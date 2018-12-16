@@ -9,14 +9,15 @@ class EventDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     group: Field::BelongsTo,
-    venue_foursquare_id: Field::String
+    venue: Field::BelongsTo
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
     group
+    location
+    venue
     start_at
     end_at
-    location
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
@@ -25,7 +26,7 @@ class EventDashboard < Administrate::BaseDashboard
     start_at
     end_at
     location
-    venue_foursquare_id
+    venue
     created_at
     updated_at
   ].freeze
@@ -35,6 +36,6 @@ class EventDashboard < Administrate::BaseDashboard
     start_at
     end_at
     location
-    venue_foursquare_id
+    venue
   ].freeze
 end
