@@ -2,7 +2,7 @@ require 'administrate/base_dashboard'
 
 class VenueDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
-    event: Field::HasOne,
+    events: Field::HasMany,
     id: Field::String.with_options(searchable: false),
     foursquare_id: Field::String,
     name: Field::String,
@@ -13,14 +13,12 @@ class VenueDashboard < Administrate::BaseDashboard
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
-    event
     id
     foursquare_id
     name
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
-    event
     id
     foursquare_id
     name

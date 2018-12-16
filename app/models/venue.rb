@@ -1,5 +1,5 @@
 class Venue < ApplicationRecord
-  has_one :event, dependent: :destroy
+  has_many :events
 
   validates :foursquare_id, presence: true
 
