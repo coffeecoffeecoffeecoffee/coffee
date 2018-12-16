@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_16_024920) do
+ActiveRecord::Schema.define(version: 2018_12_16_030458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2018_12_16_024920) do
     t.uuid "group_id", null: false
     t.uuid "venue_id", null: false
     t.index ["group_id"], name: "index_events_on_group_id"
+    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
   create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -66,6 +67,7 @@ ActiveRecord::Schema.define(version: 2018_12_16_024920) do
   end
 
   add_foreign_key "events", "groups"
+  add_foreign_key "events", "venues"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
 end
