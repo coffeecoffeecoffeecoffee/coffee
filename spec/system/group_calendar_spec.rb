@@ -1,7 +1,7 @@
-require 'rails_helper'
+require "rails_helper"
 
-describe 'Group calendar' do
-  it 'generates an ics file for the group', vcr: { cassette_name: :foursquare_venue_details } do
+describe "Group calendar" do
+  it "generates an ics file for the group", vcr: { cassette_name: :foursquare_venue_details } do
     group = create(:group)
     create_list(:future_event, 3, group: group)
 
@@ -12,9 +12,9 @@ describe 'Group calendar' do
     expect(calendar.events.count).to eq(3)
   end
 
-  describe 'SEO' do
-    describe '/groups/:id/ical' do
-      it 'redirects to /:id/ical' do
+  describe "SEO" do
+    describe "/groups/:id/ical" do
+      it "redirects to /:id/ical" do
         group = create(:group)
 
         visit "/groups/#{group.id}/ical"

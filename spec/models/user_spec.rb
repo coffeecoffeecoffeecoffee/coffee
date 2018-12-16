@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe User, type: :model do
   subject { build(:user) }
@@ -13,17 +13,17 @@ RSpec.describe User, type: :model do
   it { is_expected.to allow_value([true, false]).for(:admin) }
   it { is_expected.not_to allow_value(nil).for(:admin) }
 
-  describe '#before_validation' do
-    it 'downcases email' do
-      user = build(:user, email: 'Email@Example.com')
+  describe "#before_validation" do
+    it "downcases email" do
+      user = build(:user, email: "Email@Example.com")
       user.validate
-      expect(user.email).to eq('email@example.com')
+      expect(user.email).to eq("email@example.com")
     end
   end
 
-  describe '.find_or_create_with_omniauth' do
-    context 'when the user with that email does not exist' do
-      it 'creates and returns the user' do
+  describe ".find_or_create_with_omniauth" do
+    context "when the user with that email does not exist" do
+      it "creates and returns the user" do
         expect(User.count).to eq(0)
         auth = twitter_auth_hash_for_user(build(:user))
         User.find_or_create_with_omniauth(auth)
@@ -31,17 +31,17 @@ RSpec.describe User, type: :model do
       end
     end
 
-    context 'when the user with that email already exists' do
-      it 'finds and returns the user' do
+    context "when the user with that email already exists" do
+      it "finds and returns the user" do
         user = create(:user)
         auth = twitter_auth_hash_for_user(user)
         User.find_or_create_with_omniauth(auth)
         expect(User.count).to eq(1)
       end
 
-      it 'updates the user' do
+      it "updates the user" do
         existing_user = create(:user)
-        new_name = 'New Name'
+        new_name = "New Name"
         user = build(:user, name: new_name)
         auth = twitter_auth_hash_for_user(user)
         User.find_or_create_with_omniauth(auth)

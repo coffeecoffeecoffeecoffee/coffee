@@ -7,7 +7,7 @@ class EventDecorator < ApplicationDecorator
   delegate :foursquare_url, to: :venue, allow_nil: true
 
   def time
-    start_at_local.strftime('%A, %B %e, %Y, %-I:%M %p')
+    start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")
   end
 
   private

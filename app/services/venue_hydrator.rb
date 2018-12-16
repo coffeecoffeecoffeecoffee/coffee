@@ -1,7 +1,7 @@
 class VenueHydrator
   include HTTParty
 
-  base_uri 'https://api.foursquare.com/v2'
+  base_uri "https://api.foursquare.com/v2"
 
   def self.run(venue)
     new(venue).hydrate_venue
@@ -19,7 +19,7 @@ class VenueHydrator
 
     @venue.name = foursquare_venue[:name]
     @venue.foursquare_url = foursquare_venue[:canonicalUrl]
-    @venue.image_url = photo[:prefix] + photo[:width].to_s + 'x' + photo[:height].to_s + photo[:suffix]
+    @venue.image_url = photo[:prefix] + photo[:width].to_s + "x" + photo[:height].to_s + photo[:suffix]
   rescue StandardError
     nil
   end
@@ -30,7 +30,7 @@ class VenueHydrator
     {
       client_id: Rails.application.credentials.foursquare[:client_id],
       client_secret: Rails.application.credentials.foursquare[:client_secret],
-      v: '20180101'
+      v: "20180101"
     }
   end
 end

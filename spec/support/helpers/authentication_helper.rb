@@ -4,8 +4,8 @@ module AuthenticationHelper
     OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new(twitter_auth_hash_for_user(user))
 
     visit root_path
-    click_link 'Sign in'
-    expect(page).to have_text('Sign out')
+    click_link "Sign in"
+    expect(page).to have_text("Sign out")
   end
 
   def twitter_auth_hash_for_user(user)
