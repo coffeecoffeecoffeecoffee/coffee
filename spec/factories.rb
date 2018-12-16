@@ -40,7 +40,7 @@ FactoryBot.define do
   end
 
   factory :venue do
-    foursquare_id { '4feddd79d86cd6f22dc171a9' }
+    sequence(:foursquare_id) { |n| "4feddd79d86cd6f22dc171a9#{n}" }
     foursquare_url { 'https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9' }
     name { 'The Mill' }
     image_url { 'https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg' }

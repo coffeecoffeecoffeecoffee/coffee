@@ -3,7 +3,7 @@ require 'rails_helper'
 describe VenueHydrator do
   describe '.run' do
     it 'hydrates the venue', vcr: { cassette_name: :foursquare_venue_details } do
-      venue = build(:venue, name: nil, foursquare_url: nil, image_url: nil)
+      venue = build(:venue, foursquare_id: '4feddd79d86cd6f22dc171a9', name: nil, foursquare_url: nil, image_url: nil)
       described_class.run(venue)
 
       expect(venue.name).to eq('The Mill')
