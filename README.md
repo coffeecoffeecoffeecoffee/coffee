@@ -1,11 +1,12 @@
 # ☕️
+
 [![CircleCI](https://circleci.com/gh/jamescmartinez/coffee.svg?style=svg)](https://circleci.com/gh/jamescmartinez/coffee)
 
 ## Getting Started
 
 ### Prerequisites
 
-* PostgreSQL
+- PostgreSQL
 
 ### Installing and Running
 
@@ -23,6 +24,10 @@ rspec
 ## Deployment
 
 Deployment of the master branch is done automatically after CI passes.
+
+## Tasks
+
+`rake venues:hydrate` - Run hourly on :00 by Heroku Scheduler
 
 ## License
 
