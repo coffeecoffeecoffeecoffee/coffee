@@ -1,5 +1,4 @@
-class VenueHydrator
-  # TODO: Clean up this class. Rename, etc.
+class EventVenueHydrator
   include HTTParty
 
   base_uri "https://api.foursquare.com/v2"

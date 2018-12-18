@@ -1,10 +1,10 @@
 namespace :venues do
-  desc "Hydrate all unhydrated venues"
+  desc "Hydrate venue data for all unhydrated events"
   task hydrate: :environment do
-    Venue.where(name: nil).each do |venue|
-      print "Hydrating Venue #{venue.id}... "
-      VenueHydrator.run(venue)
-      venue.save
+    Event.where(foursquare_venue_data: nil).each do |event|
+      print "Hydrating Venue for Event #{event.id}... "
+      EventVenueHydrator.run(event)
+      event.save
       puts "done."
     end
   end
