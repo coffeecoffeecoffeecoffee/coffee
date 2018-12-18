@@ -17,6 +17,7 @@ class VenueHydrator
     foursquare_venue = body[:response][:venue]
     photo = foursquare_venue[:bestPhoto]
 
+    @venue.foursquare_venue = foursquare_venue
     @venue.name = foursquare_venue[:name]
     @venue.foursquare_url = foursquare_venue[:canonicalUrl]
     @venue.image_url = photo[:prefix] + photo[:width].to_s + "x" + photo[:height].to_s + photo[:suffix]
