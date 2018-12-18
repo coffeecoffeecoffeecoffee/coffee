@@ -2,13 +2,11 @@ require "rails_helper"
 
 RSpec.describe Event, type: :model do
   it { is_expected.to belong_to(:group) }
-  it { is_expected.to belong_to(:venue) }
 
   it { is_expected.to validate_presence_of(:start_at) }
   it { is_expected.to validate_presence_of(:end_at) }
   it { is_expected.to validate_presence_of(:location) }
   it { is_expected.to validate_presence_of(:group) }
-  it { is_expected.to validate_presence_of(:venue) }
   it { is_expected.to validate_presence_of(:foursquare_venue_id) }
 
   describe ".future_or_now" do
@@ -59,7 +57,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "venuez" do
+  describe "#venuez" do
     context "when foursquare venue details exist" do
       it "returns a venue" do
         event = build(:event)

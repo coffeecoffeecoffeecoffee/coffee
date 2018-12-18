@@ -1,26 +1,22 @@
 class VenueHydrator
+  # TODO: Clean up this class. Rename, etc.
   include HTTParty
 
   base_uri "https://api.foursquare.com/v2"
 
-  def self.run(venue)
-    new(venue).hydrate_venue
+  def self.run(event)
+    new(event).hydrate_venue
   end
 
-  def initialize(venue)
-    @venue = venue
+  def initialize(event)
+    @event = event
   end
 
   def hydrate_venue
-    response = self.class.get("/venues/#{@venue.foursquare_id}", query: auth)
+    response = self.class.get("/venues/#{@event.foursquare_venue_id}", query: auth)
     body = JSON.parse(response.body, symbolize_names: true)
     foursquare_venue = body[:response][:venue]
-    photo = foursquare_venue[:bestPhoto]
-
-    @venue.foursquare_venue = foursquare_venue
-    @venue.name = foursquare_venue[:name]
-    @venue.foursquare_url = foursquare_venue[:canonicalUrl]
-    @venue.image_url = photo[:prefix] + photo[:width].to_s + "x" + photo[:height].to_s + photo[:suffix]
+    @event.foursquare_venue = foursquare_venue
   rescue StandardError
     nil
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_175827) do
+ActiveRecord::Schema.define(version: 2018_12_18_192914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,11 +23,9 @@ ActiveRecord::Schema.define(version: 2018_12_18_175827) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "group_id", null: false
-    t.uuid "venue_id", null: false
     t.string "foursquare_venue_id", null: false
     t.jsonb "foursquare_venue"
     t.index ["group_id"], name: "index_events_on_group_id"
-    t.index ["venue_id"], name: "index_events_on_venue_id"
   end
 
   create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -58,19 +56,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_175827) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "venues", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "foursquare_id", null: false
-    t.string "name"
-    t.string "foursquare_url"
-    t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.jsonb "foursquare_venue"
-    t.index ["foursquare_id"], name: "index_venues_on_foursquare_id", unique: true
-  end
-
   add_foreign_key "events", "groups"
-  add_foreign_key "events", "venues"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
 end

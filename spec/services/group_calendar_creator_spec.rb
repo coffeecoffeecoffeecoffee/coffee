@@ -20,17 +20,16 @@ describe GroupCalendarCreator do
       expect(calendar_event.dtstart.to_s).to include("UTC")
       expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
       expect(calendar_event.dtend.to_s).to include("UTC")
-      # TODO: Uncomment the next line once addresses come back to Venue
-      # This next line is disabled until we bring back Venue#address
-      # expect(calendar_event.location).to eq("The Mill\, 736 Divisadero St\, San Francisco, CA 94117\, United States")
+      expect(calendar_event.location).to eq("736 Divisadero St (btwn Grove St & Fulton St), San Francisco, CA 94117, United States")
       expect(calendar_event.url.to_s).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
       expect(calendar_event.x_apple_structured_location.first).to eq(calendar_event.location)
     end
 
     it "creates an ical with all events even when venue is not hydrated" do
       group = create(:group)
-      venue = create(:unhydrated_venue)
-      create_list(:future_event, 3, group: group, venue: venue)
+      events = create_list(:future_event, 3, group: group)
+      # TODO: Don't do this after renaming foursquare_venue to foursquare_venue_data
+      events.each { |e| e.update(foursquare_venue: nil) }
 
       ical = described_class.new(group).to_ical
 
