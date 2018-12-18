@@ -5,7 +5,7 @@ class EventDashboard < Administrate::BaseDashboard
     id: Field::String.with_options(searchable: false),
     start_at: Field::DateTime,
     end_at: Field::DateTime,
-    location: Field::String,
+    name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     group: Field::BelongsTo,
@@ -14,7 +14,7 @@ class EventDashboard < Administrate::BaseDashboard
 
   COLLECTION_ATTRIBUTES = %i[
     group
-    location
+    name
     start_at
     end_at
   ].freeze
@@ -24,7 +24,7 @@ class EventDashboard < Administrate::BaseDashboard
     group
     start_at
     end_at
-    location
+    name
     foursquare_venue_id
     created_at
     updated_at
@@ -34,7 +34,7 @@ class EventDashboard < Administrate::BaseDashboard
     group
     start_at
     end_at
-    location
+    name
     foursquare_venue_id
   ].freeze
 end

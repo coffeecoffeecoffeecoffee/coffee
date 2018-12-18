@@ -12,7 +12,7 @@ class GroupCalendarCreator
 
     events.each do |event|
       calendar_event = Icalendar::Event.new
-      calendar_event.summary = "#{@group.name} at #{event.location}"
+      calendar_event.summary = "#{@group.name} at #{event.name}"
       calendar_event.dtstart = Icalendar::Values::DateOrDateTime.new(event.start_at, tzid: event.start_at.zone).call
       calendar_event.dtend = Icalendar::Values::DateOrDateTime.new(event.end_at, tzid: event.end_at.zone).call
       calendar_event.location = event.venue.address

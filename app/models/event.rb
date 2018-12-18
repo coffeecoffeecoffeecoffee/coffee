@@ -3,7 +3,7 @@ class Event < ApplicationRecord
 
   validates :start_at, presence: true
   validates :end_at, presence: true
-  validates :location, presence: true
+  validates :name, presence: true
   validates :group, presence: true
   validates :foursquare_venue_id, presence: true
 

@@ -1,7 +1,7 @@
 <div class="event" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<%= event.image_url %>'); background-size: cover;">
   <div class="event__body">
     <%= link_to event.foursquare_url, target: '_blank' do %>
-      <h3 class="event__venue"><%= event.location %></h3>
+      <h3 class="event__venue"><%= event.name %></h3>
     <% end %>
     <time class="event__time"><%= event.time %></time>
   </div>

@@ -5,7 +5,7 @@ RSpec.describe Event, type: :model do
 
   it { is_expected.to validate_presence_of(:start_at) }
   it { is_expected.to validate_presence_of(:end_at) }
-  it { is_expected.to validate_presence_of(:location) }
+  it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:group) }
   it { is_expected.to validate_presence_of(:foursquare_venue_id) }
 

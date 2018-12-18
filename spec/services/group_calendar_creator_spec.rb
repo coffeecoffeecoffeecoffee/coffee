@@ -5,7 +5,7 @@ describe GroupCalendarCreator do
     it "creates an ical with all events", vcr: { cassette_name: :foursquare_venue_details, allow_playback_repeats: true } do
       group = create(:group)
       create_list(:future_event, 3, group: group)
-      last_event = create(:event, group: group, location: "Sightglass Coffee")
+      last_event = create(:event, group: group, name: "Sightglass Coffee")
 
       ical = described_class.new(group).to_ical
       calendar = Icalendar::Calendar.parse(ical).first

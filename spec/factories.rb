@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :event do
     start_at { Time.current }
     end_at { Time.current }
-    location { "The Mill" }
+    name { "The Mill" }
     group
     foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
     foursquare_venue_data do

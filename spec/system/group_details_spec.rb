@@ -7,11 +7,11 @@ describe "Group details" do
       allow(Time).to receive(:now).and_return(start_at)
       group = create(:group)
       create(:future_event,
-             location: "Created First, Happens Second",
+             name: "Created First, Happens Second",
              group: group,
              start_at: start_at + 1.day)
       create(:future_event,
-             location: "Created Second, Happens First",
+             name: "Created Second, Happens First",
              group: group,
              start_at: start_at)
 
@@ -39,7 +39,7 @@ describe "Group details" do
     it "does not show upcoming events for other groups" do
       group = create(:group)
       other_group = create(:group)
-      create(:future_event, group: other_group, location: "Blue Bottle Coffee")
+      create(:future_event, group: other_group, name: "Blue Bottle Coffee")
 
       visit group_path(group)
       expect(page).not_to have_text("Blue Bottle Coffee")
@@ -57,10 +57,10 @@ describe "Group details" do
 
       it "orders past events with the most recent at the top", vcr: { cassette_name: :foursquare_venue_details } do
         group = create(:group)
-        create(:past_event, group: group, location: "Old Location", start_at: group.created_at - 1.second)
-        create(:past_event, group: group, location: "More Recent Location", start_at: group.created_at + 1.second)
+        create(:past_event, group: group, name: "Old Name", start_at: group.created_at - 1.second)
+        create(:past_event, group: group, name: "More Recent Name", start_at: group.created_at + 1.second)
         visit group_path(group)
-        expect(page.body.index("More Recent Location")).to be < page.body.index("Old Location")
+        expect(page.body.index("More Recent Name")).to be < page.body.index("Old Name")
       end
     end
 
@@ -112,7 +112,7 @@ describe "Group details" do
 
     it "can find the group by a slug", vcr: { cassette_name: :foursquare_venue_details } do
       group = create(:group, name: "Sluggable Group")
-      create(:event, group: group, location: "Blue Bottle Coffee")
+      create(:event, group: group, name: "Blue Bottle Coffee")
 
       visit "groups/sluggable-group"
       expect(page).to have_text("Blue Bottle Coffee")
