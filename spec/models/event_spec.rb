@@ -57,6 +57,14 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#before_save" do
+    it "calls #ensure_updated_foursquare_venue_data" do
+      event = build(:event)
+      expect(event).to receive(:ensure_updated_foursquare_venue_data)
+      event.save
+    end
+  end
+
   describe "#venue" do
     context "when foursquare venue details exist" do
       it "returns a venue" do
@@ -78,6 +86,17 @@ RSpec.describe Event, type: :model do
         expect(venue).not_to be_nil
         expect(venue.name).to be_nil
       end
+    end
+  end
+
+  describe "#ensure_updated_foursquare_venue_data" do
+    it "deletes foursquare_venue_data when the foursquare_venue_id changes" do
+      event = build(:event)
+
+      expect(event.foursquare_venue_data).not_to be_nil
+      event.update(foursquare_venue_id: "123")
+      event.save
+      expect(event.foursquare_venue_data).to be_nil
     end
   end
 end

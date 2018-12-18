@@ -9,12 +9,20 @@ class Event < ApplicationRecord
 
   scope :future_or_now, -> { where("end_at >= ?", Time.current).order(:start_at) }
   scope :past, -> { where("end_at < ?", Time.current).order(start_at: :desc) }
-
   def self.next
     future_or_now.first
   end
 
+  before_save :ensure_updated_foursquare_venue_data
+
   def venue
     Venue.new(foursquare_venue_data)
+  end
+
+  private
+
+  def ensure_updated_foursquare_venue_data
+    return unless foursquare_venue_data_changed?
+    self.foursquare_venue_data = nil
   end
 end
