@@ -60,7 +60,7 @@ RSpec.describe Event, type: :model do
   describe "#before_save" do
     it "calls #ensure_updated_foursquare_venue_data" do
       event = build(:event)
-      expect(event).to receive(:ensure_updated_foursquare_venue_data)
+      expect(event).to receive(:ensure_updated_foursquare_venue_data) # rubocop:disable RSpec/MessageSpies
       event.save
     end
   end
@@ -89,14 +89,36 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "#ensure_updated_foursquare_venue_data" do
-    it "deletes foursquare_venue_data when the foursquare_venue_id changes" do
-      event = build(:event)
+  describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
+    context "when the record is brand new" do
+      it "fetches new foursquare_venue_data" do
+        event = build(:event, foursquare_venue_data: nil)
 
-      expect(event.foursquare_venue_data).not_to be_nil
-      event.update(foursquare_venue_id: "123")
-      event.save
-      expect(event.foursquare_venue_data).to be_nil
+        expect(event.foursquare_venue_data).to be_nil
+        event.save
+        expect(event.foursquare_venue_data).not_to be_nil
+      end
+    end
+
+    context "when the record already exists and the foursquare_venue_id changes" do
+      it "deletes existing foursquare_venue_data" do
+        event = create(:event)
+
+        expect(event.foursquare_venue_data).not_to be_nil
+        # Set to 123 here to prevent from being able to fetch real Foursquare data
+        event.update(foursquare_venue_id: "123")
+        event.save
+        expect(event.foursquare_venue_data).to be_nil
+      end
+
+      it "fetches new foursquare_venue_data " do
+        event = create(:event, foursquare_venue_data: {})
+
+        expect(event.foursquare_venue_data).not_to be_nil
+        event.update(foursquare_venue_id: "4feddd79d86cd6f22dc171a9")
+        event.save
+        expect(event.foursquare_venue_data).not_to eq({})
+      end
     end
   end
 end
