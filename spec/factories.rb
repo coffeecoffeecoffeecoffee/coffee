@@ -6,6 +6,11 @@ FactoryBot.define do
     group
     venue
     foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
+    foursquare_venue do
+      response_string = VCR::Cassette.new(:foursquare_venue_details).http_interactions.interactions.first.response.body
+      body = JSON.parse(response_string, symbolize_names: true)
+      body[:response][:venue]
+    end
 
     factory :future_event do
       start_at { Time.current.tomorrow }

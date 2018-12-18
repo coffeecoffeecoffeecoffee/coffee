@@ -15,4 +15,8 @@ class Event < ApplicationRecord
   def self.next
     future_or_now.first
   end
+
+  def venuez
+    Venuez.new(foursquare_venue)
+  end
 end

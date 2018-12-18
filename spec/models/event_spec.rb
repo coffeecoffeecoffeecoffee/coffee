@@ -58,4 +58,28 @@ RSpec.describe Event, type: :model do
       expect(Event.next).to be_nil
     end
   end
+
+  describe "venuez" do
+    context "when foursquare venue details exist" do
+      it "returns a venue" do
+        event = build(:event)
+
+        expect(event.foursquare_venue).not_to be_nil
+
+        venue = event.venuez
+        expect(venue).not_to be_nil
+        expect(venue.name).to eq("The Mill")
+      end
+    end
+
+    context "when foursquare venue data does not exist" do
+      it "returns an empty venue" do
+        event = build(:event, foursquare_venue: nil)
+
+        venue = event.venuez
+        expect(venue).not_to be_nil
+        expect(venue.name).to be_nil
+      end
+    end
+  end
 end
