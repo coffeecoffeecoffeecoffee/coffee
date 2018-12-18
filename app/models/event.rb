@@ -14,12 +14,7 @@ class Event < ApplicationRecord
     future_or_now.first
   end
 
-  # TODO: Rename venuez to venue and consolidate
   def venue
-    venuez
-  end
-
-  def venuez
-    Venuez.new(foursquare_venue)
+    Venue.new(foursquare_venue)
   end
 end

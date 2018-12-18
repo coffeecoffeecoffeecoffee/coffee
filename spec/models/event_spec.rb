@@ -57,14 +57,14 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "#venuez" do
+  describe "#venue" do
     context "when foursquare venue details exist" do
       it "returns a venue" do
         event = build(:event)
 
         expect(event.foursquare_venue).not_to be_nil
 
-        venue = event.venuez
+        venue = event.venue
         expect(venue).not_to be_nil
         expect(venue.name).to eq("The Mill")
       end
@@ -74,7 +74,7 @@ RSpec.describe Event, type: :model do
       it "returns an empty venue" do
         event = build(:event, foursquare_venue: nil)
 
-        venue = event.venuez
+        venue = event.venue
         expect(venue).not_to be_nil
         expect(venue.name).to be_nil
       end
