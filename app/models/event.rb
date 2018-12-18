@@ -15,6 +15,6 @@ class Event < ApplicationRecord
   end
 
   def venue
-    Venue.new(foursquare_venue)
+    Venue.new(foursquare_venue_data)
   end
 end

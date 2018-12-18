@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_192914) do
+ActiveRecord::Schema.define(version: 2018_12_18_201402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2018_12_18_192914) do
     t.datetime "updated_at", null: false
     t.uuid "group_id", null: false
     t.string "foursquare_venue_id", null: false
-    t.jsonb "foursquare_venue"
+    t.jsonb "foursquare_venue_data"
     t.index ["group_id"], name: "index_events_on_group_id"
   end
 

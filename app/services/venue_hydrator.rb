@@ -15,8 +15,7 @@ class VenueHydrator
   def hydrate_venue
     response = self.class.get("/venues/#{@event.foursquare_venue_id}", query: auth)
     body = JSON.parse(response.body, symbolize_names: true)
-    foursquare_venue = body[:response][:venue]
-    @event.foursquare_venue = foursquare_venue
+    @event.foursquare_venue_data = body[:response][:venue]
   rescue StandardError
     nil
   end
