@@ -5,6 +5,7 @@ FactoryBot.define do
     location { "The Mill" }
     group
     venue
+    foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
 
     factory :future_event do
       start_at { Time.current.tomorrow }

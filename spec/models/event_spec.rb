@@ -9,6 +9,7 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:location) }
   it { is_expected.to validate_presence_of(:group) }
   it { is_expected.to validate_presence_of(:venue) }
+  it { is_expected.to validate_presence_of(:foursquare_venue_id) }
 
   describe ".future_or_now" do
     it "returns all future events" do
