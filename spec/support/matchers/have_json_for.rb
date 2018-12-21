@@ -13,10 +13,6 @@ module HaveJsonForMatchers
   def hash_for(object, options)
     return object.map { |o| hash_for(o, options) } if object.is_a?(Enumerable)
 
-    send("#{object.class.name.downcase}_hash", object, options)
-  end
-
-  def group_hash(group, options)
-    group.serializable_hash(options)
+    object.serializable_hash(options)
   end
 end
