@@ -17,13 +17,4 @@ RSpec.describe Group, type: :model do
     group.save
     expect(group.slug).to eq("slug-group")
   end
-
-  describe "#serializable_hash" do
-    it "is valid" do
-      group = create(:group)
-      expect(group.serializable_hash).to eq({
-        id: group.id
-      }.stringify_keys)
-    end
-  end
 end
