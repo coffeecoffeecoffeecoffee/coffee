@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     resources :groups
   end
 
+  scope module: "api", subdomain: :app, defaults: { format: :json } do
+    resources :groups, only: :index
+  end
+
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: redirect("/")
   get "/auth/logout", to: "sessions#destroy"

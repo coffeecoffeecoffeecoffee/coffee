@@ -8,7 +8,6 @@ Rails.application.configure do
     g.stylesheets false
 
     g.controller_specs false
-    g.request_specs false
     g.routing_specs false
     g.view_specs false
   end
