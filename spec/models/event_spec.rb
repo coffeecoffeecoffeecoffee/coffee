@@ -89,6 +89,15 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#image_url" do
+    it "returns the venue's image_url" do
+      event = build(:event)
+
+      venue = event.venue
+      expect(event.image_url).to eq(venue.image_url)
+    end
+  end
+
   describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
     context "when the record is brand new" do
       it "fetches new foursquare_venue_data" do

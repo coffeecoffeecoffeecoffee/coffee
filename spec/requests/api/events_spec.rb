@@ -9,7 +9,22 @@ RSpec.describe "Events", type: :request do
       get api_group_events_url(group_id: group.id)
 
       expect(response).to have_http_status(:ok)
-      expect(response.body).to have_json_for(events, only: %i[id name])
+      expect(response.body).to eq(events_json(events))
     end
+  end
+
+  private
+
+  # TODO: serializable_hash method is not working well enough. Find a better
+  # option to DRY up these specs
+  def events_json(events)
+    events.map do |event|
+      {
+        id: event.id,
+        name: event.name,
+        image_url: event.image_url,
+        start_at: event.start_at
+      }
+    end.to_json
   end
 end

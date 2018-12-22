@@ -19,6 +19,8 @@ class Event < ApplicationRecord
     Venue.new(foursquare_venue_data)
   end
 
+  delegate :image_url, to: :venue
+
   private
 
   def ensure_updated_foursquare_venue_data
