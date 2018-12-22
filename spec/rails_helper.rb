@@ -14,5 +14,4 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 
   config.include AuthenticationHelper
-  config.include HaveJsonForMatchers
 end

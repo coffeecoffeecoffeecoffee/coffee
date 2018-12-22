@@ -1,0 +1,7 @@
+{
+  "id": "file:/groups.json#",
+  "type": "array",
+  "items": {
+    "$ref": "file:/group.json#"
+  }
+}

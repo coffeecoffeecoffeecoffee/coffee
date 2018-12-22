@@ -1,0 +1,7 @@
+{
+  "id": "file:/events.json#",
+  "type": "array",
+  "items": {
+    "$ref": "file:/event.json#"
+  }
+}
