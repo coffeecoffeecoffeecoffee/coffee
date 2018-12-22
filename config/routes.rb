@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root to: "groups#index"
+  constraints subdomain: "api" do
+    namespace :api, path: nil, defaults: { format: :json } do
+      resources :groups, only: :index
+    end
+  end
 
   namespace :admin do
     root to: "events#index"
@@ -8,9 +12,7 @@ Rails.application.routes.draw do
     resources :groups
   end
 
-  scope module: "api", subdomain: :app, defaults: { format: :json } do
-    resources :groups, only: :index
-  end
+  root to: "groups#index"
 
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: redirect("/")
