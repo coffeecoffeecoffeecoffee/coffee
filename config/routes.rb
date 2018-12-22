@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   constraints subdomain: "api" do
     namespace :api, path: nil, defaults: { format: :json } do
-      resources :groups, only: :index
+      resources :groups, only: :index do
+        resources :events, only: :index
+      end
     end
   end
 
