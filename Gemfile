@@ -45,6 +45,8 @@ end
 group :test do
   gem "capybara"
   gem "json_matchers"
+  gem "json_schema"
+  gem "oas_parser"
   gem "shoulda"
   gem "vcr"
   gem "webmock"

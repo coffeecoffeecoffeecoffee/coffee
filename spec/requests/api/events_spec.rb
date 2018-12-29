@@ -9,8 +9,7 @@ RSpec.describe "Events", type: :request do
 
       get api_group_events_url(group_id: group.id)
 
-      expect(response).to have_http_status(:ok)
-      expect(response).to match_json_schema("events")
+      expect(response).to match_openapi_spec("/groups/#{group.id}/events", "get")
       expect(response).to have_json_size(2)
     end
   end

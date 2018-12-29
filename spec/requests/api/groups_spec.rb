@@ -7,8 +7,8 @@ RSpec.describe "Groups", type: :request do
 
       get groups_url(subdomain: :api)
 
-      expect(response).to have_http_status(:ok)
-      expect(response).to match_json_schema("groups")
+      expect(response).to match_openapi_spec("/groups", "get")
+      expect(response).to have_json_size(2)
     end
   end
 end
