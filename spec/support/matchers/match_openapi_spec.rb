@@ -8,7 +8,7 @@ RSpec::Matchers.define :match_openapi_spec do |path, verb|
 
     @actual = body
 
-    definition = OasParser::Definition.resolve("docs/openapi.json")
+    definition = OasParser::Definition.resolve("docs/openapi.yaml")
     path = definition.path_by_path(path)
     endpoint = path.endpoint_by_method(verb)
     response = endpoint.response_by_code(status)
