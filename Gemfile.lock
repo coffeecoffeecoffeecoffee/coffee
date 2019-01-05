@@ -125,7 +125,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json_matchers (0.10.0)
       json_schema
-    json_schema (0.19.1)
+    json_schema (0.20.1)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
