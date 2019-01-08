@@ -3,6 +3,8 @@ info:
   title: Coffee
   description: Coffee
   version: 0.0.1
+servers:
+  - url: "https://api.coffeecoffeecoffee.coffee"
 paths:
   "/groups":
     get:
