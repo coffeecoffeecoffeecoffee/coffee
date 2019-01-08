@@ -17,10 +17,10 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Group"
-  "/groups/{groupId}/events":
+  "/groups/{group_id}/events":
     get:
       parameters:
-        - name: groupId
+        - name: group_id
           in: path
           required: true
           schema:
