@@ -40,9 +40,26 @@ components:
       type: object
       required:
         - id
+        - group_id
+        - name
+        - image_url
+        - start_at
+        - end_at
       properties:
         id:
           type: string
+        group_id:
+          type: string
+        name:
+          type: string
+        image_url:
+          type: string
+        start_at:
+          type: string
+          format: date-time
+        end_at:
+          type: string
+          format: date-time
     Group:
       type: object
       required:
