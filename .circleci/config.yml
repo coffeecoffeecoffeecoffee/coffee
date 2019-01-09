@@ -38,6 +38,9 @@ jobs:
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
+      - run:
+          name: Yarn Install (Client)
+          command: yarn --cwd client install --cache-folder ~/.cache/yarn
       - save_cache:
           key: coffee-yarn-{{ checksum "yarn.lock" }}
           paths:
@@ -61,23 +64,11 @@ jobs:
       - run:
           name: Sass Lint
           command: yarn run sass-lint -v -q --max-warnings 0
-  deploy:
-    docker:
-      - image: buildpack-deps:latest
-    steps:
-      - checkout
-      # Heroku
+      # Deploy - Heroku
       - run:
           name: Deploy to Heroku
           command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/coffeecoffeecoffeecoffee.git master
-workflows:
-  version: 2
-  build-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
+      # Deploy - Netlify
+      - run:
+          name: Deploy to Netlify
+          command: yarn --cwd client run build && yarn run netlify deploy --prod
