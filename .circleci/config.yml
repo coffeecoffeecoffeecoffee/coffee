@@ -67,8 +67,14 @@ jobs:
       # Deploy - Heroku
       - run:
           name: Deploy to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/coffeecoffeecoffeecoffee.git master
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              git push https://heroku:$HEROKU_API_KEY@git.heroku.com/coffeecoffeecoffeecoffee.git master
+            fi
       # Deploy - Netlify
       - run:
           name: Deploy to Netlify
-          command: yarn --cwd client run build && yarn run netlify deploy --prod
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              yarn --cwd client run build && yarn run netlify deploy --prod
+            fi
