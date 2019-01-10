@@ -38,9 +38,6 @@ jobs:
       - run:
           name: Yarn Install
           command: yarn install --cache-folder ~/.cache/yarn
-      - run:
-          name: Yarn Install (Client)
-          command: yarn --cwd client install --cache-folder ~/.cache/yarn
       - save_cache:
           key: coffee-yarn-{{ checksum "yarn.lock" }}
           paths:
@@ -70,11 +67,4 @@ jobs:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               git push https://heroku:$HEROKU_API_KEY@git.heroku.com/coffeecoffeecoffeecoffee.git master
-            fi
-      # Deploy - Netlify
-      - run:
-          name: Deploy to Netlify
-          command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              yarn --cwd client run build && yarn run netlify deploy --prod
             fi

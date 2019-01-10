@@ -13,7 +13,6 @@
 1. Make sure that all prerequisites are installed and running locally.
 1. Run `bin/setup` to install dependencies and prepare the local database.
 1. Run `rails s` to start the Rails server.
-1. Run `yarn --cwd client run start` to start the React development server.
 
 ## Running the tests
 
