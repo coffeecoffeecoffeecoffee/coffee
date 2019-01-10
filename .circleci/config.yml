@@ -3,7 +3,7 @@ jobs:
   build:
     parallelism: 4
     docker:
-      - image: circleci/ruby:latest-node
+      - image: circleci/ruby:latest
         environment:
           BUNDLE_JOBS: 4
           BUNDLE_PATH: ~/.cache/bundler
@@ -30,18 +30,6 @@ jobs:
           key: coffee-bundler-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.cache/bundler
-      # Yarn
-      - restore_cache:
-          keys:
-            - coffee-yarn-{{ checksum "yarn.lock" }}
-            - coffee-yarn-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-      - save_cache:
-          key: coffee-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
       # DB
       - run:
           name: Wait for DB
@@ -57,10 +45,6 @@ jobs:
       - run:
           name: RuboCop
           command: bundle exec rubocop -R
-      # Sass Lint
-      - run:
-          name: Sass Lint
-          command: yarn run sass-lint -v -q --max-warnings 0
       # Deploy - Heroku
       - run:
           name: Deploy to Heroku

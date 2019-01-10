@@ -1,5 +1,0 @@
-#!/usr/bin/env sh
-
-bundle exec rubocop -Ra
-
-yarn run sass-lint -v -q

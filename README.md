@@ -20,12 +20,6 @@
 rspec
 ```
 
-## Linting
-
-```
-bin/lint
-```
-
 ## Deployment
 
 Deployment of the master branch is done automatically after CI passes. See

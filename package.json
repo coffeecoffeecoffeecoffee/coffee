@@ -1,9 +1,0 @@
-{
-  "name": "coffee",
-  "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "netlify-cli": "^2.6.1",
-    "sass-lint": "^1.12.1"
-  }
-}
