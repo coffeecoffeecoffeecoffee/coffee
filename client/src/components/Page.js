@@ -1,10 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import { breakpoints } from "../constants";
 
 const StyledPage = styled.div`
-  padding: 0 70px;
-`;
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: 80px 1fr 80px;
+  padding: 0 20px;
 
+  @media (min-width: ${breakpoints.sm}) {
+    padding: 0 70px;
+  }
+`;
 const Page = ({ children }) => <StyledPage>{children}</StyledPage>;
 
 export default Page;
