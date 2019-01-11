@@ -5,7 +5,7 @@ RSpec.describe "Groups", type: :request do
     it "returns a list of groups" do
       create_list(:group, 2)
 
-      get groups_url(subdomain: :api)
+      get api_groups_url
 
       expect(response).to match_openapi_spec("/groups", "get")
       expect(response).to have_json_size(2)

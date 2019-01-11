@@ -4,7 +4,7 @@ info:
   description: Coffee
   version: 0.0.1
 servers:
-  - url: "https://api.coffeecoffeecoffee.coffee"
+  - url: "https://coffeecoffeecoffee.coffee/api"
 paths:
   "/groups":
     get:
