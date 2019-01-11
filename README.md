@@ -12,7 +12,7 @@
 
 1. Make sure that all prerequisites are installed and running locally.
 1. Run `bin/setup` to install dependencies and prepare the local database.
-1. Run `rails s` to start the Rails server.
+1. Run `rake start` to start the Rails and Webpack servers.
 
 ## Running the tests
 
@@ -22,8 +22,13 @@ rspec
 
 ## Deployment
 
-Deployment of the master branch is done automatically after CI passes. See
-`./circleci/config.yml` for details.
+Deployment of the master branch to Heroku is done automatically after CI passes.
+
+Details are spread across three files:
+
+- `.circleci/config.yml`
+- `Procfile`
+- `package.json`
 
 ## Tasks
 
