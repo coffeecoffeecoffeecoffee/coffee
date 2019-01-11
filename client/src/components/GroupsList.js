@@ -34,7 +34,7 @@ const GroupsList = ({ groups }) => (
     {groups.map(group => (
       <StyledCard key={group.id} imageURL={group.image_url}>
         <StyledCardBody>
-          <StyledTitle href={group.id}>{group.name}</StyledTitle>
+          <StyledTitle href={group.slug}>{group.name}</StyledTitle>
         </StyledCardBody>
       </StyledCard>
     ))}

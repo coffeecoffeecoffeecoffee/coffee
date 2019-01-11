@@ -10,4 +10,8 @@ class Group < ApplicationRecord
   validates :slug, presence: true
   validates :time_zone, presence: true
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
+
+  def image_url
+    events.first.try(:image_url) || ""
+  end
 end

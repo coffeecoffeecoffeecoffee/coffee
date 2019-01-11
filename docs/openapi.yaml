@@ -64,9 +64,15 @@ components:
       type: object
       required:
         - id
+        - slug
         - name
+        - image_url
       properties:
         id:
           type: string
+        slug:
+          type: string
         name:
+          type: string
+        image_url:
           type: string

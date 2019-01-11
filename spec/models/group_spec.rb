@@ -17,4 +17,19 @@ RSpec.describe Group, type: :model do
     group.save
     expect(group.slug).to eq("slug-group")
   end
+
+  describe "#image_url" do
+    it "returns the first event's image_url" do
+      event = create(:event)
+      group = event.group
+
+      expect(group.image_url).to eq(event.image_url)
+    end
+
+    it "returns an empty string when a group doesn't have an event" do
+      group = build(:group)
+
+      expect(group.image_url).to eq("")
+    end
+  end
 end
