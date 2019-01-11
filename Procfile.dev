@@ -1,0 +1,3 @@
+web: bundle exec rails server -p $PORT
+client: yarn start
+db: postgres -D /usr/local/var/postgres

@@ -1,9 +1,10 @@
 {
-  "name": "coffee",
   "private": true,
-  "dependencies": {},
-  "devDependencies": {
-    "netlify-cli": "^2.6.1",
-    "sass-lint": "^1.12.1"
+  "workspaces": [
+    "client"
+  ],
+  "scripts": {
+    "start": "yarn workspaces run start",
+    "heroku-postbuild": "yarn workspaces run build && mv client/build/* public/"
   }
 }
