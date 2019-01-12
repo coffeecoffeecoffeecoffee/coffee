@@ -5,6 +5,7 @@ import { breakpoints, colors, fonts } from "../constants";
 const StyledCard = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
     url(${props => props.imageURL || ""});
+  background-size: cover;
   border-radius: 10px;
   color: ${colors.white};
   height: 350px;
