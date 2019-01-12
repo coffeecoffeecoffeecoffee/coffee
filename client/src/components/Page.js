@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { breakpoints } from "../constants";
 
+import "normalize.css";
+import "../assets/css/fonts.css";
+
 const StyledPage = styled.div`
   display: grid;
   grid-template-areas:

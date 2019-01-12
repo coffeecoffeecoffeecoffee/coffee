@@ -1,5 +1,3 @@
-import "./assets/css/fonts.css";
-
 export const breakpoints = {
   sm: "576px",
   md: "768px",
