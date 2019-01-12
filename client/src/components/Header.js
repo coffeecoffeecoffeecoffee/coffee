@@ -7,7 +7,7 @@ const StyledHeader = styled.header`
   display: grid;
   font-family: ${fonts.default};
   font-size: 38px;
-  font-weight: 500;
+  font-weight: 600;
 `;
 
 const Header = () => (
