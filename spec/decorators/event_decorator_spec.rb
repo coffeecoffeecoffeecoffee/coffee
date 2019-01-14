@@ -8,10 +8,10 @@ describe EventDecorator do
     end
   end
 
-  describe "#foursquare_url" do
+  describe "#venue_url" do
     it "delegates to venue", vcr: { cassette_name: :foursquare_venue_details } do
       event = build(:event).decorate
-      expect(event.foursquare_url).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
+      expect(event.venue_url).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
     end
   end
 

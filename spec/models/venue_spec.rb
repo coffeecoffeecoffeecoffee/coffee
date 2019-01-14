@@ -12,9 +12,9 @@ RSpec.describe Venue, type: :model do
     end
   end
 
-  describe "#foursquare_url" do
+  describe "#venue_url" do
     it "returns the foursquare URL from foursquare data" do
-      expect(venue.foursquare_url).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
+      expect(venue.url).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
     end
   end
 

@@ -20,6 +20,7 @@ class Event < ApplicationRecord
   end
 
   delegate :image_url, to: :venue
+  delegate :url, to: :venue, prefix: :venue
 
   private
 

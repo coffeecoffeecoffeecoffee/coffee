@@ -10,7 +10,7 @@ class Venue
     @foursquare_venue[:name]
   end
 
-  def foursquare_url
+  def url
     @foursquare_venue[:canonicalUrl]
   end
 

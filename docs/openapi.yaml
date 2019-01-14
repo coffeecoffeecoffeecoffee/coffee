@@ -43,6 +43,7 @@ components:
         - group_id
         - name
         - image_url
+        - venue_url
         - start_at
         - end_at
       properties:
@@ -53,6 +54,8 @@ components:
         name:
           type: string
         image_url:
+          type: string
+        venue_url:
           type: string
         start_at:
           type: string
