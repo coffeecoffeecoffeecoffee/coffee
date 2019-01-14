@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { breakpoints, colors, fonts } from "../constants";
 
 const StyledCard = styled.div`
@@ -26,7 +27,7 @@ const StyledCardBody = styled.div`
   transform: perspective(1px) translateY(-50%);
 `;
 
-const StyledTitle = styled.a`
+const StyledTitleLink = styled(Link)`
   color: inherit;
   font-family: ${fonts.default};
   font-size: 36px;
@@ -44,7 +45,7 @@ const StyledTime = styled.time``;
 const ImageCard = ({ imageURL, url, title, time }) => (
   <StyledCard imageURL={imageURL}>
     <StyledCardBody>
-      <StyledTitle href={url}>{title}</StyledTitle>
+      <StyledTitleLink to={url}>{title}</StyledTitleLink>
       {time !== undefined ? <StyledTime>{time}</StyledTime> : null}
     </StyledCardBody>
   </StyledCard>

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { fonts } from "../constants";
 
 const StyledHeader = styled.header`
@@ -10,9 +11,14 @@ const StyledHeader = styled.header`
   font-weight: 600;
 `;
 
+const StyledLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
+
 const Header = () => (
   <StyledHeader>
-    <span>Coffee</span>
+    <StyledLink to="/">Coffee</StyledLink>
   </StyledHeader>
 );
 
