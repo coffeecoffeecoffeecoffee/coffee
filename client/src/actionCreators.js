@@ -12,6 +12,21 @@ function createAsyncAction(type, thunk) {
 // Action naming convention:
 // https://github.com/Versent/redux-crud/blob/master/docs/actions.md
 
+export const eventsFetchSuccess = createAction("EVENTS_FETCH_SUCCESS");
+export const eventsFetchError = createAction("EVENTS_FETCH_ERROR");
+export const eventsFetchStart = createAsyncAction(
+  "EVENTS_FETCH_START",
+  groupID => dispatch =>
+    axios
+      .get(`/api/groups/${groupID}/events`)
+      .then(response => {
+        dispatch(eventsFetchSuccess(response.data));
+      })
+      .catch(error => {
+        dispatch(eventsFetchError(error));
+      })
+);
+
 export const groupsFetchSuccess = createAction("GROUPS_FETCH_SUCCESS");
 export const groupsFetchError = createAction("GROUPS_FETCH_ERROR");
 export const groupsFetchStart = createAsyncAction(

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import Link from "./Link";
+import Time from "./Time";
 import { breakpoints, colors, fonts } from "../constants";
 
 const StyledCard = styled.div`
@@ -28,11 +29,9 @@ const StyledCardBody = styled.div`
 `;
 
 const StyledTitleLink = styled(Link)`
-  color: inherit;
   font-family: ${fonts.default};
   font-size: 36px;
   font-weight: 500;
-  text-decoration: none;
   word-wrap: break-word;
 
   @media (min-width: ${breakpoints.sm}) {
@@ -40,13 +39,16 @@ const StyledTitleLink = styled(Link)`
   }
 `;
 
-const StyledTime = styled.time``;
+const StyledTime = styled(Time)`
+  font-family: ${fonts.default};
+`;
 
 const ImageCard = ({ imageURL, url, title, time }) => (
   <StyledCard imageURL={imageURL}>
     <StyledCardBody>
       <StyledTitleLink to={url}>{title}</StyledTitleLink>
-      {time !== undefined ? <StyledTime>{time}</StyledTime> : null}
+      <br />
+      {time !== undefined ? <StyledTime time={time} /> : null}
     </StyledCardBody>
   </StyledCard>
 );
