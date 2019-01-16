@@ -28,6 +28,11 @@ FactoryBot.define do
       end_at { Time.current.tomorrow.tomorrow }
     end
 
+    factory :really_future_event do
+      start_at { Time.current.tomorrow.tomorrow }
+      end_at { Time.current.tomorrow.tomorrow.tomorrow }
+    end
+
     factory :now_event do
       start_at { Time.current.yesterday }
       end_at { Time.current.tomorrow }
