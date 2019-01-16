@@ -4,10 +4,9 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.0.0",
-    "@rails/webpacker": "https://github.com/rails/webpacker",
+    "@rails/webpacker": "^4.0.0-rc.2",
     "axios": "^0.18.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.22",
-    "babel-preset-react": "^6.24.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.23",
     "moment": "^2.23.0",
     "normalize.css": "^8.0.1",
     "react": "^16.7.0",
