@@ -22,5 +22,9 @@
 /public/assets
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
+# Ignore master key for decrypting credentials.
 /config/master.key
+
+# Added by Webpacker
+/public/packs
+/public/packs-test
