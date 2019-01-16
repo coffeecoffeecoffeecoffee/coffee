@@ -20,10 +20,11 @@ RSpec.describe Group, type: :model do
 
   describe "#image_url" do
     it "returns the first event's image_url" do
-      event = create(:event)
-      group = event.group
+      group = create(:group)
+      past_event = create(:past_event, group: group)
+      future_event = create(:future_event, group: group, foursquare_venue_data: nil)
 
-      expect(group.image_url).to eq(event.image_url)
+      expect(group.image_url).to eq(past_event.image_url)
     end
 
     it "returns an empty string when a group doesn't have an event" do

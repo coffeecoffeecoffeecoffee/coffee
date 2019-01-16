@@ -12,6 +12,6 @@ class Group < ApplicationRecord
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
   def image_url
-    events.first.try(:image_url) || ""
+    events.order(:start_at).first.try(:image_url) || ""
   end
 end
