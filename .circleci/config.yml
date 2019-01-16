@@ -57,6 +57,10 @@ jobs:
       - run:
           name: RuboCop
           command: bundle exec rubocop -R
+      # ESLint
+      - run:
+          name: ESLint
+          command: yarn lint
       # Deploy - Heroku
       - run:
           name: Deploy to Heroku
