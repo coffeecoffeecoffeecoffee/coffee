@@ -13,9 +13,9 @@ const App = () => (
     <Router>
       <Page>
         <Header />
-        <Route path="/" exact component={GroupsListContainer} />
-        <Route path="/groups" component={GroupsListContainer} />
-        <Route path="/:groupID" component={EventsListContainer} />
+        <Route path="/react" exact component={GroupsListContainer} />
+        <Route path="/react/groups" component={GroupsListContainer} />
+        <Route path="/react/:groupID" component={EventsListContainer} />
         <Footer />
       </Page>
     </Router>

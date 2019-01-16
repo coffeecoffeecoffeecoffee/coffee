@@ -18,7 +18,7 @@ const StyledLink = styled(Link)`
 
 const Header = () => (
   <StyledHeader>
-    <StyledLink to="/">Coffee</StyledLink>
+    <StyledLink to="/react">Coffee</StyledLink>
   </StyledHeader>
 );
 

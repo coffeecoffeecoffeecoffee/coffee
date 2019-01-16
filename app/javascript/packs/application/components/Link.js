@@ -24,7 +24,7 @@ const Link = ({ to, children, ...rest }) => {
     );
   }
   return (
-    <StyledReactRouterLink to={to} {...rest}>
+    <StyledReactRouterLink to={`/react/${to}`} {...rest}>
       {children}
     </StyledReactRouterLink>
   );
