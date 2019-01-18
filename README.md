@@ -20,6 +20,12 @@
 rspec
 ```
 
+## Linting
+
+- `erblint --lint-all --autocorrect`
+- `eslint .`
+- `rubocop -Ra`
+
 ## Deployment
 
 Deployment of the master branch to Heroku is done automatically after CI passes.
