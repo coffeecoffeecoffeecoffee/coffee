@@ -14,9 +14,6 @@ Rails.application.routes.draw do
 
   root to: "groups#index"
 
-  get "/react", to: "react#root"
-  get "/react/*path", to: "react#root"
-
   get "/auth/:provider/callback", to: "sessions#create"
   get "/auth/failure", to: redirect("/")
   get "/auth/logout", to: "sessions#destroy"

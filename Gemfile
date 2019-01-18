@@ -20,7 +20,6 @@ gem "rails"
 gem "sass-rails"
 gem "turbolinks"
 gem "uglifier"
-gem "webpacker", ">= 4.0.x"
 
 group :development do
   gem "listen"

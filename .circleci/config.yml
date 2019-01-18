@@ -30,18 +30,6 @@ jobs:
           key: coffee-bundler-{{ checksum "Gemfile.lock" }}
           paths:
             - ~/.cache/bundler
-      # Yarn
-      - restore_cache:
-          keys:
-            - coffee-yarn-{{ checksum "yarn.lock" }}
-            - coffee-yarn-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-      - save_cache:
-          key: coffee-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
       # DB
       - run:
           name: Wait for DB

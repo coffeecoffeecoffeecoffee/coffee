@@ -77,9 +77,4 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-
-  # Verifies that versions and hashed value of the package contents in the project's package.json
-  # This is disabled to allow us to deploy to Heroku using a prerelease version
-  # of Webpacker. This should be changed to true in the future.
-  config.webpacker.check_yarn_integrity = false
 end

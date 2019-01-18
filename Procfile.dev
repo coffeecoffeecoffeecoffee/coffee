@@ -1,3 +1,0 @@
-web: bundle exec rails server -p $PORT
-webpack-dev-server: ./bin/webpack-dev-server
-db: postgres -D /usr/local/var/postgres
