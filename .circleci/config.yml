@@ -6,7 +6,6 @@ jobs:
       - image: circleci/ruby:latest-node
         environment:
           BUNDLE_JOBS: 4
-          BUNDLE_PATH: ~/.cache/bundler
           BUNDLE_RETRY: 4
           PGHOST: 127.0.0.1
           PGUSER: circleci
@@ -21,15 +20,24 @@ jobs:
       # Bundler
       - restore_cache:
           keys:
-            - coffee-bundler-{{ checksum "Gemfile.lock" }}
-            - coffee-bundler-
+            - dependency-cache-{{ checksum "Gemfile.lock" }}
       - run:
           name: Bundle Install
           command: bundle check || bundle install
       - save_cache:
-          key: coffee-bundler-{{ checksum "Gemfile.lock" }}
+          key: dependency-cache-{{ checksum "Gemfile.lock" }}
           paths:
-            - ~/.cache/bundler
+            - ~/.bundle
+      # npm
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: npm Install
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       # DB
       - run:
           name: Wait for DB
