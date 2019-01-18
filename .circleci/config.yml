@@ -57,6 +57,9 @@ jobs:
       - run:
           name: ESLint
           command: npm run lint
+      - run:
+          name: ERB Lint
+          command: bundle exec erblint --lint-all
       # Deploy - Heroku
       - run:
           name: Deploy to Heroku
