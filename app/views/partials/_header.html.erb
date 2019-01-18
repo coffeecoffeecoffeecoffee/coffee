@@ -6,7 +6,7 @@
     <%= link_to('Groups', groups_path) %>
     <% if current_user %>
       <%= image_tag(current_user.image_url, class: 'header__avatar') %>
-      <%= link_to('Sign out', auth_logout_path)%>
+      <%= link_to('Sign out', auth_logout_path) %>
     <% else %>
       <%= link_to('Sign in', '/auth/twitter') %>
     <% end %>

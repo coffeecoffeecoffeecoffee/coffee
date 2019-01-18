@@ -22,6 +22,7 @@ gem "turbolinks"
 gem "uglifier"
 
 group :development do
+  gem "erb_lint", require: false
   gem "listen"
   gem "rubocop"
   gem "rubocop-rspec"
