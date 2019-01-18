@@ -48,7 +48,7 @@ jobs:
       # ESLint
       - run:
           name: ESLint
-          command: yarn lint
+          command: npm run lint
       # Deploy - Heroku
       - run:
           name: Deploy to Heroku

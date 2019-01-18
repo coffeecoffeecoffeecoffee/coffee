@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 
+node_modules
 
 /public/assets
 .byebug_history
