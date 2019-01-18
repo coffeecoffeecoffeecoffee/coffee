@@ -49,4 +49,11 @@ RSpec.describe User, type: :model do
       end
     end
   end
+
+  describe "#image_url" do
+    it "returns the user's Twitter image" do
+      user = build(:user, twitter: "testtwitter")
+      expect(user.image_url).to eq("https://twitter.com/testtwitter/profile_image?size=original")
+    end
+  end
 end

@@ -107,6 +107,13 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#formatted_local_time" do
+    it "returns the formatted time in the group time zone" do
+      event = build(:event, start_at: Time.parse("2017-12-13T16:30:00Z").utc)
+      expect(event.formatted_local_time).to eq("Wednesday, December 13, 2017, 8:30 AM")
+    end
+  end
+
   describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
     context "when the record is brand new" do
       it "fetches new foursquare_venue_data" do

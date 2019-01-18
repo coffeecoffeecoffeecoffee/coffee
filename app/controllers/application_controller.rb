@@ -3,12 +3,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  def current_user_decorated
-    return nil unless current_user
-
-    current_user.decorate
-  end
-  helper_method :current_user_decorated
+  helper_method :current_user
 
   def log_in(user)
     session[:user_id] = user.id

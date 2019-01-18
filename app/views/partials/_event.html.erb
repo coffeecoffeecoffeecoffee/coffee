@@ -3,6 +3,6 @@
     <%= link_to event.venue_url, target: '_blank' do %>
       <h3 class="event__venue"><%= event.name %></h3>
     <% end %>
-    <time class="event__time"><%= event.time %></time>
+    <time class="event__time"><%= event.formatted_local_time %></time>
   </div>
  </div>

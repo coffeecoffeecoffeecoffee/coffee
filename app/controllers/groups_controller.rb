@@ -1,11 +1,11 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all.decorate
+    @groups = Group.all
   end
 
   def show
-    @group = Group.friendly.find(params[:id]).decorate
-    @events = @group.events.future_or_now.decorate
-    @past_events = @group.events.past.decorate
+    @group = Group.friendly.find(params[:id])
+    @events = @group.events.future_or_now
+    @past_events = @group.events.past
   end
 end

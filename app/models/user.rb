@@ -22,4 +22,8 @@ class User < ApplicationRecord
     user.save!
     user
   end
+
+  def image_url
+    "https://twitter.com/#{twitter}/profile_image?size=original"
+  end
 end

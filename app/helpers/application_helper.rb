@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def current_user
-    current_user_decorated
-  end
-
   def og_events_image_url
     image_url_for_event(Event.next)
   end

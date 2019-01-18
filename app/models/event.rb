@@ -22,6 +22,11 @@ class Event < ApplicationRecord
   delegate :image_url, to: :venue
   delegate :url, to: :venue, prefix: :venue
 
+  def formatted_local_time
+    start_at_local = start_at.in_time_zone(group.time_zone)
+    start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")
+  end
+
   private
 
   def ensure_updated_foursquare_venue_data

@@ -4,7 +4,6 @@ ruby "2.6.0"
 
 gem "administrate"
 gem "bootsnap", require: false
-gem "draper"
 gem "factory_bot_rails"
 gem "friendly_id"
 gem "httparty"
