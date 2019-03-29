@@ -29,4 +29,16 @@ RSpec.describe Venue, type: :model do
       expect(venue.address).to eq("736 Divisadero St (btwn Grove St & Fulton St), San Francisco, CA 94117, United States")
     end
   end
+
+  describe "#latitude" do
+    it "returns the latitude from foursquare data" do
+      expect(venue.latitude).to eq(37.77632881728594)
+    end
+  end
+
+  describe "#longitude" do
+    it "returns the longitude from foursquare date" do
+      expect(venue.longitude).to eq(-122.43802428245543)
+    end
+  end
 end

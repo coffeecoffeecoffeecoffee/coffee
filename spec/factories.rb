@@ -10,8 +10,11 @@ FactoryBot.define do
       # It only copies the data we use. There's tons of other data in there.
       {
         id: "4feddd79d86cd6f22dc171a9",
-        name: "The Mill", location: {
-          formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"]
+        name: "The Mill",
+        location: {
+          formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"],
+          lat: 37.77632881728594,
+          lng: -122.43802428245543
         },
         canonicalUrl: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9",
         bestPhoto: {

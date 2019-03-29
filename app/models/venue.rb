@@ -23,10 +23,26 @@ class Venue
   end
 
   def address
-    location = @foursquare_venue[:location]
-    return nil if location.nil?
+    formatted_address = location[:formattedAddress]
+    return nil if formatted_address.nil?
 
-    location.symbolize_keys!
-    location[:formattedAddress].join(", ")
+    formatted_address.join(", ")
+  end
+
+  def latitude
+    location[:lat]
+  end
+
+  def longitude
+    location[:lng]
+  end
+
+  private
+
+  def location
+    location = @foursquare_venue[:location]
+    return {} if location.nil?
+
+    location.symbolize_keys
   end
 end
