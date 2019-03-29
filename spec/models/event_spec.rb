@@ -9,6 +9,16 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:group) }
   it { is_expected.to validate_presence_of(:foursquare_venue_id) }
 
+  describe "validate" do
+    describe "#end_at_cannot_be_before_start_at" do
+      it "validates end at is after start at" do
+        event = build(:event, start_at: Time.current, end_at: Time.current.yesterday)
+        expect(event).not_to be_valid
+        expect(event.errors[:end_at]).to eq(["can't be before start_at"])
+      end
+    end
+  end
+
   describe ".future_or_now" do
     it "returns all future events" do
       events = create_list(:future_event, 3)

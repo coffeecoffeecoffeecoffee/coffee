@@ -57,8 +57,8 @@ describe "Group details" do
 
       it "orders past events with the most recent at the top", vcr: { cassette_name: :foursquare_venue_details } do
         group = create(:group)
-        create(:past_event, group: group, name: "Old Name", start_at: group.created_at - 1.second)
-        create(:past_event, group: group, name: "More Recent Name", start_at: group.created_at + 1.second)
+        create(:past_event, group: group, name: "Old Name", start_at: group.created_at - 1.second, end_at: group.created_at)
+        create(:past_event, group: group, name: "More Recent Name", start_at: group.created_at + 1.second, end_at: group.created_at + 2.seconds)
         visit group_path(group)
         expect(page.body.index("More Recent Name")).to be < page.body.index("Old Name")
       end
