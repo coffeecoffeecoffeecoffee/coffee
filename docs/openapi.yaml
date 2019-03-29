@@ -43,6 +43,7 @@ components:
         - group_id
         - name
         - image_url
+        - venue
         - venue_url
         - start_at
         - end_at
@@ -55,6 +56,8 @@ components:
           type: string
         image_url:
           type: string
+        venue:
+          $ref: "#/components/schemas/Venue"
         venue_url:
           type: string
         start_at:
@@ -78,4 +81,21 @@ components:
         name:
           type: string
         image_url:
+          type: string
+    Location:
+      type: object
+      required:
+        - formatted_address
+      properties:
+        formatted_address:
+          type: string
+    Venue:
+      type: object
+      required:
+        - location
+        - url
+      properties:
+        location:
+          $ref: "#/components/schemas/Location"
+        url:
           type: string
