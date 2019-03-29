@@ -98,9 +98,12 @@ components:
     Venue:
       type: object
       required:
+        - name
         - location
         - url
       properties:
+        name:
+          type: string
         location:
           $ref: "#/components/schemas/Location"
         url:
