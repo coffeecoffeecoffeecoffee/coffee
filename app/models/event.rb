@@ -31,7 +31,7 @@ class Event < ApplicationRecord
   private
 
   def end_at_cannot_be_before_start_at
-    errors.add(:end_at, "can't be before start_at") if end_at && start_at && end_at <= start_at
+    errors.add(:end_at, "can't be before start at") if end_at && start_at && end_at <= start_at
   end
 
   def ensure_updated_foursquare_venue_data
