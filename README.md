@@ -38,3 +38,8 @@ Deployment of the master branch to Heroku is done automatically after CI passes.
 
 This project is licensed under the GNU GPLv3 License -- see the
 [LICENSE.md](LICENSE.md) file for details.
+
+## Other
+
+`User.where(email: "email@example.com").first.update(admin: true)` to add an
+admin.
