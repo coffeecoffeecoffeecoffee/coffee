@@ -10,10 +10,6 @@ class Venue
     @foursquare_venue[:name]
   end
 
-  def url
-    @foursquare_venue[:canonicalUrl]
-  end
-
   def image_url
     photo = @foursquare_venue[:bestPhoto]
     return nil if photo.nil?

@@ -6,5 +6,5 @@ json.venue do
     json.latitude event.venue.latitude
     json.longitude event.venue.longitude
   end
-  json.url event.venue.url
+  json.url event.venue_url
 end

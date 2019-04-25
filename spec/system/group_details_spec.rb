@@ -20,13 +20,13 @@ describe "Group details" do
       within ".event:nth-of-type(1)" do
         expect(page).to have_text("Created Second, Happens First")
         expect(page).to have_text("Wednesday, December 13, 2017, 8:30 AM")
-        expect(page).to have_link("Created Second, Happens First", href: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
+        expect(page).to have_link("Created Second, Happens First", href: "https://foursquare.com/v/4feddd79d86cd6f22dc171a9")
       end
 
       within ".event:nth-of-type(2)" do
         expect(page).to have_text("Created First, Happens Second")
         expect(page).to have_text("Thursday, December 14, 2017, 8:30 AM")
-        expect(page).to have_link("Created First, Happens Second", href: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
+        expect(page).to have_link("Created First, Happens Second", href: "https://foursquare.com/v/4feddd79d86cd6f22dc171a9")
       end
     end
 

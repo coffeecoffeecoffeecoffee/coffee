@@ -21,7 +21,7 @@ describe GroupCalendarCreator do
       expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
       expect(calendar_event.dtend.to_s).to include("UTC")
       expect(calendar_event.location).to eq("736 Divisadero St (btwn Grove St & Fulton St), San Francisco, CA 94117, United States")
-      expect(calendar_event.url.to_s).to eq("https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9")
+      expect(calendar_event.url.to_s).to eq("https://foursquare.com/v/4feddd79d86cd6f22dc171a9")
       expect(calendar_event.x_apple_structured_location.first).to eq(calendar_event.location)
     end
 

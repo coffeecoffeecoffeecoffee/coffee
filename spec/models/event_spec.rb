@@ -129,8 +129,7 @@ RSpec.describe Event, type: :model do
     it "returns the venue's url" do
       event = build(:event)
 
-      venue = event.venue
-      expect(event.venue_url).to eq(venue.url)
+      expect(event.venue_url).to eq("https://foursquare.com/v/#{event.foursquare_venue_id}")
     end
   end
 

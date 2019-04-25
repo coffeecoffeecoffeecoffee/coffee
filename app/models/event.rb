@@ -24,10 +24,13 @@ class Event < ApplicationRecord
 
   def image_url
     return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
+
     venue.image_url
   end
 
-  delegate :url, to: :venue, prefix: :venue
+  def venue_url
+    "https://foursquare.com/v/#{foursquare_venue_id}"
+  end
 
   def formatted_local_time
     start_at_local = start_at.in_time_zone(group.time_zone)
