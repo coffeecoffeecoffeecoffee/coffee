@@ -44,7 +44,6 @@ components:
         - name
         - image_url
         - venue
-        - venue_url
         - start_at
         - end_at
       properties:
