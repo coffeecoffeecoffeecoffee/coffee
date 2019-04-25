@@ -11,6 +11,12 @@ class Group < ApplicationRecord
   validates :time_zone, presence: true
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
+  def url
+    path = Rails.application.routes.url_helpers.group_path(slug)
+    base_url = Rails.application.credentials.base_url
+    URI.join(base_url, path).to_s
+  end
+
   def image_url
     events.order(:start_at).first.try(:image_url) || ""
   end

@@ -18,6 +18,14 @@ RSpec.describe Group, type: :model do
     expect(group.slug).to eq("slug-group")
   end
 
+  describe "#url" do
+    it "returns the group URL using the slug" do
+      group = create(:group, slug: "futurama-brain-slug")
+
+      expect(group.url).to eq("https://coffeecoffeecoffee.coffee/futurama-brain-slug")
+    end
+  end
+
   describe "#image_url" do
     it "returns the first event's image_url" do
       group = create(:group)

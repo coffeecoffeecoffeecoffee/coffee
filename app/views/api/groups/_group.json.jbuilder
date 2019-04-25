@@ -1,1 +1,1 @@
-json.extract! group, :id, :slug, :name, :image_url
+json.extract! group, :id, :name, :url, :image_url
