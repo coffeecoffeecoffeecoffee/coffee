@@ -1,6 +1,8 @@
 class Event < ApplicationRecord
   belongs_to :group
 
+  has_one_attached :image
+
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :name, presence: true
@@ -20,7 +22,11 @@ class Event < ApplicationRecord
     Venue.new(foursquare_venue_data)
   end
 
-  delegate :image_url, to: :venue
+  def image_url
+    return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
+    venue.image_url
+  end
+
   delegate :url, to: :venue, prefix: :venue
 
   def formatted_local_time

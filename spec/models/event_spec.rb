@@ -100,11 +100,28 @@ RSpec.describe Event, type: :model do
   end
 
   describe "#image_url" do
-    it "returns the venue's image_url" do
-      event = build(:event)
+    context "when an image exists" do
+      it "returns the image_url" do
+        event = build(:event, :with_image)
 
-      venue = event.venue
-      expect(event.image_url).to eq(venue.image_url)
+        event_image_uri = URI.parse(event.image_url)
+
+        expect(event_image_uri).to be_a_kind_of(URI::HTTP)
+      end
+    end
+
+    context "when an image does not exist" do
+      it "falls back to the venue image if one exists" do
+        event = build(:event)
+
+        expect(event.image_url).to eq("https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg")
+      end
+
+      it "returns nil if a veune image does not exist" do
+        event = build(:event, foursquare_venue_data: nil)
+
+        expect(event.image_url).to be_nil
+      end
     end
   end
 

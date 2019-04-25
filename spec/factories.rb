@@ -26,6 +26,10 @@ FactoryBot.define do
       }
     end
 
+    trait :with_image do
+      image { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "image.png"), "image/png") }
+    end
+
     factory :future_event do
       start_at { Time.current.tomorrow }
       end_at { Time.current.tomorrow.tomorrow }
