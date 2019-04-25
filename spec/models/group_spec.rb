@@ -21,24 +21,19 @@ RSpec.describe Group, type: :model do
   describe "#url" do
     it "returns the group URL using the slug" do
       group = create(:group, slug: "futurama-brain-slug")
+      group_uri = URI.parse(group.url)
 
-      expect(group.url).to eq("https://coffeecoffeecoffee.coffee/futurama-brain-slug")
+      expect(group.url).to eq("http://localhost:3000/futurama-brain-slug")
+      expect(group_uri).to be_a_kind_of(URI::HTTP)
     end
   end
 
   describe "#image_url" do
-    it "returns the first event's image_url" do
-      group = create(:group)
-      past_event = create(:past_event, group: group)
-      create(:future_event, group: group, foursquare_venue_data: nil)
+    it "returns the group's image url" do
+      group = create(:group, :with_image)
+      group_image_uri = URI.parse(group.image_url)
 
-      expect(group.image_url).to eq(past_event.image_url)
-    end
-
-    it "returns an empty string when a group doesn't have an event" do
-      group = build(:group)
-
-      expect(group.image_url).to eq("")
+      expect(group_image_uri).to be_a_kind_of(URI::HTTP)
     end
   end
 end

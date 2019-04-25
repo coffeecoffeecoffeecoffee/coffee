@@ -6,18 +6,20 @@ class Group < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
 
+  has_one_attached :image
+
   validates :name, presence: true
   validates :slug, presence: true
   validates :time_zone, presence: true
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
   def url
-    path = Rails.application.routes.url_helpers.group_path(slug)
-    base_url = Rails.application.credentials.base_url
-    URI.join(base_url, path).to_s
+    Rails.application.routes.url_helpers.group_url(slug)
   end
 
   def image_url
-    events.order(:start_at).first.try(:image_url) || ""
+    return unless image.attachment
+
+    Rails.application.routes.url_helpers.rails_blob_url(image)
   end
 end

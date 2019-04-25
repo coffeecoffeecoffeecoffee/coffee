@@ -7,7 +7,8 @@ class GroupDashboard < Administrate::BaseDashboard
     name: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    time_zone: Field::String
+    time_zone: Field::String,
+    image: Field::ActiveStorage
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
@@ -19,6 +20,7 @@ class GroupDashboard < Administrate::BaseDashboard
     id
     name
     time_zone
+    image
     created_at
     updated_at
   ].freeze
@@ -26,6 +28,7 @@ class GroupDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
     name
     time_zone
+    image
   ].freeze
 
   def display_resource(group)

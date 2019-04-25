@@ -80,7 +80,9 @@ components:
         url:
           type: string
         image_url:
-          type: string
+          type:
+            - string
+            - "null"
     Location:
       type: object
       required:

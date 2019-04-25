@@ -1,0 +1,9 @@
+cloudinary:
+  service: Cloudinary
+  cloud_name: <%= Rails.application.credentials.cloudinary[:cloud_name] %>
+  api_key: <%= Rails.application.credentials.cloudinary[:api_key] %>
+  api_secret: <%= Rails.application.credentials.cloudinary[:api_secret] %>
+
+local_tmp:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>

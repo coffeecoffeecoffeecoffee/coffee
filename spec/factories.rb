@@ -50,6 +50,10 @@ FactoryBot.define do
   factory :group do
     name { "SF iOS Coffee" }
     time_zone { "America/Los_Angeles" }
+
+    trait :with_image do
+      image { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "image.png"), "image/png") }
+    end
   end
 
   factory :membership do
