@@ -18,8 +18,8 @@ class Group < ApplicationRecord
   end
 
   def image_url
-    return unless image.attachment
+    return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
 
-    Rails.application.routes.url_helpers.rails_blob_url(image)
+    events.order(:start_at).first.try(:image_url) || ""
   end
 end
