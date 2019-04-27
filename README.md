@@ -43,3 +43,10 @@ This project is licensed under the GNU GPLv3 License -- see the
 
 `User.where(email: "email@example.com").first.update(admin: true)` to add an
 admin.
+
+## API
+
+We use [GraphQL](https://graphql.org/) for our API.
+
+GraphQL Explorer: `https://api.coffeecoffeecoffee.coffee/graphiql`
+Endpoint: `https://api.coffeecoffeecoffee.coffee/graphql`
