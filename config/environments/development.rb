@@ -56,4 +56,5 @@ Rails.application.configure do
 
   # Set host for URL generation.
   routes.default_url_options[:host] = "localhost:3000"
+  routes.default_url_options[:protocol] = :https
 end

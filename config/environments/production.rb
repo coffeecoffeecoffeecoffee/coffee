@@ -83,4 +83,5 @@ Rails.application.configure do
 
   # Set host for URL generation.
   routes.default_url_options[:host] = "coffeecoffeecoffee.coffee"
+  routes.default_url_options[:protocol] = :https
 end

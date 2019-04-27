@@ -23,7 +23,7 @@ RSpec.describe Group, type: :model do
       group = create(:group, slug: "futurama-brain-slug")
       group_uri = URI.parse(group.url)
 
-      expect(group.url).to eq("http://localhost:3000/futurama-brain-slug")
+      expect(group.url).to eq("https://localhost:3000/futurama-brain-slug")
       expect(group_uri).to be_a_kind_of(URI::HTTP)
     end
   end
@@ -33,7 +33,7 @@ RSpec.describe Group, type: :model do
       group = create(:group, :with_image)
       group_image_uri = URI.parse(group.image_url)
 
-      expect(group_image_uri).to be_a_kind_of(URI::HTTP)
+      expect(group_image_uri).to be_a_kind_of(URI::HTTPS)
     end
   end
 end

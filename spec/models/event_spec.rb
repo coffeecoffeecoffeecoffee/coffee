@@ -106,7 +106,7 @@ RSpec.describe Event, type: :model do
 
         event_image_uri = URI.parse(event.image_url)
 
-        expect(event_image_uri).to be_a_kind_of(URI::HTTP)
+        expect(event_image_uri).to be_a_kind_of(URI::HTTPS)
       end
     end
 
