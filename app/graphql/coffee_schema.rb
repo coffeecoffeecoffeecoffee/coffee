@@ -1,4 +1,4 @@
 class CoffeeSchema < GraphQL::Schema
-  mutation(Types::MutationType)
+  # mutation(Types::MutationType)
   query(Types::QueryType)
 end
