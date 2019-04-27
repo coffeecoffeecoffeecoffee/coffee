@@ -9,8 +9,8 @@ gem "bootsnap", require: false
 gem "cloudinary", require: false
 gem "factory_bot_rails"
 gem "friendly_id"
-gem "graphql"
 gem "graphiql-rails"
+gem "graphql"
 gem "httparty"
 gem "icalendar"
 gem "jbuilder"
