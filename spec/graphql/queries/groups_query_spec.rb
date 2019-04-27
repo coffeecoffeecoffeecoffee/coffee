@@ -21,7 +21,7 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
   context "without arguments" do
     it "returns all groups" do
       groups = create_list(:group, 2)
-      events = create_list(:event, 2, group: groups.first)
+      create_list(:event, 2, group: groups.first)
 
       result = CoffeeSchema.execute(query).deep_symbolize_keys
 
