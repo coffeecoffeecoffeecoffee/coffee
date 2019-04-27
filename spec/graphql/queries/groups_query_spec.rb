@@ -33,12 +33,31 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
     end
   end
 
-  context "with an id argument" do
+  context "with an id argument (either id or slug)" do
     it "returns the specified group" do
       groups = create_list(:group, 2)
 
+      # ID
+
       variables = {
         groupId: groups.first.id
+      }
+
+      result = CoffeeSchema.execute(
+        query,
+        variables: variables
+      ).deep_symbolize_keys
+
+      expect(result).to eq(
+        data: {
+          groups: [group_item(groups.first)]
+        }
+      )
+
+      # Slug
+
+      variables = {
+        groupId: groups.first.slug
       }
 
       result = CoffeeSchema.execute(
