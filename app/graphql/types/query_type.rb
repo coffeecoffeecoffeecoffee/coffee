@@ -6,7 +6,7 @@ module Types
 
     def groups(id: nil)
       return Group.all unless id
-      Group.where(id: id)
+      [Group.friendly.find(id)]
     end
   end
 end
