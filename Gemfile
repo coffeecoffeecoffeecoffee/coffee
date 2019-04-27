@@ -10,6 +10,7 @@ gem "cloudinary", require: false
 gem "factory_bot_rails"
 gem "friendly_id"
 gem "graphql"
+gem "graphiql-rails"
 gem "httparty"
 gem "icalendar"
 gem "jbuilder"
@@ -27,7 +28,6 @@ gem "uglifier"
 
 group :development do
   gem "erb_lint", require: false
-  gem "graphiql-rails"
   gem "listen"
   gem "rubocop"
   gem "rubocop-rspec"
