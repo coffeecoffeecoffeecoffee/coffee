@@ -119,7 +119,7 @@ GEM
       activerecord (>= 4.0.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
-    graphiql-rails (1.7.0)
+    graphiql-rails (1.4.11)
       railties
       sprockets-rails
     graphql (1.9.4)
@@ -368,7 +368,7 @@ DEPENDENCIES
   erb_lint
   factory_bot_rails
   friendly_id
-  graphiql-rails
+  graphiql-rails (~> 1.4.11)
   graphql
   httparty
   icalendar
