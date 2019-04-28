@@ -7,11 +7,20 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
         groups(id: $groupId) {
           id
           name
+          imageUrl
           events {
             id
             name
+            imageUrl
             startAt
             endAt
+            venue {
+              name
+              location {
+                latitude
+                longitude
+              }
+            }
           }
         }
       }
@@ -77,6 +86,7 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
     {
       id: group.id,
       name: group.name,
+      imageUrl: group.image_url,
       events: group.events.map { |e| event_item(e) }
     }
   end
@@ -85,8 +95,24 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
     {
       id: event.id,
       name: event.name,
+      imageUrl: event.image_url,
       startAt: event.start_at.iso8601,
-      endAt: event.end_at.iso8601
+      endAt: event.end_at.iso8601,
+      venue: venue_item(event.venue)
+    }
+  end
+
+  def venue_item(venue)
+    {
+      name: venue.name,
+      location: location_item(venue.latitude, venue.longitude)
+    }
+  end
+
+  def location_item(latitude, longitude)
+    {
+      latitude: latitude,
+      longitude: longitude
     }
   end
 end
