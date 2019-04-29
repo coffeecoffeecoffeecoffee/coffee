@@ -5,7 +5,7 @@ describe GroupCalendarCreator do
     it "creates an ical with all events", vcr: { cassette_name: :foursquare_venue_details, allow_playback_repeats: true } do
       group = create(:group)
       create_list(:future_event, 3, group: group)
-      last_event = create(:event, group: group, name: "Sightglass Coffee")
+      last_event = create(:event, group: group, name: "Coffup")
 
       ical = described_class.new(group).to_ical
       calendar = Icalendar::Calendar.parse(ical).first
@@ -15,7 +15,8 @@ describe GroupCalendarCreator do
       expect(calendar.x_wr_calname.first).to eq(group.name)
 
       calendar_event = calendar.events.last
-      expect(calendar_event.summary).to eq("SF iOS Coffee at Sightglass Coffee")
+      expect(calendar_event.summary).to eq("SF iOS Coffee at The Mill")
+      expect(calendar_event.description).to eq("Coffup")
       expect(calendar_event.dtstart).to eq(last_event.start_at.change(usec: 0))
       expect(calendar_event.dtstart.to_s).to include("UTC")
       expect(calendar_event.dtend).to eq(last_event.end_at.change(usec: 0))
