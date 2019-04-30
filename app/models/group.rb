@@ -13,10 +13,6 @@ class Group < ApplicationRecord
   validates :time_zone, presence: true
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
-  def url
-    Rails.application.routes.url_helpers.group_url(slug)
-  end
-
   def image_url
     return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
 

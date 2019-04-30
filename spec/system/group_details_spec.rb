@@ -87,7 +87,7 @@ describe "Group details" do
         visit group_path(group)
         expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Coffee"]', visible: false)
         expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
-        expect(page).to have_css("meta[property=\"og:url\"][content=\"#{url_for group}\"]", visible: false)
+        expect(page).to have_css("meta[property=\"og:url\"][content=\"http://127.0.0.1#{group_path(group)}\"]", visible: false)
         expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Coffee."]', visible: false)
 
         # I don't love testing this here (it only checks for Group Details

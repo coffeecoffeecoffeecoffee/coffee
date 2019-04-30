@@ -18,16 +18,6 @@ RSpec.describe Group, type: :model do
     expect(group.slug).to eq("slug-group")
   end
 
-  describe "#url" do
-    it "returns the group URL using the slug" do
-      group = create(:group, slug: "futurama-brain-slug")
-      group_uri = URI.parse(group.url)
-
-      expect(group.url).to eq("https://localhost:3000/futurama-brain-slug")
-      expect(group_uri).to be_a_kind_of(URI::HTTP)
-    end
-  end
-
   describe "#image_url" do
     it "returns the group's image url" do
       group = create(:group, :with_image)
