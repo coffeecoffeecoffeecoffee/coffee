@@ -6,6 +6,7 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
       query($groupId: ID) {
         groups(id: $groupId) {
           id
+          slug
           name
           imageUrl
           events {
@@ -85,6 +86,7 @@ RSpec.describe Queries::GroupsQuery, type: :graphql do
   def group_item(group)
     {
       id: group.id,
+      slug: group.slug,
       name: group.name,
       imageUrl: group.image_url,
       events: group.events.map { |e| event_item(e) }
