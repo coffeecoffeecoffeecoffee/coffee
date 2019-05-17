@@ -3,6 +3,7 @@ require: rubocop-rspec
 AllCops:
   DisplayCopNames: true
   Exclude:
+    - "bin/bundle"
     - "db/schema.rb"
     - "node_modules/**/*"
 
