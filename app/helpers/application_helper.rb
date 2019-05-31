@@ -3,8 +3,8 @@ module ApplicationHelper
     image_url_for_event(Event.next)
   end
 
-  def og_group_image_url
-    image_url_for_event(@group.events.future_or_now.first)
+  def og_group_image_url(group)
+    image_url_for_event(group.events.future_or_now.first)
   end
 
   private

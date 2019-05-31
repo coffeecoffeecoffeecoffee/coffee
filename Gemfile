@@ -30,6 +30,8 @@ group :development do
   gem "erb_lint", require: false
   gem "listen"
   gem "rubocop"
+  gem "rubocop-performance"
+  gem "rubocop-rails"
   gem "rubocop-rspec"
   gem "spring"
   gem "spring-watcher-listen"
