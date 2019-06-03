@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all
+    @groups = Group.order(Arel.sql("CASE WHEN slug = 'wwdc' THEN 1 ELSE 2 END"))
   end
 
   def show
