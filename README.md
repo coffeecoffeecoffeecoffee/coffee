@@ -34,19 +34,32 @@ Deployment of the master branch to Heroku is done automatically after CI passes.
 
 `rake venues:hydrate` - Run hourly on :00 by Heroku Scheduler
 
-## License
-
-This project is licensed under the GNU GPLv3 License -- see the
-[LICENSE.md](LICENSE.md) file for details.
-
-## Other
-
-`User.where(email: "email@example.com").first.update(admin: true)` to add an
-admin.
-
 ## API
 
 We use [GraphQL](https://graphql.org/) for our API.
 
 GraphQL Explorer: `https://api.coffeecoffeecoffee.coffee/graphiql`
 Endpoint: `https://api.coffeecoffeecoffee.coffee/graphql`
+
+## Admin Instructions
+
+### Adding an Admin
+
+Admins must be manually added via the database. Here's a Rails console command:
+
+```ruby
+User.where(twitter: "jamescmartinez").first.update(admin: true)
+```
+
+### Creating an Event
+
+1. Sign in
+1. Visit https://coffeecoffeecoffee.coffee/admin
+1. Click "New event"
+1. Fill out the form _\*Note: Times in the admin panel are in UTC. Here's a handy time zone converter: https://www.timeanddate.com/worldclock/converter.html_
+1. Click "Create event"
+
+## License
+
+This project is licensed under the GNU GPLv3 License -- see the
+[LICENSE.md](LICENSE.md) file for details.
