@@ -18,6 +18,16 @@ RSpec.describe Group, type: :model do
     expect(group.slug).to eq("slug-group")
   end
 
+  describe ".with_member" do
+    it "returns groups where the user is a member" do
+      create(:group)
+      membership = create(:membership)
+
+      expect(Group.count).to eq(2)
+      expect(Group.with_member(membership.user).count).to eq(1)
+    end
+  end
+
   describe "#image_url" do
     it "returns the group's image url" do
       group = create(:group, :with_image)
