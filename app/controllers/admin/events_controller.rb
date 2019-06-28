@@ -2,6 +2,11 @@ module Admin
   class EventsController < Admin::ApplicationController
     before_action :default_params
 
+    def scoped_resource
+      groups = Group.with_member(current_user)
+      Event.where(group: groups)
+    end
+
     private
 
     # Change default sort order of events
