@@ -26,4 +26,10 @@ class User < ApplicationRecord
   def image_url
     "https://twitter.com/#{twitter}/profile_image?size=original"
   end
+
+  def superadmin?
+    return true if twitter == "jamescmartinez"
+
+    false
+  end
 end

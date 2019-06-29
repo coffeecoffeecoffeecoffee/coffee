@@ -56,4 +56,16 @@ RSpec.describe User, type: :model do
       expect(user.image_url).to eq("https://twitter.com/testtwitter/profile_image?size=original")
     end
   end
+
+  describe "#superadmin?" do
+    it "returns true if the user is a superadmin" do
+      user = build(:user, twitter: "jamescmartinez")
+      expect(user).to be_superadmin
+    end
+
+    it "returns false if the user is not a superadmin" do
+      user = build(:user, twitter: "testtwitter")
+      expect(user).not_to be_superadmin
+    end
+  end
 end

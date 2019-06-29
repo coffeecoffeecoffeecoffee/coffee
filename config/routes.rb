@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
     resources :events
     resources :groups
+    resources :memberships
+    resources :users
   end
 
   root to: "groups#index"
