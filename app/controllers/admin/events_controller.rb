@@ -3,6 +3,8 @@ module Admin
     before_action :default_params
 
     def scoped_resource
+      return Event if current_user.superadmin?
+
       groups = Group.with_member(current_user)
       Event.where(group: groups)
     end
