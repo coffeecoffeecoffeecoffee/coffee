@@ -57,6 +57,7 @@ User.where(twitter: "jamescmartinez").first.update(admin: true)
 1. Visit https://coffeecoffeecoffee.coffee/admin
 1. Click "New event"
 1. Fill out the form _\*Note: Times in the admin panel are in UTC. Here's a handy time zone converter: https://www.timeanddate.com/worldclock/converter.html_
+1. To find the Foursquare Venue ID, find the URL of the venue on Foursquare (e.g. https://foursquare.com/v/blue-bottle-coffee/5c3384fbacc5f5002c89a62c) and copy the Venue ID from the URL (e.g. `5c3384fbacc5f5002c89a62c`)
 1. Click "Create event"
 
 ## License
