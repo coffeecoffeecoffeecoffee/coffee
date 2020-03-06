@@ -30,6 +30,9 @@ RSpec/DescribeClass:
   Exclude:
     - "spec/system/*"
 
+RSpec/DescribedClass:
+  Enabled: false
+
 RSpec/ExampleLength:
   Enabled: false
 
@@ -40,6 +43,9 @@ RSpec/NestedGroups:
   Enabled: false
 
 Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
   Enabled: false
 
 Style/FrozenStringLiteralComment:

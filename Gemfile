@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.6.3"
+ruby "2.7.0"
 
 gem "activestorage-cloudinary-service"
 gem "administrate"
@@ -53,6 +53,7 @@ group :test do
   gem "json_matchers"
   gem "json_schema"
   gem "oas_parser"
+  gem "selenium-webdriver"
   gem "shoulda"
   gem "vcr"
   gem "webmock"
