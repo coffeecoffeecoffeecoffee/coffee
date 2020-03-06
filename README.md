@@ -43,14 +43,6 @@ Endpoint: `https://api.coffeecoffeecoffee.coffee/graphql`
 
 ## Admin Instructions
 
-### Adding an Admin
-
-Admins must be manually added via the database. Here's a Rails console command:
-
-```ruby
-User.where(twitter: "jamescmartinez").first.update(admin: true)
-```
-
 ### Creating an Event
 
 1. Sign in
