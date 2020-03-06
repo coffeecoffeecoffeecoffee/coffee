@@ -27,7 +27,7 @@ FactoryBot.define do
     end
 
     trait :with_image do
-      image { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "image.png"), "image/png") }
+      image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/assets/image.png"), "image/png") }
     end
 
     factory :future_event do
@@ -56,7 +56,7 @@ FactoryBot.define do
     time_zone { "America/Los_Angeles" }
 
     trait :with_image do
-      image { Rack::Test::UploadedFile.new(Rails.root.join("spec", "support", "assets", "image.png"), "image/png") }
+      image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/assets/image.png"), "image/png") }
     end
   end
 

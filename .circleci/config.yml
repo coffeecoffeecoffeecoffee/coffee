@@ -13,7 +13,7 @@ jobs:
       - image: circleci/postgres:latest
         environment:
           POSTGRES_DB: coffee_test
-          POSTGRES_PASSWORD: ""
+          POSTGRES_HOST_AUTH_METHOD: trust
           POSTGRES_USER: circleci
     steps:
       - checkout
