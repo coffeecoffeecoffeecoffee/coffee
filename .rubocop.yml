@@ -6,6 +6,7 @@ require:
 AllCops:
   DisplayCopNames: true
   Exclude:
+    - "bin/**/*"
     - "db/schema.rb"
     - "node_modules/**/*"
 
