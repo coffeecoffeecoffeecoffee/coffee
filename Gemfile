@@ -2,11 +2,10 @@ source "https://rubygems.org"
 
 ruby "2.7.0"
 
-gem "activestorage-cloudinary-service"
 gem "administrate"
 gem "administrate-field-active_storage"
 gem "bootsnap", require: false
-gem "cloudinary", require: false
+gem "cloudinary"
 gem "factory_bot_rails"
 gem "friendly_id"
 gem "graphiql-rails", "~> 1.4.11"
