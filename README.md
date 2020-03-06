@@ -22,9 +22,9 @@ rspec
 
 ## Linting
 
-- `erblint --lint-all --autocorrect`
-- `eslint .`
-- `rubocop -Ra`
+```
+bin/lint
+```
 
 ## Deployment
 

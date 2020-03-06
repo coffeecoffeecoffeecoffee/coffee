@@ -1,0 +1,5 @@
+#!/usr/bin/env sh
+
+erblint --lint-all --autocorrect
+npm run lint -- --fix
+rubocop -a
