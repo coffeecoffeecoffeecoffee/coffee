@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   def index
-    @groups = Group.all
+    @groups = Group.active
   end
 
   def show

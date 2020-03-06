@@ -49,6 +49,11 @@ FactoryBot.define do
       start_at { Time.current.yesterday.yesterday }
       end_at { Time.current.yesterday }
     end
+
+    factory :inactive_event do
+      start_at { 32.days.ago }
+      end_at { 31.days.ago }
+    end
   end
 
   factory :group do

@@ -1,9 +1,10 @@
 require "rails_helper"
 
 describe "Group list" do
-  it "shows a list of all groups" do
-    coffee_group = create(:group, name: "Coffee")
-    beer_group = create(:group, name: "Beer")
+  it "shows a list of all active groups" do
+    create(:inactive_event)
+    coffee_group = create(:event, group: create(:group, name: "Coffee")).group
+    beer_group = create(:event, group: create(:group, name: "Beer")).group
 
     visit root_path
 
