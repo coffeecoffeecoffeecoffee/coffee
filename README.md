@@ -36,10 +36,9 @@ Deployment of the master branch to Heroku is done automatically after CI passes.
 
 ## API
 
-We use [GraphQL](https://graphql.org/) for our API.
+Endpoint: `https://coffeecoffeecoffee.coffee/api`
 
-GraphQL Explorer: `https://api.coffeecoffeecoffee.coffee/graphiql`
-Endpoint: `https://api.coffeecoffeecoffee.coffee/graphql`
+Documentation is available in `/docs`.
 
 ## Admin Instructions
 
