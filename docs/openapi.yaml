@@ -71,12 +71,15 @@ components:
         - id
         - name
         - image_url
+        - time_zone
       properties:
         id:
           type: string
         name:
           type: string
         image_url:
+          type: string
+        time_zone:
           type: string
     Location:
       type: object
