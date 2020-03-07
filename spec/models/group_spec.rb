@@ -18,6 +18,17 @@ RSpec.describe Group, type: :model do
     expect(group.slug).to eq("slug-group")
   end
 
+  describe ".active" do
+    it "returns only groups with events that ended in the last 30 days" do
+      create(:inactive_event)
+      create(:group) # group without events
+      active_group = create(:event).group
+
+      expect(Group.count).to eq(3)
+      expect(Group.active).to eq([active_group])
+    end
+  end
+
   describe ".with_member" do
     it "returns groups where the user is a member" do
       create(:group)
