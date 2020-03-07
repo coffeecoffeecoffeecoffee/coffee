@@ -13,7 +13,7 @@ class Group < ApplicationRecord
   validates :time_zone, presence: true
   validates :time_zone, inclusion: { in: ActiveSupport::TimeZone.all.map { |tz| tz.tzinfo.name } }
 
-  scope :active, -> { joins(:events).where("events.end_at >= ?", 30.days.ago) }
+  scope :active, -> { joins(:events).where("events.end_at >= ?", 30.days.ago).distinct }
 
   def self.with_member(user)
     Group.joins(:users).where(users: { id: user.id })

@@ -19,13 +19,16 @@ RSpec.describe Group, type: :model do
   end
 
   describe ".active" do
-    it "returns only groups with events that ended in the last 30 days" do
-      create(:inactive_event)
-      create(:group) # group without events
-      active_group = create(:event).group
+    it "returns distinct groups with events that ended in the last 30 days" do
+      inactive_group = create(:inactive_event).group
+      group_without_events = create(:group)
 
-      expect(Group.count).to eq(3)
-      expect(Group.active).to eq([active_group])
+      active_group = create(:group)
+      create_list(:event, 2, group: active_group)
+      other_active_groups = create_list(:event, 4).map(&:group)
+
+      expect(Group.active).not_to include(inactive_group, group_without_events)
+      expect(Group.active).to contain_exactly(active_group, *other_active_groups)
     end
   end
 
