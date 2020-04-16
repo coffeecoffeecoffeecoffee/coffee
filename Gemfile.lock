@@ -228,7 +228,7 @@ GEM
       omniauth-oauth (~> 1.1)
       rack
     parallel (1.19.1)
-    parser (2.7.0.5)
+    parser (2.7.1.1)
       ast (~> 2.4.0)
     pg (1.2.3)
     public_suffix (4.0.3)
@@ -292,7 +292,7 @@ GEM
       rspec-mocks (~> 3.9)
       rspec-support (~> 3.9)
     rspec-support (3.9.2)
-    rubocop (0.81.0)
+    rubocop (0.82.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
