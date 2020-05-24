@@ -78,7 +78,7 @@ describe "Group details" do
       group = create(:group, name: "Dogs are Awesome")
 
       visit group_path(group)
-      expect(page).to have_selector("title", text: "Dogs are Awesome | Coffee", visible: false)
+      expect(page).to have_selector("title", text: "Dogs are Awesome | Coffee", visible: :hidden)
     end
 
     describe "Open Graph" do
