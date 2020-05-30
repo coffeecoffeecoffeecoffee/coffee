@@ -69,7 +69,7 @@ GEM
       momentjs-rails (~> 2.8)
       sassc-rails (~> 2.1)
       selectize-rails (~> 0.6)
-    administrate-field-active_storage (0.3.3)
+    administrate-field-active_storage (0.3.4)
       administrate (>= 0.2.2)
       rails (>= 6.0)
     ast (2.4.0)
