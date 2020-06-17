@@ -16,5 +16,9 @@ jobs:
           bundler-cache: true
       - uses: actions/setup-node@v2-beta
       - run: bin/setup
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bundle exec rspec
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bin/lint
