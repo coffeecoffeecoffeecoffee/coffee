@@ -8,7 +8,12 @@ AllCops:
   Exclude:
     - "bin/**/*"
     - "db/schema.rb"
+    - "vendor/bundle/**/*"
     - "node_modules/**/*"
+  NewCops: enable
+
+Layout/LineLength:
+  Enabled: false
 
 Metrics/AbcSize:
   Enabled: false
@@ -17,9 +22,6 @@ Metrics/BlockLength:
   Exclude:
     - "**/*_spec.rb"
     - "spec/factories.rb"
-
-Metrics/LineLength:
-  Enabled: false
 
 Metrics/MethodLength:
   Enabled: false
