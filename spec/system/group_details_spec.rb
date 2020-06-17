@@ -85,14 +85,14 @@ describe "Group details" do
       it "has valid Open Graph tags" do
         group = create(:group)
         visit group_path(group)
-        expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Coffee"]', visible: false)
-        expect(page).to have_css('meta[property="og:type"][content="website"]', visible: false)
-        expect(page).to have_css("meta[property=\"og:url\"][content=\"http://127.0.0.1#{group_path(group)}\"]", visible: false)
-        expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Coffee."]', visible: false)
+        expect(page).to have_css('meta[property="og:title"][content="SF iOS Coffee | Coffee"]', visible: :hidden)
+        expect(page).to have_css('meta[property="og:type"][content="website"]', visible: :hidden)
+        expect(page).to have_css("meta[property=\"og:url\"][content=\"http://127.0.0.1#{group_path(group)}\"]", visible: :hidden)
+        expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Coffee."]', visible: :hidden)
 
         # I don't love testing this here (it only checks for Group Details
         # pages, for example) but it beats the alternative of not testing.
-        expect(page).to have_css("meta[name=\"apple-itunes-app\"][content=\"app-id=1458031604\"]", visible: false)
+        expect(page).to have_css("meta[name=\"apple-itunes-app\"][content=\"app-id=1458031604\"]", visible: :hidden)
       end
 
       context "when a group has a future event" do
@@ -101,7 +101,7 @@ describe "Group details" do
           create(:future_event, group: group)
           visit group_path(group)
           image_url = "https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg"
-          expect(page).to have_css("meta[property='og:image'][content='#{image_url}']", visible: false)
+          expect(page).to have_css("meta[property='og:image'][content='#{image_url}']", visible: :hidden)
         end
       end
 
@@ -109,7 +109,7 @@ describe "Group details" do
         it "shows the default image" do
           group = create(:group)
           visit group_path(group)
-          expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: false)
+          expect(page).to have_css('meta[property="og:image"][content="http://127.0.0.1/apple-touch-icon.png"]', visible: :hidden)
         end
       end
     end
