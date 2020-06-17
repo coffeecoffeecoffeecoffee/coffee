@@ -30,10 +30,6 @@ bin/lint
 
 Deployment of the master branch to Heroku is done automatically after CI passes.
 
-## Tasks
-
-`rake venues:hydrate` - Run hourly on :00 by Heroku Scheduler
-
 ## API
 
 Endpoint: `https://coffeecoffeecoffee.coffee/api`
