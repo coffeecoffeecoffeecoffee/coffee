@@ -20,12 +20,14 @@ jobs:
       - uses: actions/setup-node@v2-beta
       - run: bin/setup
         env:
+          PGHOST: localhost
           PGDATABASE: db
           PGUSER: user
           PGPASSWORD: password
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bundle exec rspec
         env:
+          PGHOST: localhost
           PGDATABASE: db
           PGUSER: user
           PGPASSWORD: password
