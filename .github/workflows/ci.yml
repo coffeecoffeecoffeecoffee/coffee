@@ -9,7 +9,7 @@ jobs:
         env:
           POSTGRES_DB: db
           POSTGRES_USER: user
-          POSTGRES_PASSWORD: ""
+          POSTGRES_PASSWORD: password
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v2
@@ -19,12 +19,16 @@ jobs:
       - uses: actions/setup-node@v2-beta
       - run: bin/setup
         env:
+          PGDATABASE: db
           PGHOST: localhost
           PGUSER: user
+          PGPASSWORD: password
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bundle exec rspec
         env:
+          PGDATABASE: db
           PGHOST: localhost
           PGUSER: user
+          PGPASSWORD: password
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
       - run: bin/lint
