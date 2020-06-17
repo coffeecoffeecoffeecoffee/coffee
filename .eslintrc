@@ -6,6 +6,9 @@
   "plugins": [
     "prettier"
   ],
+  "ignorePatterns": [
+    "vendor/bundle"
+  ],
   "env": {
     "browser": true
   },
