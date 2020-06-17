@@ -1,0 +1,20 @@
+name: CI
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: coffee_test
+          POSTGRES_USER: coffee
+    steps:
+      - uses: actions/checkout
+      - uses: ruby/setup-ruby
+        with:
+          bundler-cache: true
+      - uses: actions/setup-node
+      - run: bin/setup
+      - run: bundle exec rspec
+      - run: bin/lint
