@@ -1,7 +1,5 @@
 source "https://rubygems.org"
 
-ruby "2.7.1"
-
 gem "administrate"
 gem "administrate-field-active_storage"
 gem "bootsnap", require: false
