@@ -32,4 +32,6 @@ jobs:
           PGUSER: user
           PGPASSWORD: password
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
-      - run: bin/lint
+      - run: bundle exec rubocop
+      - run: bundle exec erblint --lint-all
+      - run: npm run lint
