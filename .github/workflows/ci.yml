@@ -10,11 +10,11 @@ jobs:
           POSTGRES_DB: coffee_test
           POSTGRES_USER: coffee
     steps:
-      - uses: actions/checkout
-      - uses: ruby/setup-ruby
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - uses: actions/setup-node
+      - uses: actions/setup-node@v2-beta
       - run: bin/setup
       - run: bundle exec rspec
       - run: bin/lint
