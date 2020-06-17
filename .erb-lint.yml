@@ -1,4 +1,4 @@
-glob: "**/*.html{+*,}.erb"
+glob: "app/**/*.html{+*,}.erb"
 Rubocop:
   enabled: true
   rubocop_config:
