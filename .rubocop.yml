@@ -5,12 +5,11 @@ require:
 
 AllCops:
   DisplayCopNames: true
+  NewCops: enable
   Exclude:
-    - "bin/**/*"
     - "db/schema.rb"
     - "vendor/bundle/**/*"
     - "node_modules/**/*"
-  NewCops: enable
 
 Layout/LineLength:
   Enabled: false
