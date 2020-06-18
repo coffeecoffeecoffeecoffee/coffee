@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :group
+  belongs_to :location, polymorphic: true
 
   has_one_attached :image
 

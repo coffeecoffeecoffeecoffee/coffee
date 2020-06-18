@@ -4,26 +4,12 @@ FactoryBot.define do
     end_at { Time.current }
     name { "The Mill" }
     group
-    foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
-    foursquare_venue_data do
-      # This data is copied from the VCR cassette :foursquare_venue_details
-      # It only copies the data we use. There's tons of other data in there.
-      {
-        id: "4feddd79d86cd6f22dc171a9",
-        name: "The Mill",
-        location: {
-          formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"],
-          lat: 37.77632881728594,
-          lng: -122.43802428245543
-        },
-        canonicalUrl: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9",
-        bestPhoto: {
-          prefix: "https://igx.4sqi.net/img/general/",
-          suffix: "/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg",
-          width: 612,
-          height: 612
-        }
-      }
+    with_location_foursquare_venue # default to :with_location_foursquare_venue trait
+    foursquare_venue_id { location.foursquare_id }
+    foursquare_venue_data { location.foursquare_data }
+
+    trait :with_location_foursquare_venue do
+      association :location, factory: :foursquare_venue
     end
 
     trait :with_image do
@@ -75,5 +61,29 @@ FactoryBot.define do
     email { "example@example.com" }
     twitter { "twitter" }
     admin { false }
+  end
+
+  factory :foursquare_venue do
+    foursquare_id { "4feddd79d86cd6f22dc171a9" }
+    foursquare_data do
+      # This data is copied from the VCR cassette :foursquare_venue_details
+      # It only copies the data we use. There's tons of other data in there.
+      {
+        id: "4feddd79d86cd6f22dc171a9",
+        name: "The Mill",
+        location: {
+          formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"],
+          lat: 37.77632881728594,
+          lng: -122.43802428245543
+        },
+        canonicalUrl: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9",
+        bestPhoto: {
+          prefix: "https://igx.4sqi.net/img/general/",
+          suffix: "/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg",
+          width: 612,
+          height: 612
+        }
+      }
+    end
   end
 end
