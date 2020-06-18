@@ -11,7 +11,7 @@ describe "Group list" do
     click_link "Groups"
 
     expect(page).to have_current_path(groups_path)
-    expect(page).not_to have_link("Inactive", href: group_path(inactive_group))
+    expect(page).to have_link("Inactive", href: group_path(inactive_group))
     expect(page).to have_link("Coffee", href: group_path(coffee_group))
     expect(page).to have_link("Beer", href: group_path(beer_group))
   end
