@@ -3,7 +3,6 @@
     <span class="logo">Coffee</span>
   <% end %>
   <div class="header__items">
-    <%= link_to('Get the app', 'https://itunes.apple.com/us/app/coffee-coffee-coffee/id1458031604?ls=1&mt=8') %>
     <%= link_to('Groups', groups_path) %>
     <% if current_user %>
       <%= image_tag(current_user.image_url, class: 'header__avatar') %>

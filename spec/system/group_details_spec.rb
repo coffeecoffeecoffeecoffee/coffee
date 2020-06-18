@@ -89,10 +89,6 @@ describe "Group details" do
         expect(page).to have_css('meta[property="og:type"][content="website"]', visible: :hidden)
         expect(page).to have_css("meta[property=\"og:url\"][content=\"http://127.0.0.1#{group_path(group)}\"]", visible: :hidden)
         expect(page).to have_css('meta[property="og:description"][content="SF iOS Coffee is hosting their events on Coffee."]', visible: :hidden)
-
-        # I don't love testing this here (it only checks for Group Details
-        # pages, for example) but it beats the alternative of not testing.
-        expect(page).to have_css("meta[name=\"apple-itunes-app\"][content=\"app-id=1458031604\"]", visible: :hidden)
       end
 
       context "when a group has a future event" do
