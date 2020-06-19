@@ -44,6 +44,7 @@ components:
         - name
         - image_url
         - venue
+        - venue_v2
         - start_at
         - end_at
       properties:
@@ -56,9 +57,11 @@ components:
         image_url:
           type: string
         venue:
-          $ref: "#/components/schemas/Venue"
+          $ref: "#/components/schemas/DeprecatedVenue"
         venue_url:
           type: string
+        venue_v2:
+          $ref: "#/components/schemas/VenueV2"
         start_at:
           type: string
           format: date-time
@@ -81,6 +84,35 @@ components:
           type: string
         time_zone:
           type: string
+    VenueV2:
+      oneOf:
+        - $ref: "#/components/schemas/PhysicalVenue"
+        - $ref: "#/components/schemas/RemoteVenue"
+      discriminator:
+        propertyName: type
+        mapping:
+          physical_venue: "#/components/schemas/PhysicalVenue"
+          remote_venue: "#/components/schemas/RemoteVenue"
+    PhysicalVenue:
+      type: object
+      required:
+        - type
+        - location
+      properties:
+        type:
+          type: string
+        location:
+          $ref: "#/components/schemas/Location"
+    RemoteVenue:
+      type: object
+      required:
+        - type
+        - url
+      properties:
+        type:
+          type: string
+        url:
+          type: string
     Location:
       type: object
       required:
@@ -94,7 +126,10 @@ components:
           type: number
         longitude:
           type: number
-    Venue:
+#
+# Deprecated
+#
+    DeprecatedVenue:
       type: object
       required:
         - name

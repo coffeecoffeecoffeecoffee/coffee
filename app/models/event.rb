@@ -38,6 +38,10 @@ class Event < ApplicationRecord
     start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")
   end
 
+  def location_type_with_underscores
+    location_type.underscore
+  end
+
   private
 
   def end_at_cannot_be_before_start_at

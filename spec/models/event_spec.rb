@@ -141,6 +141,14 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe "#location_type_with_underscores" do
+    it "returns the location_type formatted using underscores" do
+      event = build(:event)
+      expect(event.location_type).to eq("PhysicalVenue")
+      expect(event.location_type_with_underscores).to eq("physical_venue")
+    end
+  end
+
   describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
     context "when the record is brand new" do
       it "fetches new foursquare_venue_data" do
