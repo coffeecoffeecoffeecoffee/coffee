@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_212550) do
+ActiveRecord::Schema.define(version: 2020_06_19_024722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -51,14 +51,6 @@ ActiveRecord::Schema.define(version: 2020_06_18_212550) do
     t.index ["location_id", "location_type"], name: "index_events_on_location_id_and_location_type"
   end
 
-  create_table "foursquare_venues", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "foursquare_id", null: false
-    t.jsonb "foursquare_data"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["foursquare_id"], name: "index_foursquare_venues_on_foursquare_id"
-  end
-
   create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -75,6 +67,14 @@ ActiveRecord::Schema.define(version: 2020_06_18_212550) do
     t.uuid "user_id", null: false
     t.index ["group_id"], name: "index_memberships_on_group_id"
     t.index ["user_id"], name: "index_memberships_on_user_id"
+  end
+
+  create_table "physical_venues", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "foursquare_id", null: false
+    t.jsonb "foursquare_data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["foursquare_id"], name: "index_physical_venues_on_foursquare_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

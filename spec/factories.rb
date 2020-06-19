@@ -4,12 +4,12 @@ FactoryBot.define do
     end_at { Time.current }
     name { "The Mill" }
     group
-    with_location_foursquare_venue # default to :with_location_foursquare_venue trait
+    with_physical_venue # default to :with_physical_venue trait
     foursquare_venue_id { location.foursquare_id }
     foursquare_venue_data { location.foursquare_data }
 
-    trait :with_location_foursquare_venue do
-      association :location, factory: :foursquare_venue
+    trait :with_physical_venue do
+      association :location, factory: :physical_venue
     end
 
     trait :with_image do
@@ -63,7 +63,7 @@ FactoryBot.define do
     admin { false }
   end
 
-  factory :foursquare_venue do
+  factory :physical_venue do
     foursquare_id { "4feddd79d86cd6f22dc171a9" }
     foursquare_data do
       # This data is copied from the VCR cassette :foursquare_venue_details
