@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe EventVenueHydrator do
+describe FoursquareVenueHydrator do
   describe ".run" do
     it "hydrates the event venue", vcr: { cassette_name: :foursquare_venue_details } do
       event = build(:event, foursquare_venue_data: nil)
