@@ -1,9 +1,9 @@
 require "rails_helper"
 
-RSpec.describe Venue, type: :model do
+RSpec.describe FoursquareVenue, type: :model do
   let(:venue) do
     foursquare_venue = build(:event).foursquare_venue_data
-    Venue.new(foursquare_venue)
+    FoursquareVenue.new(foursquare_venue)
   end
 
   describe "#name" do

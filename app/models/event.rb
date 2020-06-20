@@ -20,7 +20,7 @@ class Event < ApplicationRecord
   before_save :ensure_updated_foursquare_venue_data
 
   def venue
-    Venue.new(foursquare_venue_data)
+    FoursquareVenue.new(foursquare_venue_data)
   end
 
   def image_url

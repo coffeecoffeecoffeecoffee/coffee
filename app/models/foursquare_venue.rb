@@ -1,4 +1,4 @@
-class Venue
+class FoursquareVenue
   def initialize(foursquare_venue)
     @foursquare_venue = {}
     return if foursquare_venue.nil?
