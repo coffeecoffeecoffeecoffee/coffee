@@ -1,4 +1,4 @@
-class EventVenueHydrator
+class FoursquareVenueHydrator
   include HTTParty
 
   base_uri "https://api.foursquare.com/v2"

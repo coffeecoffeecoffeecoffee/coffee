@@ -45,13 +45,13 @@ class Event < ApplicationRecord
 
   def ensure_updated_foursquare_venue_data
     if new_record?
-      EventVenueHydrator.run(self)
+      FoursquareVenueHydrator.run(self)
       return
     end
 
     return unless foursquare_venue_id_changed?
 
     self.foursquare_venue_data = nil
-    EventVenueHydrator.run(self)
+    FoursquareVenueHydrator.run(self)
   end
 end
