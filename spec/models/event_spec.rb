@@ -125,14 +125,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe "#venue_url" do
-    it "returns the venue's url" do
-      event = build(:event)
-
-      expect(event.venue_url).to eq("https://foursquare.com/v/#{event.foursquare_venue_id}")
-    end
-  end
-
   describe "#formatted_local_time" do
     it "returns the formatted time in the group time zone" do
       event = build(:event, start_at: Time.parse("2017-12-13T16:30:00Z").utc)

@@ -28,10 +28,6 @@ class Event < ApplicationRecord
     venue.image_url
   end
 
-  def venue_url
-    "https://foursquare.com/v/#{foursquare_venue_id}"
-  end
-
   def formatted_local_time
     start_at_local = start_at.in_time_zone(group.time_zone)
     start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")

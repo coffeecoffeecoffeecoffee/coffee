@@ -12,6 +12,12 @@ RSpec.describe FoursquareVenue, type: :model do
     end
   end
 
+  describe "#url" do
+    it "returns the venue's url" do
+      expect(foursquare_venue.url).to eq("https://foursquare.com/v/4feddd79d86cd6f22dc171a9")
+    end
+  end
+
   describe "#image_url" do
     it "returns the image URL from foursquare data" do
       expect(foursquare_venue.image_url).to eq("https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg")

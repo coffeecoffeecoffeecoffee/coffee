@@ -57,8 +57,6 @@ components:
           type: string
         venue:
           $ref: "#/components/schemas/Venue"
-        venue_url:
-          type: string
         start_at:
           type: string
           format: date-time

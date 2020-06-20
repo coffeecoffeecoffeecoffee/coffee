@@ -10,6 +10,10 @@ class FoursquareVenue
     @foursquare_data[:name]
   end
 
+  def url
+    "https://foursquare.com/v/#{@foursquare_data[:id]}"
+  end
+
   def image_url
     photo = @foursquare_data[:bestPhoto]
     return nil if photo.nil?
