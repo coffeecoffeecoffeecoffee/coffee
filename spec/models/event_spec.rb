@@ -7,7 +7,6 @@ RSpec.describe Event, type: :model do
   it { is_expected.to validate_presence_of(:end_at) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:group) }
-  it { is_expected.to validate_presence_of(:foursquare_venue_id) }
 
   describe "validate" do
     describe "#end_at_cannot_be_before_start_at" do

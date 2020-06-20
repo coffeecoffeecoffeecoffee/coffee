@@ -43,7 +43,6 @@ components:
         - group_id
         - name
         - image_url
-        - venue
         - start_at
         - end_at
       properties:
