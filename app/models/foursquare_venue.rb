@@ -1,17 +1,17 @@
-class Venue
-  def initialize(foursquare_venue)
-    @foursquare_venue = {}
-    return if foursquare_venue.nil?
+class FoursquareVenue
+  def initialize(foursquare_data)
+    @foursquare_data = {}
+    return if foursquare_data.nil?
 
-    @foursquare_venue = foursquare_venue.symbolize_keys
+    @foursquare_data = foursquare_data.symbolize_keys
   end
 
   def name
-    @foursquare_venue[:name]
+    @foursquare_data[:name]
   end
 
   def image_url
-    photo = @foursquare_venue[:bestPhoto]
+    photo = @foursquare_data[:bestPhoto]
     return nil if photo.nil?
 
     photo.symbolize_keys!
@@ -36,7 +36,7 @@ class Venue
   private
 
   def location
-    location = @foursquare_venue[:location]
+    location = @foursquare_data[:location]
     return {} if location.nil?
 
     location.symbolize_keys
