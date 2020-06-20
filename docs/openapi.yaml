@@ -42,7 +42,6 @@ components:
         - id
         - group_id
         - name
-        - image_url
         - start_at
         - end_at
       properties:
@@ -69,7 +68,6 @@ components:
       required:
         - id
         - name
-        - image_url
         - time_zone
       properties:
         id:

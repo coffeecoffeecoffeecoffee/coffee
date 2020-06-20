@@ -6,11 +6,11 @@ describe "Group details" do
       start_at = Time.parse("2017-12-13T16:30:00Z").utc
       allow(Time).to receive(:now).and_return(start_at)
       group = create(:group)
-      create(:future_event,
+      create(:future_event, :with_foursquare_venue,
              name: "Created First, Happens Second",
              group: group,
              start_at: start_at + 1.day)
-      create(:future_event,
+      create(:future_event, :with_foursquare_venue,
              name: "Created Second, Happens First",
              group: group,
              start_at: start_at)
@@ -94,7 +94,7 @@ describe "Group details" do
       context "when a group has a future event" do
         it "shows the first future event image", vcr: { cassette_name: :foursquare_venue_details } do
           group = create(:group)
-          create(:future_event, group: group)
+          create(:future_event, :with_foursquare_venue, group: group)
           visit group_path(group)
           image_url = "https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg"
           expect(page).to have_css("meta[property='og:image'][content='#{image_url}']", visible: :hidden)

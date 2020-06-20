@@ -4,26 +4,33 @@ FactoryBot.define do
     end_at { Time.current }
     name { "The Mill" }
     group
-    foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
-    foursquare_venue_data do
-      # This data is copied from the VCR cassette :foursquare_venue_details
-      # It only copies the data we use. There's tons of other data in there.
-      {
-        id: "4feddd79d86cd6f22dc171a9",
-        name: "The Mill",
-        location: {
-          formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"],
-          lat: 37.77632881728594,
-          lng: -122.43802428245543
-        },
-        canonicalUrl: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9",
-        bestPhoto: {
-          prefix: "https://igx.4sqi.net/img/general/",
-          suffix: "/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg",
-          width: 612,
-          height: 612
+
+    trait :with_online_venue do
+      online_venue_url { "https://meet.google.com/coffeecoffeecoffeecoffee" }
+    end
+
+    trait :with_foursquare_venue do
+      foursquare_venue_id { "4feddd79d86cd6f22dc171a9" }
+      foursquare_venue_data do
+        # This data is copied from the VCR cassette :foursquare_venue_details
+        # It only copies the data we use. There's tons of other data in there.
+        {
+          id: "4feddd79d86cd6f22dc171a9",
+          name: "The Mill",
+          location: {
+            formattedAddress: ["736 Divisadero St (btwn Grove St & Fulton St)", "San Francisco, CA 94117", "United States"],
+            lat: 37.77632881728594,
+            lng: -122.43802428245543
+          },
+          canonicalUrl: "https://foursquare.com/v/the-mill/4feddd79d86cd6f22dc171a9",
+          bestPhoto: {
+            prefix: "https://igx.4sqi.net/img/general/",
+            suffix: "/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg",
+            width: 612,
+            height: 612
+          }
         }
-      }
+      end
     end
 
     trait :with_image do

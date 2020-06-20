@@ -77,7 +77,7 @@ RSpec.describe Event, type: :model do
   describe "#venue" do
     context "when foursquare venue details exist" do
       it "returns a venue" do
-        event = build(:event)
+        event = build(:event, :with_foursquare_venue)
 
         expect(event.foursquare_venue_data).not_to be_nil
 
@@ -89,7 +89,7 @@ RSpec.describe Event, type: :model do
 
     context "when foursquare venue data does not exist" do
       it "returns an empty venue" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event)
 
         venue = event.venue
         expect(venue).not_to be_nil
@@ -111,13 +111,13 @@ RSpec.describe Event, type: :model do
 
     context "when an image does not exist" do
       it "falls back to the venue image if one exists" do
-        event = build(:event)
+        event = build(:event, :with_foursquare_venue)
 
         expect(event.image_url).to eq("https://igx.4sqi.net/img/general/612x612/403777_tR60tUZMVoJ5Q5ylr8hQnp0pgZTy5BOQLqydzAoHWiA.jpg")
       end
 
       it "returns nil if a veune image does not exist" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event)
 
         expect(event.image_url).to be_nil
       end
@@ -134,7 +134,7 @@ RSpec.describe Event, type: :model do
   describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
     context "when the record is brand new" do
       it "fetches new foursquare_venue_data" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event, :with_foursquare_venue, foursquare_venue_data: nil)
 
         expect(event.foursquare_venue_data).to be_nil
         event.save
@@ -144,7 +144,7 @@ RSpec.describe Event, type: :model do
 
     context "when the record already exists and the foursquare_venue_id changes" do
       it "deletes existing foursquare_venue_data" do
-        event = create(:event)
+        event = create(:event, :with_foursquare_venue)
 
         expect(event.foursquare_venue_data).not_to be_nil
         # Set to 123 here to prevent from being able to fetch real Foursquare data

@@ -5,7 +5,7 @@ describe GroupCalendarCreator do
     it "creates an ical with all events", vcr: { cassette_name: :foursquare_venue_details, allow_playback_repeats: true } do
       group = create(:group)
       create_list(:future_event, 3, group: group)
-      last_event = create(:event, group: group, name: "Coffup")
+      last_event = create(:event, :with_foursquare_venue, group: group, name: "Coffup")
 
       ical = described_class.new(group).to_ical
       calendar = Icalendar::Calendar.parse(ical).first
@@ -28,7 +28,7 @@ describe GroupCalendarCreator do
 
     it "creates an ical with all events even when venue is not hydrated" do
       group = create(:group)
-      create_list(:future_event, 3, group: group, foursquare_venue_data: nil)
+      create_list(:future_event, 3, group: group)
 
       ical = described_class.new(group).to_ical
 

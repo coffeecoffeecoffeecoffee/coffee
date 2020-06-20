@@ -11,8 +11,14 @@ class GroupCalendarCreator
     calendar.append_custom_property("X-WR-CALNAME", @group.name)
 
     events.each do |event|
+      # TODO: This is intentionally untested and will be cleaned up when we
+      # better handle the multiple venue types getting displayed through
+      # an event (e.g. P/VM-style vs M)
+      summary = "#{@group.name}"
+      summary = "#{@group.name} at #{event.venue.name}" unless event.foursquare_venue_id.nil?
+
       calendar_event = Icalendar::Event.new
-      calendar_event.summary = "#{@group.name} at #{event.venue.name}"
+      calendar_event.summary = summary
       calendar_event.description = event.name
       calendar_event.dtstart = Icalendar::Values::DateOrDateTime.new(event.start_at, tzid: event.start_at.zone).call
       calendar_event.dtend = Icalendar::Values::DateOrDateTime.new(event.end_at, tzid: event.end_at.zone).call
