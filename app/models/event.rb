@@ -20,7 +20,7 @@ class Event < ApplicationRecord
   before_save :ensure_updated_foursquare_venue_data
 
   def foursquare_venue
-    FoursquareVenue.new(foursquare_venue_data)
+    FoursquareVenue.new(location.foursquare_data)
   end
 
   def image_url
@@ -50,13 +50,15 @@ class Event < ApplicationRecord
 
   def ensure_updated_foursquare_venue_data
     if new_record?
-      FoursquareVenueHydrator.run(self)
+      FoursquareVenueHydrator.run(location)
       return
     end
 
-    return unless foursquare_venue_id_changed?
+    return unless location.changed?
 
-    self.foursquare_venue_data = nil
-    FoursquareVenueHydrator.run(self)
+    print("SUP")
+
+    location.update!(foursquare_data: nil)
+    FoursquareVenueHydrator.run(location)
   end
 end

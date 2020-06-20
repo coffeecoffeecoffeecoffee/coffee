@@ -28,7 +28,7 @@ describe GroupCalendarCreator do
 
     it "creates an ical with all events even when venue is not hydrated" do
       group = create(:group)
-      create_list(:future_event, 3, group: group, foursquare_venue_data: nil)
+      create_list(:future_event, 3, :with_nil_physical_venue_data, group: group)
 
       ical = described_class.new(group).to_ical
 

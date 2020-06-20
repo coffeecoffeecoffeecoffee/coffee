@@ -12,6 +12,10 @@ FactoryBot.define do
       association :location, factory: :physical_venue
     end
 
+    trait :with_nil_physical_venue_data do
+      association :location, factory: :physical_venue, foursquare_data: nil
+    end
+
     trait :with_image do
       image { Rack::Test::UploadedFile.new(Rails.root.join("spec/support/assets/image.png"), "image/png") }
     end

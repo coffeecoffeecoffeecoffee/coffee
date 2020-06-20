@@ -91,7 +91,7 @@ RSpec.describe Event, type: :model do
 
     context "when foursquare venue data does not exist" do
       it "returns an empty venue" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event, :with_nil_physical_venue_data)
 
         venue = event.foursquare_venue
         expect(venue).not_to be_nil
@@ -119,7 +119,7 @@ RSpec.describe Event, type: :model do
       end
 
       it "returns nil if a veune image does not exist" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event, :with_nil_physical_venue_data)
 
         expect(event.image_url).to be_nil
       end
@@ -152,33 +152,40 @@ RSpec.describe Event, type: :model do
   describe "#ensure_updated_foursquare_venue_data", vcr: { cassette_name: :foursquare_venue_details } do
     context "when the record is brand new" do
       it "fetches new foursquare_venue_data" do
-        event = build(:event, foursquare_venue_data: nil)
+        event = build(:event, :with_nil_physical_venue_data)
 
-        expect(event.foursquare_venue_data).to be_nil
+        expect(event.location.foursquare_data).to be_nil
         event.save
-        expect(event.foursquare_venue_data).not_to be_nil
+        expect(event.location.foursquare_data).not_to be_nil
       end
     end
 
+    # finish rewriting these two
     context "when the record already exists and the foursquare_venue_id changes" do
       it "deletes existing foursquare_venue_data" do
-        event = create(:event)
-
-        expect(event.foursquare_venue_data).not_to be_nil
-        # Set to 123 here to prevent from being able to fetch real Foursquare data
-        event.update(foursquare_venue_id: "123")
-        event.save
-        expect(event.foursquare_venue_data).to be_nil
       end
 
-      it "fetches new foursquare_venue_data " do
-        event = create(:event, foursquare_venue_data: {})
-
-        expect(event.foursquare_venue_data).not_to be_nil
-        event.update(foursquare_venue_id: "4feddd79d86cd6f22dc171a9")
-        event.save
-        expect(event.foursquare_venue_data).not_to eq({})
+      it "fetches new foursquare_venue_data" do
       end
+
+      # it "deletes existing foursquare_venue_data" do
+      #   event = create(:event)
+
+      #   expect(event.location.foursquare_data).not_to be_nil
+      #   # Set to 123 here to prevent from being able to fetch real Foursquare data
+      #   event.update_location(foursquare_id: "123")
+      #   event.save
+      #   expect(event.location.foursquare_data).to be_nil
+      # end
+
+      # it "fetches new foursquare_venue_data " do
+      #   event = create(:event, :with_nil_physical_venue_data)
+
+      #   expect(event.location.foursquare_data).to eq({})
+      #   event.update_location(foursquare_id: "4feddd79d86cd6f22dc171a9")
+      #   event.save
+      #   expect(event.location.foursquare_data).not_to eq({})
+      # end
     end
   end
 end

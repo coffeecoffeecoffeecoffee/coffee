@@ -3,18 +3,18 @@ class FoursquareVenueHydrator
 
   base_uri "https://api.foursquare.com/v2"
 
-  def self.run(event)
-    new(event).hydrate_venue
+  def self.run(location)
+    new(location).hydrate_venue
   end
 
-  def initialize(event)
-    @event = event
+  def initialize(location)
+    @location = location
   end
 
   def hydrate_venue
-    response = self.class.get("/venues/#{@event.foursquare_venue_id}", query: auth)
+    response = self.class.get("/venues/#{@location.foursquare_id}", query: auth)
     body = JSON.parse(response.body, symbolize_names: true)
-    @event.foursquare_venue_data = body[:response][:venue]
+    @location.foursquare_data = body[:response][:venue]
   rescue StandardError
     nil
   end
