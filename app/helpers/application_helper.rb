@@ -12,6 +12,6 @@ module ApplicationHelper
   def image_url_for_event(event)
     return (request.base_url + "/apple-touch-icon.png") unless event
 
-    event.venue.image_url
+    event.foursquare_venue.image_url
   end
 end

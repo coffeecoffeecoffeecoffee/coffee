@@ -19,17 +19,17 @@ class Event < ApplicationRecord
 
   before_save :ensure_updated_foursquare_venue_data
 
-  def venue
+  def foursquare_venue
     FoursquareVenue.new(foursquare_venue_data)
   end
 
   def image_url
     return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
 
-    venue.image_url
+    foursquare_venue.image_url
   end
 
-  def venue_url
+  def foursquare_venue_url
     "https://foursquare.com/v/#{foursquare_venue_id}"
   end
 

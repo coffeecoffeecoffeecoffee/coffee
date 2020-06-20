@@ -83,7 +83,7 @@ RSpec.describe Event, type: :model do
 
         expect(event.foursquare_venue_data).not_to be_nil
 
-        venue = event.venue
+        venue = event.foursquare_venue
         expect(venue).not_to be_nil
         expect(venue.name).to eq("The Mill")
       end
@@ -93,7 +93,7 @@ RSpec.describe Event, type: :model do
       it "returns an empty venue" do
         event = build(:event, foursquare_venue_data: nil)
 
-        venue = event.venue
+        venue = event.foursquare_venue
         expect(venue).not_to be_nil
         expect(venue.name).to be_nil
       end
@@ -130,7 +130,7 @@ RSpec.describe Event, type: :model do
     it "returns the venue's url" do
       event = build(:event)
 
-      expect(event.venue_url).to eq("https://foursquare.com/v/#{event.foursquare_venue_id}")
+      expect(event.foursquare_venue_url).to eq("https://foursquare.com/v/#{event.foursquare_venue_id}")
     end
   end
 
