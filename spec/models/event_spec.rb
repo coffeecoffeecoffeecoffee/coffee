@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.describe Event, type: :model do
   it { is_expected.to belong_to(:group).optional }
-  it { is_expected.to belong_to(:host).class_name("User").inverse_of(:hosted_events).optional }
+  it { is_expected.to belong_to(:host).class_name("User").inverse_of(:hosted_events) }
 
   it { is_expected.to validate_presence_of(:start_at) }
   it { is_expected.to validate_presence_of(:end_at) }
   it { is_expected.to validate_presence_of(:name) }
+  it { is_expected.to validate_presence_of(:host) }
 
   describe "validate" do
     describe "#end_at_cannot_be_before_start_at" do

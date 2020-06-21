@@ -1,12 +1,13 @@
 class Event < ApplicationRecord
   belongs_to :group, optional: true
-  belongs_to :host, class_name: "User", inverse_of: :hosted_events, optional: true
+  belongs_to :host, class_name: "User", inverse_of: :hosted_events
 
   has_one_attached :image
 
   validates :start_at, presence: true
   validates :end_at, presence: true
   validates :name, presence: true
+  validates :host, presence: true
   validate :end_at_cannot_be_before_start_at
 
   scope :future_or_now, -> { where("end_at >= ?", Time.current).order(:start_at) }

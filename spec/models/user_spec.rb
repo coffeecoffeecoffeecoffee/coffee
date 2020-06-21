@@ -43,7 +43,7 @@ RSpec.describe User, type: :model do
       it "updates the user" do
         existing_user = create(:user)
         new_name = "New Name"
-        user = build(:user, name: new_name)
+        user = build(:user, email: existing_user.email, name: new_name)
         auth = twitter_auth_hash_for_user(user)
         User.find_or_create_with_omniauth(auth)
         expect(User.find(existing_user.id).name).to eq(new_name)

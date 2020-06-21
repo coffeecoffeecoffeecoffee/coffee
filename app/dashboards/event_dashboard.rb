@@ -11,7 +11,8 @@ class EventDashboard < Administrate::BaseDashboard
     group: Field::BelongsTo,
     foursquare_venue_id: Field::String,
     online_venue_url: Field::String,
-    image: Field::ActiveStorage
+    image: Field::ActiveStorage,
+    host: Field::BelongsTo.with_options(class_name: "User")
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
@@ -42,5 +43,6 @@ class EventDashboard < Administrate::BaseDashboard
     foursquare_venue_id
     online_venue_url
     image
+    host
   ].freeze
 end

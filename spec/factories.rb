@@ -3,6 +3,7 @@ FactoryBot.define do
     start_at { Time.current }
     end_at { Time.current }
     name { "The Mill" }
+    host  { create(:user) }
 
     trait :with_group do
       group
@@ -82,7 +83,7 @@ FactoryBot.define do
 
   factory :user do
     name { "Some Human" }
-    email { "example@example.com" }
+    sequence(:email) { |n| "email-#{n}@example.com" }
     twitter { "twitter" }
     admin { false }
   end
