@@ -2,9 +2,10 @@ require "administrate/base_dashboard"
 
 class MembershipDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
-    user: Field::BelongsTo,
-    group: Field::BelongsTo,
     id: Field::String.with_options(searchable: false),
+    group: Field::BelongsTo,
+    user: Field::BelongsTo,
+    admin: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime
   }.freeze
@@ -12,18 +13,21 @@ class MembershipDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
     group
     user
+    admin
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = %i[
     id
-    user
     group
+    user
+    admin
     created_at
     updated_at
   ].freeze
 
   FORM_ATTRIBUTES = %i[
-    user
     group
+    user
+    admin
   ].freeze
 end

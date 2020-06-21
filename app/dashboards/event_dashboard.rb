@@ -25,6 +25,7 @@ class EventDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
     id
     group
+    host
     start_at
     end_at
     name
@@ -37,12 +38,12 @@ class EventDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = %i[
     group
+    host
     start_at
     end_at
     name
     foursquare_venue_id
     online_venue_url
     image
-    host
   ].freeze
 end

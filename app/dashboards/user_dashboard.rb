@@ -9,8 +9,7 @@ class UserDashboard < Administrate::BaseDashboard
     email: Field::String,
     twitter: Field::String,
     created_at: Field::DateTime,
-    updated_at: Field::DateTime,
-    admin: Field::Boolean
+    updated_at: Field::DateTime
   }.freeze
 
   COLLECTION_ATTRIBUTES = %i[
@@ -28,7 +27,6 @@ class UserDashboard < Administrate::BaseDashboard
     twitter
     created_at
     updated_at
-    admin
   ].freeze
 
   FORM_ATTRIBUTES = %i[
@@ -37,7 +35,6 @@ class UserDashboard < Administrate::BaseDashboard
     name
     email
     twitter
-    admin
   ].freeze
 
   def display_resource(user)
