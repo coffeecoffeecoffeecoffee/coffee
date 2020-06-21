@@ -5,6 +5,7 @@ RSpec.describe User, type: :model do
 
   it { is_expected.to have_many(:memberships).dependent(:destroy) }
   it { is_expected.to have_many(:groups).through(:memberships) }
+  it { is_expected.to have_many(:hosted_events).class_name("Event").with_foreign_key("host_id").inverse_of(:host).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:email) }

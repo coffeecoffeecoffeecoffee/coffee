@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
+  has_many :hosted_events, class_name: "Event", foreign_key: :host_id, inverse_of: :host, dependent: :destroy
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, case_sensitive: false

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_053001) do
+ActiveRecord::Schema.define(version: 2020_06_21_172608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 2020_06_21_053001) do
     t.string "foursquare_venue_id"
     t.jsonb "foursquare_venue_data"
     t.string "online_venue_url"
+    t.uuid "host_id"
     t.index ["group_id"], name: "index_events_on_group_id"
+    t.index ["host_id"], name: "index_events_on_host_id"
   end
 
   create_table "groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -79,6 +81,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_053001) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "events", "groups"
+  add_foreign_key "events", "users", column: "host_id"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
 end

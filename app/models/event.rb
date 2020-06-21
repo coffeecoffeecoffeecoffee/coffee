@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :group, optional: true
+  belongs_to :host, class_name: "User", inverse_of: :hosted_events, optional: true
 
   has_one_attached :image
 
