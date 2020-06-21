@@ -26,13 +26,47 @@ describe GroupCalendarCreator do
       expect(calendar_event.x_apple_structured_location.first).to eq(calendar_event.location)
     end
 
-    it "creates an ical with all events even when venue is not hydrated" do
-      group = create(:group)
-      create_list(:future_event, 3, group: group)
+    context "with hydrated venue" do
+      it "creates an ical with all events" do
+        event = create(:event, :with_group, :with_foursquare_venue)
+        calendar = calendar_for_group(event.group)
+        calendar_event = calendar.events.last
 
-      ical = described_class.new(group).to_ical
-
-      expect(ical).not_to be_nil
+        expect(calendar_event.summary).to eq("SF iOS Coffee at The Mill")
+        expect(calendar_event.location).to eq("736 Divisadero St (btwn Grove St & Fulton St), San Francisco, CA 94117, United States")
+        expect(calendar_event.url.to_s).to eq("https://foursquare.com/v/4feddd79d86cd6f22dc171a9")
+      end
     end
+
+    context "with nil venue" do
+      it "creates an ical with all events" do
+        event = create(:event, :with_group)
+        calendar = calendar_for_group(event.group)
+        calendar_event = calendar.events.last
+
+        expect(calendar_event.summary).to eq("SF iOS Coffee")
+        expect(calendar_event.location).to be_nil
+        expect(calendar_event.url).to be_nil
+        expect(calendar_event.x_apple_structured_location.first).to be_nil
+      end
+    end
+
+    context "with online venue" do
+      it "creates an ical with all events" do
+        event = create(:event, :with_group, :with_online_venue)
+        calendar = calendar_for_group(event.group)
+        calendar_event = calendar.events.last
+
+        expect(calendar_event.summary).to eq("SF iOS Coffee")
+        expect(calendar_event.location).to eq("https://meet.google.com/coffeecoffeecoffeecoffee")
+        expect(calendar_event.url.to_s).to eq("https://meet.google.com/coffeecoffeecoffeecoffee")
+        expect(calendar_event.x_apple_structured_location.first).to be_nil
+      end
+    end
+  end
+
+  def calendar_for_group(group)
+    ical = described_class.new(group).to_ical
+    Icalendar::Calendar.parse(ical).first
   end
 end
