@@ -4,7 +4,7 @@ RSpec.describe "Groups", type: :request do
   describe "GET /groups" do
     it "returns a list of active groups" do
       create(:inactive_event)
-      create_list(:event, 2)
+      create_list(:event, 2, :with_group)
 
       get api_groups_url
 

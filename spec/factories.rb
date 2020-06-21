@@ -3,7 +3,10 @@ FactoryBot.define do
     start_at { Time.current }
     end_at { Time.current }
     name { "The Mill" }
-    group
+
+    trait :with_group do
+      group
+    end
 
     trait :with_online_venue do
       online_venue_url { "https://meet.google.com/coffeecoffeecoffeecoffee" }

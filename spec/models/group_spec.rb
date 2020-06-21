@@ -25,7 +25,7 @@ RSpec.describe Group, type: :model do
 
       active_group = create(:group)
       create_list(:event, 2, group: active_group)
-      other_active_groups = create_list(:event, 4).map(&:group)
+      other_active_groups = create_list(:event, 4, :with_group).map(&:group)
 
       expect(Group.active).not_to include(inactive_group, group_without_events)
       expect(Group.active).to contain_exactly(active_group, *other_active_groups)

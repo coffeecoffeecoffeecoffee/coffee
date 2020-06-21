@@ -1,12 +1,11 @@
 require "rails_helper"
 
 RSpec.describe Event, type: :model do
-  it { is_expected.to belong_to(:group) }
+  it { is_expected.to belong_to(:group).optional }
 
   it { is_expected.to validate_presence_of(:start_at) }
   it { is_expected.to validate_presence_of(:end_at) }
   it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_presence_of(:group) }
 
   describe "validate" do
     describe "#end_at_cannot_be_before_start_at" do
@@ -126,7 +125,7 @@ RSpec.describe Event, type: :model do
 
   describe "#formatted_local_time" do
     it "returns the formatted time in the group time zone" do
-      event = build(:event, start_at: Time.parse("2017-12-13T16:30:00Z").utc)
+      event = build(:event, :with_group, start_at: Time.parse("2017-12-13T16:30:00Z").utc)
       expect(event.formatted_local_time).to eq("Wednesday, December 13, 2017, 8:30 AM")
     end
   end
