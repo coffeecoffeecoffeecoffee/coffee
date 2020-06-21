@@ -85,6 +85,5 @@ FactoryBot.define do
     name { "Some Human" }
     sequence(:email) { |n| "email-#{n}@example.com" }
     twitter { "twitter" }
-    admin { false }
   end
 end

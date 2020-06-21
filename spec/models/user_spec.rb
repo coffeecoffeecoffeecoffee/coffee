@@ -11,8 +11,6 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   it { is_expected.to validate_presence_of(:twitter) }
-  it { is_expected.to allow_value([true, false]).for(:admin) }
-  it { is_expected.not_to allow_value(nil).for(:admin) }
 
   describe "#before_validation" do
     it "downcases email" do

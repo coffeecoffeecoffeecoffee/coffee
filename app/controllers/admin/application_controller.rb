@@ -5,7 +5,7 @@ module Admin
     before_action :authenticate_admin
 
     def authenticate_admin
-      redirect_to :root unless current_user.try(:admin?)
+      redirect_to :root unless current_user.superadmin?
     end
   end
 end
