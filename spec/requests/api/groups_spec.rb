@@ -8,7 +8,6 @@ RSpec.describe "Groups", type: :request do
 
       get api_groups_url
 
-      expect(response).to match_openapi_spec("/groups", "get")
       expect(response).to have_json_size(2)
     end
   end

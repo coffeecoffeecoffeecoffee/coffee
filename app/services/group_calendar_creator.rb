@@ -14,7 +14,7 @@ class GroupCalendarCreator
       # TODO: This is intentionally untested and will be cleaned up when we
       # better handle the multiple venue types getting displayed through
       # an event (e.g. P/VM-style vs M)
-      summary = "#{@group.name}"
+      summary = @group.name.to_s
       summary = "#{@group.name} at #{event.venue.name}" unless event.foursquare_venue_id.nil?
 
       calendar_event = Icalendar::Event.new

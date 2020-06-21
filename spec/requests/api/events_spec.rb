@@ -12,7 +12,6 @@ RSpec.describe "Events", type: :request do
 
       get api_group_events_url(group_id: group.id)
 
-      expect(response).to match_openapi_spec("/groups/#{group.id}/events", "get")
       expect(response).to have_json_size(4)
 
       event_ids = JSON.parse(response.body).map { |e| e["id"] }
