@@ -11,6 +11,14 @@ RSpec.describe User, type: :model do
   it { is_expected.to validate_presence_of(:email) }
   it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
   it { is_expected.to validate_presence_of(:twitter) }
+  it { is_expected.to validate_presence_of(:token) }
+  it { is_expected.to validate_uniqueness_of(:token) }
+
+  describe "#after_initialize" do
+    it "sets the token" do
+      expect(User.new.token).not_to be_nil
+    end
+  end
 
   describe "#before_validation" do
     it "downcases email" do

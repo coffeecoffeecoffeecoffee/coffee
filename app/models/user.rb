@@ -6,6 +6,11 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true, case_sensitive: false
   validates :twitter, presence: true
+  validates :token, presence: true, uniqueness: true
+
+  after_initialize do
+    self.token = SecureRandom.urlsafe_base64
+  end
 
   before_validation do
     self.email = email.try(:downcase)
