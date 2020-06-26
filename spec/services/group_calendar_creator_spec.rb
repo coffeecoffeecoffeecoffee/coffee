@@ -53,7 +53,7 @@ describe GroupCalendarCreator do
 
     context "with online venue" do
       it "creates an ical with all events" do
-        event = create(:event, :with_group, :with_online_venue)
+        event = create(:event, :with_group, :with_online_event)
         calendar = calendar_for_group(event.group)
         calendar_event = calendar.events.last
 

@@ -35,18 +35,6 @@ class Event < ApplicationRecord
     start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")
   end
 
-  def is_online # rubocop:disable Naming/PredicateName
-    # untested
-    # remove this when is_online is added to the events table
-    online_event_url.present?
-  end
-
-  def online_event_url
-    # untested
-    # remove this when online_venue_url is renamed to online_event_url
-    online_venue_url
-  end
-
   private
 
   def end_at_cannot_be_before_start_at

@@ -13,8 +13,8 @@ class GroupCalendarCreator
     events.each do |event|
       summary = @group.name.to_s
       address = nil
-      location = event.online_venue_url
-      url = event.online_venue_url
+      location = event.online_event_url
+      url = event.online_event_url
 
       if event.venue
         summary = "#{@group.name} at #{event.venue.name}"

@@ -9,8 +9,9 @@ FactoryBot.define do
       group
     end
 
-    trait :with_online_venue do
-      online_venue_url { "https://meet.google.com/coffeecoffeecoffeecoffee" }
+    trait :with_online_event do
+      is_online { true }
+      online_event_url { "https://meet.google.com/coffeecoffeecoffeecoffee" }
     end
 
     trait :with_foursquare_venue do

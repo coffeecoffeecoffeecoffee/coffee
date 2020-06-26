@@ -10,7 +10,8 @@ class EventDashboard < Administrate::BaseDashboard
     updated_at: Field::DateTime,
     group: Field::BelongsTo,
     foursquare_venue_id: Field::String,
-    online_venue_url: Field::String,
+    is_online: Field::Boolean,
+    online_event_url: Field::String,
     image: Field::ActiveStorage,
     host: Field::BelongsTo.with_options(class_name: "User")
   }.freeze
@@ -30,7 +31,8 @@ class EventDashboard < Administrate::BaseDashboard
     end_at
     name
     foursquare_venue_id
-    online_venue_url
+    is_online
+    online_event_url
     image
     created_at
     updated_at
@@ -43,7 +45,8 @@ class EventDashboard < Administrate::BaseDashboard
     end_at
     name
     foursquare_venue_id
-    online_venue_url
+    is_online
+    online_event_url
     image
   ].freeze
 end
