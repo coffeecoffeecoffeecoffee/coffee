@@ -17,7 +17,8 @@ gem "omniauth-twitter"
 gem "pg"
 gem "puma"
 gem "rails"
-gem "rswag"
+gem "rswag-api"
+gem "rswag-ui"
 gem "sass-rails"
 gem "turbolinks"
 gem "uglifier"
@@ -37,6 +38,7 @@ end
 group :development, :test do
   gem "byebug", platforms: %i[mri mingw x64_mingw]
   gem "rspec-rails"
+  gem "rswag-specs"
 end
 
 group :production do
