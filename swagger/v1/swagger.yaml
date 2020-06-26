@@ -1,0 +1,127 @@
+---
+openapi: 3.0.1
+info:
+  title: Coffee
+  version: v1
+servers:
+- url: http://localhost:3000
+- url: https://coffeecoffeecoffee.coffee
+components:
+  schemas:
+    event:
+      type: object
+      properties:
+        id:
+          type: string
+        group_id:
+          type: string
+          nullable: true
+        name:
+          type: string
+        image_url:
+          type: string
+          nullable: true
+        start_at:
+          type: string
+          format: date-time
+        end_at:
+          type: string
+          format: date-time
+        venue:
+          oneOf:
+          - "$ref": "#/components/schemas/venue"
+          - type: 'null'
+          nullable: true
+        is_online:
+          type: boolean
+        online_event_url:
+          type: string
+          nullable: true
+      required:
+      - id
+      - group_id
+      - name
+      - image_url
+      - start_at
+      - end_at
+      - venue
+      - is_online
+      - online_event_url
+      additionalProperties: false
+    group:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+      required:
+      - id
+      - name
+      additionalProperties: false
+    location:
+      description: http://microformats.org/wiki/adr
+      type: object
+      properties:
+        address:
+          type: string
+        extended_address:
+          type: string
+        locality:
+          type: string
+          description: city or village
+        region:
+          type: string
+          description: state or province
+        postal_code:
+          type: string
+          description: e.g. US ZIP
+        country:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+      additionalProperties: false
+    venue:
+      type: object
+      properties:
+        name:
+          type: string
+        location:
+          "$ref": "#/components/schemas/location"
+      required:
+      - name
+      - location
+      additionalProperties: false
+paths:
+  "/api/groups/{group_id}/events":
+    get:
+      summary: List of events for the specified group in descending order
+      parameters:
+      - name: group_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/event"
+  "/api/groups":
+    get:
+      summary: List public groups
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/group"

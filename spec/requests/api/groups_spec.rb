@@ -1,14 +1,18 @@
-require "rails_helper"
+require "swagger_helper"
 
-RSpec.describe "Groups", type: :request do
-  describe "GET /groups" do
-    it "returns a list of active groups" do
-      create(:inactive_event)
-      create_list(:event, 2, :with_group)
+RSpec.describe "Groups API", type: :request do
+  path "/api/groups" do
+    get "List public groups" do
+      response "200", "OK" do
+        produces "application/json"
+        schema type: :array, items: { "$ref": "#/components/schemas/group" }
 
-      get api_groups_url
+        before { create_list(:group, 2) }
 
-      expect(response).to have_json_size(2)
+        run_test! do |response|
+          expect(response.body).to have_json_size(2)
+        end
+      end
     end
   end
 end

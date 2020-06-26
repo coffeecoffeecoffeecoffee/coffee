@@ -89,12 +89,11 @@ RSpec.describe Event, type: :model do
     end
 
     context "when foursquare venue data does not exist" do
-      it "returns an empty venue" do
+      it "returns nil" do
         event = build(:event)
 
         venue = event.venue
-        expect(venue).not_to be_nil
-        expect(venue.name).to be_nil
+        expect(venue).to be_nil
       end
     end
   end

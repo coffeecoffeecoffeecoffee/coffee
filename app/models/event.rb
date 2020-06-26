@@ -19,18 +19,32 @@ class Event < ApplicationRecord
   before_save :ensure_updated_foursquare_venue_data
 
   def venue
+    return nil unless foursquare_venue_id
+
     FoursquareVenue.new(foursquare_venue_data)
   end
 
   def image_url
     return Rails.application.routes.url_helpers.rails_blob_url(image) if image.attachment
 
-    venue.image_url
+    venue.try(:image_url)
   end
 
   def formatted_local_time
     start_at_local = start_at.in_time_zone(group.time_zone)
     start_at_local.strftime("%A, %B %e, %Y, %-I:%M %p")
+  end
+
+  def is_online # rubocop:disable Naming/PredicateName
+    # untested
+    # remove this when is_online is added to the events table
+    online_event_url.present?
+  end
+
+  def online_event_url
+    # untested
+    # remove this when online_venue_url is renamed to online_event_url
+    online_venue_url
   end
 
   private

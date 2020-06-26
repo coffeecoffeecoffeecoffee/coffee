@@ -11,16 +11,17 @@ class GroupCalendarCreator
     calendar.append_custom_property("X-WR-CALNAME", @group.name)
 
     events.each do |event|
-      # TODO: There are a lot of null venue checks here. Fix this with
-      # something like a NullVenue or alternative
-
       summary = @group.name.to_s
-      summary = "#{@group.name} at #{event.venue.name}" unless event.foursquare_venue_id.nil?
-
-      location = event.venue.address || event.online_venue_url
-
+      address = nil
+      location = event.online_venue_url
       url = event.online_venue_url
-      url = event.venue.url unless event.foursquare_venue_id.nil?
+
+      if event.venue
+        summary = "#{@group.name} at #{event.venue.name}"
+        address = event.venue.address
+        location = address
+        url = event.venue.url
+      end
 
       calendar_event = Icalendar::Event.new
       calendar_event.summary = summary
@@ -29,7 +30,7 @@ class GroupCalendarCreator
       calendar_event.dtend = Icalendar::Values::DateOrDateTime.new(event.end_at, tzid: event.end_at.zone).call
       calendar_event.location = location
       calendar_event.url = url
-      calendar_event.append_custom_property("X-APPLE-STRUCTURED-LOCATION", event.venue.address) if event.venue.address.present?
+      calendar_event.append_custom_property("X-APPLE-STRUCTURED-LOCATION", address) if address.present?
       calendar.add_event(calendar_event)
     end
 

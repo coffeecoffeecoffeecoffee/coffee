@@ -1,26 +1,35 @@
-require "rails_helper"
+require "swagger_helper"
 
-RSpec.describe "Events", type: :request do
-  describe "GET /groups/:group_id/events" do
-    it "returns a list of events for the specified group ordered by most future first" do
-      group = create(:group)
-      future_event = create(:future_event, group: group)
-      now_event = create(:now_event, group: group)
-      past_event = create(:past_event, group: group)
-      really_future_event = create(:really_future_event, group: group)
-      create(:event)
+RSpec.describe "Events API", type: :request do
+  path "/api/groups/{group_id}/events" do
+    get "List of events for the specified group in descending order" do
+      response "200", "OK" do
+        consumes "application/json"
+        parameter name: :group_id, in: :path, type: :string
 
-      get api_group_events_url(group_id: group.id)
+        produces "application/json"
+        schema type: :array, items: { "$ref": "#/components/schemas/event" }
 
-      expect(response).to have_json_size(4)
+        let(:group) { create(:group) }
+        let(:group_id) { group.id }
 
-      event_ids = JSON.parse(response.body).map { |e| e["id"] }
-      expect(event_ids).to eq([
-                                really_future_event.id,
-                                future_event.id,
-                                now_event.id,
-                                past_event.id
-                              ])
+        let!(:future_event) { create(:future_event, group: group) }
+        let!(:now_event) { create(:now_event, group: group) }
+        let!(:past_event) { create(:past_event, group: group) }
+        let!(:really_future_event) { create(:really_future_event, group: group) }
+
+        before { create(:event) } # other event
+
+        run_test! do |response|
+          event_ids = JSON(response.body).map { |e| e["id"] }
+          expect(event_ids).to eq([
+                                    really_future_event.id,
+                                    future_event.id,
+                                    now_event.id,
+                                    past_event.id
+                                  ])
+        end
+      end
     end
   end
 end

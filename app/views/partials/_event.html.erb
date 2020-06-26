@@ -1,6 +1,10 @@
 <div class="event" style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('<%= event.image_url %>'); background-size: cover;">
   <div class="event__body">
-    <%= link_to event.venue.url, target: '_blank' do %>
+    <% if event.venue %>
+      <%= link_to event.venue.url, target: '_blank' do %>
+        <h3 class="event__venue"><%= event.name %></h3>
+      <% end %>
+    <% else %>
       <h3 class="event__venue"><%= event.name %></h3>
     <% end %>
     <time class="event__time"><%= event.formatted_local_time %></time>

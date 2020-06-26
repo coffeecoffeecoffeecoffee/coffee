@@ -35,6 +35,10 @@ RSpec/DescribeClass:
 RSpec/DescribedClass:
   Enabled: false
 
+RSpec/EmptyExampleGroup:
+  Exclude:
+    - "spec/requests/api/*"
+
 RSpec/ExampleLength:
   Enabled: false
 
