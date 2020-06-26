@@ -93,8 +93,11 @@ RSpec.configure do |config| # rubocop:disable Metrics/BlockLength
   config.swagger_format = :yaml
 
   # Generate docs on passing specs
-  config.after(:suite) do # rubocop:disable RSpec/BeforeAfterAll
-    Coffee::Application.load_tasks
-    Rake::Task["rswag:specs:swaggerize"].invoke
+  config.after(:suite) do
+    suite_passed = RSpec.world.filtered_examples.values.flatten.none?(&:exception)
+    if suite_passed
+      Coffee::Application.load_tasks
+      Rake::Task["rswag:specs:swaggerize"].invoke
+    end
   end
 end
