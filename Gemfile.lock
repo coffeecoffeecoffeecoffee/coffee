@@ -102,8 +102,7 @@ GEM
       aws_cf_signer
       rest-client
     concurrent-ruby (1.1.7)
-    crack (0.4.3)
-      safe_yaml (~> 1.0.0)
+    crack (0.4.4)
     crass (1.0.6)
     datetime_picker_rails (0.0.7)
       momentjs-rails (>= 2.8.1)
@@ -306,7 +305,6 @@ GEM
       rubocop (>= 0.87.0)
     ruby-progressbar (1.10.1)
     rubyzip (2.3.0)
-    safe_yaml (1.0.5)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -361,7 +359,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.9.1)
+    webmock (3.9.2)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
