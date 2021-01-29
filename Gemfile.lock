@@ -201,13 +201,14 @@ GEM
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
     normalize-rails (8.0.1)
-    oauth (0.5.4)
-    omniauth (1.9.1)
+    oauth (0.5.5)
+    omniauth (2.0.0)
       hashie (>= 3.4.6)
       rack (>= 1.6.2, < 3)
-    omniauth-oauth (1.1.0)
+      rack-protection
+    omniauth-oauth (1.2.0)
       oauth
-      omniauth (~> 1.0)
+      omniauth (>= 1.0, < 3)
     omniauth-twitter (1.4.0)
       omniauth-oauth (~> 1.1)
       rack
@@ -220,6 +221,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.5.2)
     rack (2.2.3)
+    rack-protection (2.1.0)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (6.0.3.4)
