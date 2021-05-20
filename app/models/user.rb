@@ -33,8 +33,10 @@ class User < ApplicationRecord
   end
 
   def superadmin?
-    return true if twitter == "jamescmartinez"
+    twitter == "jamescmartinez"
+  end
 
-    false
+  def group_admin?
+    Membership.where(user_id: id, admin: true).count >= 1
   end
 end

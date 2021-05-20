@@ -75,4 +75,16 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_superadmin
     end
   end
+
+  describe "#group_admin?" do
+    it "returns true if the user is group admin" do
+      user = create(:membership, admin: true).user
+      expect(user).to be_group_admin
+    end
+
+    it "returns false if the user is not a group admin" do
+      user = create(:membership, admin: false).user
+      expect(user).not_to be_group_admin
+    end
+  end
 end
