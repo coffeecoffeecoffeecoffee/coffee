@@ -19,7 +19,7 @@ class FoursquareVenue
     return nil if photo.nil?
 
     photo.symbolize_keys!
-    photo[:prefix] + photo[:width].to_s + "x" + photo[:height].to_s + photo[:suffix]
+    "#{photo[:prefix]}#{photo[:width]}x#{photo[:height]}#{photo[:suffix]}"
   end
 
   def address

@@ -1,6 +1,6 @@
 require "swagger_helper"
 
-RSpec.describe "Events API", type: :request do
+RSpec.describe "Events API", type: :request do # rubocop:disable RSpec/MultipleMemoizedHelpers
   path "/api/groups/{group_id}/events" do
     get "List of events for the specified group in descending order" do
       response "200", "OK" do

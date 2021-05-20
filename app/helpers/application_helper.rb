@@ -10,7 +10,7 @@ module ApplicationHelper
   private
 
   def image_url_for_event(event)
-    return (request.base_url + "/apple-touch-icon.png") unless event&.venue
+    return "#{request.base_url}/apple-touch-icon.png" unless event&.venue
 
     event.venue.image_url
   end
