@@ -16,7 +16,7 @@ gem "omniauth"
 gem "omniauth-twitter"
 gem "pg"
 gem "puma"
-gem "rails"
+gem "rails", '< 6.1'
 gem "rswag-api"
 gem "rswag-ui"
 gem "sass-rails"
