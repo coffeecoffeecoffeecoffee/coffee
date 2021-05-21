@@ -163,7 +163,6 @@ GEM
       activerecord
       kaminari-core (= 1.2.1)
     kaminari-core (1.2.1)
-    libv8 (8.4.255.0)
     listen (3.4.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
@@ -181,8 +180,6 @@ GEM
     mime-types-data (3.2020.0512)
     mini_mime (1.1.0)
     mini_portile2 (2.5.1)
-    mini_racer (0.3.1)
-      libv8 (~> 8.4.255)
     minitest (5.14.4)
     momentjs-rails (2.20.1)
       railties (>= 3.1)
@@ -386,7 +383,6 @@ DEPENDENCIES
   jbuilder
   listen
   meta-tags
-  mini_racer
   newrelic_rpm
   normalize-rails
   omniauth

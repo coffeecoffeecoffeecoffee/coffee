@@ -10,7 +10,6 @@ gem "httparty"
 gem "icalendar"
 gem "jbuilder"
 gem "meta-tags"
-gem "mini_racer", platforms: :ruby
 gem "normalize-rails"
 gem "omniauth"
 gem "omniauth-twitter"
