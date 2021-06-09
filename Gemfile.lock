@@ -122,8 +122,6 @@ GEM
     factory_bot_rails (6.1.0)
       factory_bot (~> 6.1.0)
       railties (>= 5.0.0)
-    faraday (1.0.1)
-      multipart-post (>= 1.2, < 3)
     ffi (1.15.0)
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
@@ -185,7 +183,6 @@ GEM
       railties (>= 3.1)
     msgpack (1.4.2)
     multi_xml (0.6.0)
-    multipart-post (2.1.1)
     netrc (0.11.0)
     newrelic_rpm (6.15.0)
     nio4r (2.5.7)
@@ -315,8 +312,6 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
-    sentry-raven (3.1.1)
-      faraday (>= 1.0)
     shoulda (4.0.0)
       shoulda-context (~> 2.0)
       shoulda-matchers (~> 4.0)
@@ -401,7 +396,6 @@ DEPENDENCIES
   rubocop-rspec
   sass-rails
   selenium-webdriver
-  sentry-raven
   shoulda
   spring
   spring-watcher-listen
