@@ -8,7 +8,7 @@
       <%= image_tag(current_user.image_url, class: 'header__avatar') %>
       <%= link_to('Sign out', auth_logout_path) %>
     <% else %>
-      <%= link_to('Sign in', '/auth/twitter') %>
+      <%= link_to('Sign in', '/auth/twitter', method: :post) %>
     <% end %>
   </div>
 </header>
