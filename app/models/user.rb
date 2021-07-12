@@ -33,7 +33,7 @@ class User < ApplicationRecord
   end
 
   def superadmin?
-    twitter == "jamescmartinez"
+    twitter == Rails.application.credentials[:superadmin]
   end
 
   def group_admin?

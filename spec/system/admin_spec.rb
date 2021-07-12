@@ -3,7 +3,7 @@ require "rails_helper"
 describe "Admin" do
   describe "dashboard authentication" do
     it "allows superadmins to access" do
-      user = create(:user, twitter: "jamescmartinez")
+      user = create(:user, twitter: Rails.application.credentials[:superadmin])
       sign_in_as(user)
 
       visit admin_root_path

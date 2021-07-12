@@ -66,7 +66,7 @@ RSpec.describe User, type: :model do
 
   describe "#superadmin?" do
     it "returns true if the user is a superadmin" do
-      user = build(:user, twitter: "jamescmartinez")
+      user = build(:user, twitter: Rails.application.credentials[:superadmin])
       expect(user).to be_superadmin
     end
 
