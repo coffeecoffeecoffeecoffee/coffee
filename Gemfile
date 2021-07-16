@@ -27,7 +27,9 @@ gem "uglifier"
 
 group :development do
   gem "erb_lint", require: false
+  gem "jazz_fingers"
   gem "listen"
+  gem "pry-rails"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
