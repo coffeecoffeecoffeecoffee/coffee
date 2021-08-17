@@ -1,3 +1,5 @@
+ruby "3.0.1"
+
 source "https://rubygems.org"
 
 gem "administrate"
@@ -12,6 +14,7 @@ gem "jbuilder"
 gem "meta-tags"
 gem "normalize-rails"
 gem "omniauth"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "omniauth-twitter"
 gem "pg"
 gem "puma"
@@ -24,7 +27,9 @@ gem "uglifier"
 
 group :development do
   gem "erb_lint", require: false
+  gem "jazz_fingers"
   gem "listen"
+  gem "pry-rails"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
@@ -41,7 +46,7 @@ group :development, :test do
 end
 
 group :production do
-  gem "newrelic_rpm"
+  # gem "newrelic_rpm"
 end
 
 group :test do

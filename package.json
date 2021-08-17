@@ -12,5 +12,6 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "prettier": "^1.19.1"
-  }
+  },
+  "name": "coffee"
 }
