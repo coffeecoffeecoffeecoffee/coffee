@@ -11,9 +11,27 @@
 ### Installing and Running
 
 1. Make sure that all prerequisites are installed and running locally.
+1. Run `rails credentials:edit` to add the required credentials.
 1. Run `bin/setup` to install dependencies and prepare the local database.
 1. Run `rails s` to start the Rails server.
+### Required Credentials
+```
+cloudinary:
+  cloud_name: YOUR_CLOUDINARY_CLOUD_NAME
+  api_key: YOUR_CLOUDINARY_API_KEY
+  api_secret: YOUR_CLOUDINARY_API_SECRET
 
+foursquare:
+  client_id: YOUR_FOURSQUARE_CLIENT_ID
+  client_secret: YOUR_FOURSQUARE_CLIENT_SECRET
+
+twitter:
+  consumer_key: YOUR_TWITTER_CONSUMER_KEY
+  consumer_secret: YOUR_TWITTER_CONSUMER_SECRET
+  bearer_token: YOUR_TWITTER_BEARER_TOKEN
+
+superadmin: YOUR_TWITTER_ACCOUNT_NAME
+```
 ## Running the tests
 
 ```
