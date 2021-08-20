@@ -7,7 +7,7 @@ class MoveVenueDataToEvent < ActiveRecord::Migration[5.2]
     #
     # Venue.find_each do |venue|
     #   venue.events.each do |event|
-    #     event.update_columns( # rubocop:disable Rails/SkipsModelValidations
+    #     event.update_columns(
     #       foursquare_venue_id: venue.foursquare_id,
     #       foursquare_venue: venue.foursquare_venue
     #     )
