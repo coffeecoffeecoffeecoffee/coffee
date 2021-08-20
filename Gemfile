@@ -1,4 +1,4 @@
-ruby "3.0.1"
+ruby "3.0.2"
 
 source "https://rubygems.org"
 
@@ -13,9 +13,9 @@ gem "icalendar"
 gem "jbuilder"
 gem "meta-tags"
 gem "normalize-rails"
-gem "omniauth"
+gem "omniauth", "~> 2.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
-gem "omniauth-twitter"
+gem "omniauth-twitter", "~> 1.4"
 gem "pg"
 gem "puma"
 gem "rails", "< 6.1"
