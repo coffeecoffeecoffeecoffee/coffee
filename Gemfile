@@ -6,6 +6,7 @@ gem "administrate"
 gem "administrate-field-active_storage"
 gem "bootsnap", require: false
 gem "cloudinary"
+gem "devise"
 gem "factory_bot_rails"
 gem "friendly_id"
 gem "httparty"
