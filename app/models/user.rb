@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[twitter]
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
   has_many :hosted_events, class_name: "Event", foreign_key: :host_id, inverse_of: :host, dependent: :destroy
