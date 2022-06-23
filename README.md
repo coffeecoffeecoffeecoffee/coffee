@@ -46,7 +46,7 @@ bin/lint
 
 ## Deployment
 
-Deployment of the master branch to Heroku is done automatically after CI passes.
+Deployment of the master branch to Heroku is done manually after CI passes.
 
 ## API
 
